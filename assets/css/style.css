@@ -1,0 +1,386 @@
+body{
+	margin: 0;
+}
+
+
+header{
+	background-color: rgba(255,0,0,0.1);
+}
+
+
+.welcome-message{
+	background-color: rgba(0,255,0,0.1);
+}
+
+
+.content{
+	background-color: rgba(0,0,255,0.1);
+	display: flex;
+}
+.page-side{
+	background-color: rgba(0,0,255,0.2);
+}
+.page-main{
+	background-color: rgba(0,0,255,0.2);
+}
+
+
+footer{
+	background-color: rgba(255,255,0,0.1);
+}
+
+
+
+
+/*MISC*/
+.hide{
+	display: none;
+}
+
+
+
+
+
+
+/*stand alone modules*/
+
+
+/*standalone CONTAINERS*/
+.standalone{
+	max-width: 600px;
+	background-color: rgba(0,0,0,0.1);
+	font-family: sans-serif;
+	padding:20px;
+	margin:20px;
+	border-radius: 20px;
+}
+	.standalone h1{
+		font-size: xx-large;
+		font-weight: bolder;
+	}
+	.standalone p{
+		font-size:x-large;
+		font-weight: lighter;
+		padding:20px 0;
+	}
+
+
+/*standalone BMI calc*/
+.bmi-calc{
+	background-color: rgba(255,255,255,0.8);
+	padding: 20px;
+	border-radius: 20px;
+	position: relative;
+}
+.bmi-calc:before{
+	content:"Calculate Your BMI";
+	font-size: larger;
+	font-weight: bolder;
+}
+	.unit-type{
+		margin-top: 20px;
+	}
+	.unit-type:before{
+		text-decoration: underline;
+		content: "Unit of Measurement:\a";
+	    white-space:pre;
+	}
+	.weight-wrap, .height-wrap{
+		padding: 20px;
+		background-color: rgba(0,0,0,0.1);
+		border-radius: 20px;
+		margin-top: 20px;
+	}
+
+
+	.weight-wrap div{
+		border-radius: 20px;
+    	border: none;
+    	background-color: rgba(0,0,0,0.1);
+    	display: flex;
+	    align-items: center;
+    	justify-content: center;
+    	position: relative;
+	}
+	.weight-wrap div:after{
+		padding:0 20px;
+		font-size: larger;
+		font-weight: bolder;
+		position: absolute;
+		right: 0px;
+	}
+	.bmi-calc .weight-wrap div:nth-of-type(1):after{
+		content: "pounds";
+	}
+	.bmi-calc .weight-wrap div:nth-of-type(2):after{
+		content: "kilograms";
+	}
+	/*hiding pounds OR kilograms...*/
+	/*...depeinding on which type of measurement picked*/
+	.bmi-calc.metric .weight-wrap div:nth-of-type(1),
+	.bmi-calc.imperial .weight-wrap div:nth-of-type(2){
+		display: none;
+	}
+
+
+	.bmi-calc.imperial .weight-wrap:before{
+		content: "How Many Pounds Do You Weigh?\a\a";
+	    white-space:pre;
+	}
+	.bmi-calc.metric .weight-wrap:before{
+		content: "How Many Kilograms Do You Weigh?\a\a";
+	    white-space:pre;
+	}
+	.weight-wrap input[type=text]{
+		text-align: center;
+		padding:20px;
+		width: calc(100% - 40px);
+		font-size: xx-large;
+		border-radius: 20px;
+    	border: none;
+    	background-color: transparent;
+	}
+
+
+
+	.bmi-calc.imperial .height-wrap:before{
+		content: "How Tall Are You in Feet & Inches?\a\a";
+	    white-space:pre;
+	}
+	.bmi-calc.metric .height-wrap:before{
+		content: "How Tall Are You in Meters?\a\a";
+	    white-space:pre;
+	}
+	.height-wrap div{
+		border-radius: 20px;
+    	border: none;
+    	background-color: rgba(0,0,0,0.1);
+    	display: flex;
+	    align-items: center;
+    	justify-content: center;
+    	position: relative;
+	}
+	.height-wrap div:after{
+		padding:0 20px;
+		font-size: larger;
+		font-weight: bolder;
+		position: absolute;
+		right: 0px;
+	}
+	.height-wrap div:nth-of-type(1):after{
+		content: "feet";
+	}
+	.height-wrap div:nth-of-type(2):after{
+		content: "inches";
+	}
+	.height-wrap div:nth-of-type(3):after{
+		content: "meters";
+	}
+	.height-wrap div:nth-of-type(2){
+		margin-top: 20px;
+	}
+	.height-wrap input[type=text]{
+		flex: 1;
+		text-align: center;
+		padding:20px;
+		font-size: xx-large;
+		border-radius: 20px;
+    	border: none;
+    	background-color: transparent;
+	}
+
+	/*hiding inchest & feet OR meters...*/
+	/*...depeinding on which type of measurement picked*/
+	.bmi-calc.metric .height-wrap div:nth-child(n+1):nth-child(-n+2),
+	.bmi-calc.metric .height-wrap .height-i,
+	.bmi-calc.imperial .height-wrap div:nth-of-type(3),
+	.bmi-calc.imperial .height-wrap .height-m{
+		display: none;
+	}
+
+	.bmi-run{
+		cursor: pointer;
+		width: 100%;
+		margin-top: 20px;
+		text-align: center;
+		padding:20px;
+		font-size: xx-large;
+		border-radius: 20px;
+    	border: none;
+    	background-color: rgba(0,0,0,0.4);
+	}
+	.bmi-run:hover{
+		background-color: rgba(0,0,0,0.7);
+		color: rgba(255,255,255,0.5);
+	}
+	.bmi-run:after{
+		content: "Calculate BMI";
+	}
+
+	.bmi-results{
+		border-radius: 20px;
+		border: 1px solid #000;
+		margin-top: 20px;
+		overflow: hidden;
+		min-width: 10px;
+		min-height: 10px;
+		background-color: rgba(0,0,0,0.1);
+	}
+	.bmi-results h1{
+		font-size: x-large;
+		text-align: center;
+		padding: 20px 0;
+		background-color: #000;
+		color: #fff;
+		font-weight: lighter;
+	}
+	.bmi-results h1:before{
+		content: "Results";
+		text-transform: uppercase;
+	}
+
+	.bmi-results > .numerical-result{
+		text-align: center;
+		font-size: x-large;
+		padding: 20px 0;
+	}
+	.bmi-results > .numerical-result:before{
+		content: "Your BMI: ";
+		font-weight: lighter;
+	}
+
+	.bmi-results h2{
+		text-align: center;
+		text-transform: uppercase;
+		text-align: center;
+		background-color: rgba(0,0,0,0.1);
+		padding: 20px 0;
+		width: calc(100% - 40px);
+		margin-right: auto;
+		margin-left: auto;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.bmi-results h2:before{
+		content: "weight categories";
+	}
+
+	.bmi-scale{
+		display: flex;
+		flex-direction: row;
+		background-color: rgba(0,0,0,0.1);
+		width: calc(100% - 40px);
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom: 20px;
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+		overflow: hidden;
+	}
+
+	.bmi-scale > .categories{
+		min-width: 16%;
+		flex:1;
+		font-size: 2vmin;
+		text-align: center;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border: 1px solid rgba(0,0,0,0.1);
+	}
+	.bmi-scale > .categories:before{
+		white-space: pre;
+		text-transform: uppercase;
+		color: rgba(0,0,0,0.5);
+		font-weight: bolder;
+	}
+	.bmi-scale > .categories:after{
+		color: rgba(0,0,0,0.5);
+		font-weight: lighter;
+		color:#000;
+	}
+
+	.bmi-scale > .categories hr{
+		border-color: rgba(0,0,0,0.1);
+	}
+
+	.bmi-scale > .categories:nth-of-type(1){
+		background-color: rgb(175,218,205);
+	}
+	.bmi-scale > .categories:nth-of-type(1):before{
+		content: "Under\A";
+	}
+	.bmi-scale > .categories:nth-of-type(1):after{
+		content: "< 18.5";
+	}
+
+	.bmi-scale > .categories:nth-of-type(2){
+		background-color: rgb(158,233,91);
+	}
+	.bmi-scale > .categories:nth-of-type(2):before{
+		content: "Normal\A";
+	}
+	.bmi-scale > .categories:nth-of-type(2):after{
+		content: "18.5 - 24";
+	}
+
+	.bmi-scale > .categories:nth-of-type(3){
+		background-color: rgb(255,253,150);
+	}
+	.bmi-scale > .categories:nth-of-type(3):before{
+		content: "Over\A";
+	}
+	.bmi-scale > .categories:nth-of-type(3):after{
+		content: "25 - 29";
+	}
+
+	.bmi-scale > .categories:nth-of-type(4){
+		background-color: rgb(253,213,0);
+	}
+	.bmi-scale > .categories:nth-of-type(4):before{
+		content: "Over x2\A";
+	}
+	.bmi-scale > .categories:nth-of-type(4):after{
+		content: "30 - 34";
+	}
+
+	.bmi-scale > .categories:nth-of-type(5){
+		background-color: rgb(246,141,50);
+	}
+	.bmi-scale > .categories:nth-of-type(5):before{
+		content: "Over x3\A";
+	}
+	.bmi-scale > .categories:nth-of-type(5):after{
+		content: "35 - 39";
+	}
+
+	.bmi-scale > .categories:nth-of-type(6){
+		background-color: rgb(241,121,131);
+	}
+	.bmi-scale > .categories:nth-of-type(6):before{
+		content: "Over x4\A";
+	}
+	.bmi-scale > .categories:nth-of-type(6):after{
+		content: "40+";
+	}
+
+	.bmi-scale > .categories > div{
+		margin: 10px 0;
+		font-size: xx-large;
+	}
+	.bmi-scale > .categories > div:not(.active):before{
+		content: "\f006";
+		font-family: FontAwesome;
+		color: rgba(0,0,0,0.2);
+	}
+	.bmi-scale > .categories > div.active:before{
+		content: "\f005";
+		font-family: FontAwesome;
+	}

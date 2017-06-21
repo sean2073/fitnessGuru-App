@@ -1,1 +1,1 @@
-# fitnessGuru-App
+# FitnessGuru
