@@ -88,18 +88,6 @@ var FoodSearch = function (_React$Component4) {
     return _possibleConstructorReturn(this, (FoodSearch.__proto__ || Object.getPrototypeOf(FoodSearch)).apply(this, arguments));
   }
 
-  _createClass(FoodSearch, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        " You can look up the calories for any food here.",
-        React.createElement("br", null)
-      );
-    }
-  }]);
-
   return FoodSearch;
 }(React.Component);
 
@@ -194,6 +182,35 @@ var CalorieTracker = function (_React$Component6) {
     return _this6;
   }
 
+  //  setTimeout(() => {
+  //  this.setState({ issues: issues});
+  //}, 500);
+  /*
+      function toggleModal() {
+  
+        this.setState({ isOpen: !this.state.isOpen });
+    //  });
+  
+    }
+    */
+  /*
+    toggleModal.map(function() {
+        this.setState({ isOpen: !this.state.isOpen });
+    }
+  )
+  */
+  //toggleModal = () => {
+  //      this.setState({
+  //       isOpen: !this.state.isOpen
+  //     });
+  /*
+  toggleModal() {
+    toggleModal = this.setState({ isOpen: !this.state.isOpen });
+    this.toggleModal.bind(this);
+  };
+  */
+
+
   _createClass(CalorieTracker, [{
     key: "toggleModal",
     value: function toggleModal() {
@@ -205,58 +222,20 @@ var CalorieTracker = function (_React$Component6) {
       return React.createElement(
         "div",
         null,
-        React.createElement(FoodSearch, null),
+        " Keep track of your caloric intake here!",
         React.createElement(
           "div",
-          { className: "form-group has-warning " },
+          { className: "CalorieTracker" },
           React.createElement(
-            "form",
-            null,
-            React.createElement(
-              "span",
-              null,
-              React.createElement(
-                "label",
-                { className: "control-label", "for": "inputWarning" },
-                "Food Search:   "
-              ),
-              React.createElement("input", { size: "100", className: "" }),
-              React.createElement(
-                "a",
-                null,
-                React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
-              )
-            )
+            "button",
+            { type: "submit", onClick: this.toggleModal, href: "#", className: "btn btn-primary btn-sm" },
+            "add food"
           ),
           React.createElement(
-            "div",
-            { className: "form-group" },
-            React.createElement(
-              "label",
-              { className: "control-label", "for": "inputSmall" },
-              "Small input"
-            ),
-            React.createElement("input", { className: "form-control input-sm", type: "text", id: "inputSmall" }),
-            React.createElement(
-              "div",
-              null,
-              " Keep track of your caloric intake here!",
-              React.createElement(
-                "div",
-                { className: "CalorieTracker" },
-                React.createElement(
-                  "button",
-                  { type: "submit", onClick: this.toggleModal, href: "#", className: "btn btn-primary btn-sm" },
-                  "add food"
-                ),
-                React.createElement(
-                  Modal,
-                  { show: this.state.isOpen,
-                    onClose: this.toggleModal },
-                  "Here's some content for the modal"
-                )
-              )
-            )
+            Modal,
+            { show: this.state.isOpen,
+              onClose: this.toggleModal },
+            "Here's some content for the modal"
           )
         )
       );
@@ -407,6 +386,7 @@ var Dashboard = function (_React$Component7) {
                 React.createElement(
                   "div",
                   { className: "calorieTracker" },
+                  "Panel content",
                   React.createElement(CalorieTracker, null)
                 )
               )

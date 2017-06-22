@@ -22,9 +22,7 @@ class UserGoals extends React.Component {
 class FoodSearch extends React.Component {
   render() {
     return (
-      <div> You can look up the calories for any food here.
-        <br />
-      </div>
+      <div> You can look up the calories for any food here.</div>
     )
   }
 }
@@ -34,25 +32,38 @@ class Modal extends React.Component{
     if(!this.props.show) {
       return null;
     }
+    // The gray background
+    const backdropStyle = {
+      position: 'fixed',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: 'rgba(0,0,0,0.3)',
+      padding: 50
+    };
+
+    // The modal "window"
+    const modalStyle = {
+      backgroundColor: '#fff',
+      borderRadius: 5,
+      maxWidth: 500,
+      minHeight: 300,
+      margin: '0 auto',
+      padding: 30
+    };
     return (
-      <div className="modal">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <button type="button" onClick={this.props.onClose} className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 className="modal-title">Modal title</h4>
-      </div>
-      <div className="modal-body">
-        <p>One fine body…</p>
-        {this.props.children}
-      </div>
-      <div className="modal-footer">
-        <button onClick={this.props.onClose} type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+      <div className="backdrop" style={backdropStyle}>
+          <div className="modal" style={modalStyle}>
+            {this.props.children}
+
+            <div className="footer">
+              <button onClick={this.props.onClose}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
     );
   }
 }
@@ -74,28 +85,10 @@ toggleModal() {
 };
 render() {
     return (
-      <div>
+      <div>Search for calories of your favorite foods here!
+        <label>Food Search:</label>
+        <input></input>
         <FoodSearch />
-
-        <div className="form-group has-warning ">
-          <form>
-          <span>
-          <label className="control-label" for="inputWarning">Food Search:   </label>
-          {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
-          <input size="100" className=""></input><a>
-            <i className="fa fa-search" aria-hidden="true" type="button"></i></a>
-          </span>
-        </form>
-
-          <div className="form-group">
-  <label className="control-label" for="inputSmall">Small input</label>
-  <input className="form-control input-sm" type="text" id="inputSmall"></input>
-
-
-
-
-
-
 
       <div> Keep track of your caloric intake here!
         <div className="CalorieTracker">
@@ -107,8 +100,6 @@ render() {
           </div>
       </div>
     </div>
-  </div>
-  </div>
     )
   }
 }
@@ -172,7 +163,7 @@ class Dashboard extends React.Component {
    					</div>
      			<div className="panel-body">
    					<div className="calorieTracker">
-
+   								Panel content
    								<CalorieTracker />
    					</div>
      			</div>

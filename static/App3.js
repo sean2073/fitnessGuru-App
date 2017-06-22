@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20,12 +20,12 @@ var InitialOutput = function (_React$Component) {
   }
 
   _createClass(InitialOutput, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
-        " This is a placeholder for the initial output section."
+        ' This is a placeholder for the initial output section.'
       );
     }
   }]);
@@ -43,12 +43,12 @@ var History = function (_React$Component2) {
   }
 
   _createClass(History, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
-        " This is a placeholder for the history section."
+        ' This is a placeholder for the history section.'
       );
     }
   }]);
@@ -66,12 +66,12 @@ var UserGoals = function (_React$Component3) {
   }
 
   _createClass(UserGoals, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
-        " This is a placeholder for the goals section."
+        ' This is a placeholder for the goals section.'
       );
     }
   }]);
@@ -89,13 +89,12 @@ var FoodSearch = function (_React$Component4) {
   }
 
   _createClass(FoodSearch, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
-        " You can look up the calories for any food here.",
-        React.createElement("br", null)
+        ' You can look up the calories for any food here.'
       );
     }
   }]);
@@ -113,58 +112,46 @@ var Modal = function (_React$Component5) {
   }
 
   _createClass(Modal, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       // Render nothing if the "show" prop is false
       if (!this.props.show) {
         return null;
       }
+      // The gray background
+      var backdropStyle = {
+        position: 'fixed',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        padding: 50
+      };
+
+      // The modal "window"
+      var modalStyle = {
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        maxWidth: 500,
+        minHeight: 300,
+        margin: '0 auto',
+        padding: 30
+      };
       return React.createElement(
-        "div",
-        { className: "modal" },
+        'div',
+        { className: 'backdrop', style: backdropStyle },
         React.createElement(
-          "div",
-          { className: "modal-dialog" },
+          'div',
+          { className: 'modal', style: modalStyle },
+          this.props.children,
           React.createElement(
-            "div",
-            { className: "modal-content" },
+            'div',
+            { className: 'footer' },
             React.createElement(
-              "div",
-              { className: "modal-header" },
-              React.createElement(
-                "button",
-                { type: "button", onClick: this.props.onClose, className: "close", "data-dismiss": "modal", "aria-hidden": "true" },
-                "\xD7"
-              ),
-              React.createElement(
-                "h4",
-                { className: "modal-title" },
-                "Modal title"
-              )
-            ),
-            React.createElement(
-              "div",
-              { className: "modal-body" },
-              React.createElement(
-                "p",
-                null,
-                "One fine body\u2026"
-              ),
-              this.props.children
-            ),
-            React.createElement(
-              "div",
-              { className: "modal-footer" },
-              React.createElement(
-                "button",
-                { onClick: this.props.onClose, type: "button", className: "btn btn-default", "data-dismiss": "modal" },
-                "Close"
-              ),
-              React.createElement(
-                "button",
-                { type: "button", className: "btn btn-primary" },
-                "Save changes"
-              )
+              'button',
+              { onClick: this.props.onClose },
+              'Close'
             )
           )
         )
@@ -195,67 +182,41 @@ var CalorieTracker = function (_React$Component6) {
   }
 
   _createClass(CalorieTracker, [{
-    key: "toggleModal",
+    key: 'toggleModal',
     value: function toggleModal() {
       this.setState({ isOpen: !this.state.isOpen });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
+        'Search for calories of your favorite foods here!',
+        React.createElement(
+          'label',
+          null,
+          'Food Search:'
+        ),
+        React.createElement('input', null),
         React.createElement(FoodSearch, null),
         React.createElement(
-          "div",
-          { className: "form-group has-warning " },
+          'div',
+          null,
+          ' Keep track of your caloric intake here!',
           React.createElement(
-            "form",
-            null,
+            'div',
+            { className: 'CalorieTracker' },
             React.createElement(
-              "span",
-              null,
-              React.createElement(
-                "label",
-                { className: "control-label", "for": "inputWarning" },
-                "Food Search:   "
-              ),
-              React.createElement("input", { size: "100", className: "" }),
-              React.createElement(
-                "a",
-                null,
-                React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
-              )
-            )
-          ),
-          React.createElement(
-            "div",
-            { className: "form-group" },
-            React.createElement(
-              "label",
-              { className: "control-label", "for": "inputSmall" },
-              "Small input"
+              'button',
+              { type: 'submit', onClick: this.toggleModal, href: '#', className: 'btn btn-primary btn-sm' },
+              'add food'
             ),
-            React.createElement("input", { className: "form-control input-sm", type: "text", id: "inputSmall" }),
             React.createElement(
-              "div",
-              null,
-              " Keep track of your caloric intake here!",
-              React.createElement(
-                "div",
-                { className: "CalorieTracker" },
-                React.createElement(
-                  "button",
-                  { type: "submit", onClick: this.toggleModal, href: "#", className: "btn btn-primary btn-sm" },
-                  "add food"
-                ),
-                React.createElement(
-                  Modal,
-                  { show: this.state.isOpen,
-                    onClose: this.toggleModal },
-                  "Here's some content for the modal"
-                )
-              )
+              Modal,
+              { show: this.state.isOpen,
+                onClose: this.toggleModal },
+              'Here\'s some content for the modal'
             )
           )
         )
@@ -276,80 +237,80 @@ var Dashboard = function (_React$Component7) {
   }
 
   _createClass(Dashboard, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
-        { className: "container" },
+        'div',
+        { className: 'container' },
         React.createElement(
-          "div",
-          { className: "row" },
+          'div',
+          { className: 'row' },
           React.createElement(
-            "div",
-            { className: "jumbotron" },
+            'div',
+            { className: 'jumbotron' },
             React.createElement(
-              "div",
-              { className: "welcome", id: "welcome" },
+              'div',
+              { className: 'welcome', id: 'welcome' },
               React.createElement(
-                "h1",
-                { className: "welcome" },
-                "Welcome George"
+                'h1',
+                { className: 'welcome' },
+                'Welcome George'
               )
             )
           )
         ),
         React.createElement(
-          "div",
-          { className: "row" },
+          'div',
+          { className: 'row' },
           React.createElement(
-            "div",
-            { className: "col-md-4" },
+            'div',
+            { className: 'col-md-4' },
             React.createElement(
-              "div",
-              { className: "panel panel-default" },
+              'div',
+              { className: 'panel panel-default' },
               React.createElement(
-                "div",
-                { className: "panel-heading" },
+                'div',
+                { className: 'panel-heading' },
                 React.createElement(
-                  "h2",
+                  'h2',
                   null,
-                  "Initial Output"
+                  'Initial Output'
                 )
               ),
               React.createElement(
-                "div",
-                { className: "panel-body" },
+                'div',
+                { className: 'panel-body' },
                 React.createElement(
-                  "div",
-                  { className: "InitialOutput" },
-                  "Panel content",
+                  'div',
+                  { className: 'InitialOutput' },
+                  'Panel content',
                   React.createElement(InitialOutput, null)
                 )
               )
             )
           ),
           React.createElement(
-            "div",
-            { className: "col-md-8" },
+            'div',
+            { className: 'col-md-8' },
             React.createElement(
-              "div",
-              { className: "panel panel-default" },
+              'div',
+              { className: 'panel panel-default' },
               React.createElement(
-                "div",
-                { className: "panel-heading" },
+                'div',
+                { className: 'panel-heading' },
                 React.createElement(
-                  "h2",
+                  'h2',
                   null,
-                  "George's Goals"
+                  'George\'s Goals'
                 )
               ),
               React.createElement(
-                "div",
-                { className: "panel-body" },
+                'div',
+                { className: 'panel-body' },
                 React.createElement(
-                  "div",
-                  { className: "userGoals" },
-                  "Panel content",
+                  'div',
+                  { className: 'userGoals' },
+                  'Panel content',
                   React.createElement(UserGoals, null)
                 )
               )
@@ -357,56 +318,57 @@ var Dashboard = function (_React$Component7) {
           )
         ),
         React.createElement(
-          "div",
-          { className: "row" },
+          'div',
+          { className: 'row' },
           React.createElement(
-            "div",
-            { className: "col-md-4" },
+            'div',
+            { className: 'col-md-4' },
             React.createElement(
-              "div",
-              { className: "panel panel-default" },
+              'div',
+              { className: 'panel panel-default' },
               React.createElement(
-                "div",
-                { className: "panel-heading" },
+                'div',
+                { className: 'panel-heading' },
                 React.createElement(
-                  "h2",
+                  'h2',
                   null,
-                  "History"
+                  'History'
                 )
               ),
               React.createElement(
-                "div",
-                { className: "panel-body" },
+                'div',
+                { className: 'panel-body' },
                 React.createElement(
-                  "div",
-                  { className: "history" },
-                  "Panel content",
+                  'div',
+                  { className: 'history' },
+                  'Panel content',
                   React.createElement(History, null)
                 )
               )
             )
           ),
           React.createElement(
-            "div",
-            { className: "col-md-8" },
+            'div',
+            { className: 'col-md-8' },
             React.createElement(
-              "div",
-              { className: "panel panel-default" },
+              'div',
+              { className: 'panel panel-default' },
               React.createElement(
-                "div",
-                { className: "panel-heading" },
+                'div',
+                { className: 'panel-heading' },
                 React.createElement(
-                  "h2",
+                  'h2',
                   null,
-                  "Calorie Tracker"
+                  'Calorie Tracker'
                 )
               ),
               React.createElement(
-                "div",
-                { className: "panel-body" },
+                'div',
+                { className: 'panel-body' },
                 React.createElement(
-                  "div",
-                  { className: "calorieTracker" },
+                  'div',
+                  { className: 'calorieTracker' },
+                  'Panel content',
                   React.createElement(CalorieTracker, null)
                 )
               )
