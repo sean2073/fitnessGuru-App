@@ -25,7 +25,31 @@ var InitialOutput = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the initial output section."
+        React.createElement(
+          "div",
+          null,
+          "This is a placeholder for the initial output section."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "BMI"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "BODY FAT %"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "BMR"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "CALORIES A DAY"
+        )
       );
     }
   }]);
@@ -48,7 +72,21 @@ var History = function (_React$Component2) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the history section."
+        React.createElement(
+          "div",
+          null,
+          "This is a placeholder for the history section."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "CURRENT WEEK DISPLAY"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "DATE / CALORIES EATEN # / ITEMS (EX. STEAK - 679)"
+        )
       );
     }
   }]);
@@ -71,7 +109,21 @@ var UserGoals = function (_React$Component3) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the goals section."
+        React.createElement(
+          "div",
+          null,
+          "This is a placeholder for the goals section."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "GOAL DISPLAY"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "USERS DISTANCE TO GOAL"
+        )
       );
     }
   }]);
@@ -94,8 +146,21 @@ var FoodSearch = function (_React$Component4) {
       return React.createElement(
         "div",
         null,
-        " You can look up the calories for any food here.",
-        React.createElement("br", null)
+        React.createElement(
+          "div",
+          null,
+          "You can look up the calories for any food here."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "CURRENT DATE DISPLAY"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS (EX. STEAK - 679)"
+        )
       );
     }
   }]);
@@ -313,7 +378,7 @@ var Dashboard = function (_React$Component7) {
                 React.createElement(
                   "h2",
                   { "data-background-icon": "\uF2C2" },
-                  "Initial Output"
+                  "User Data"
                 )
               ),
               React.createElement(
@@ -340,7 +405,7 @@ var Dashboard = function (_React$Component7) {
                 React.createElement(
                   "h2",
                   { "data-background-icon": "\uF140" },
-                  "George's Goals"
+                  "Goals"
                 )
               ),
               React.createElement(
