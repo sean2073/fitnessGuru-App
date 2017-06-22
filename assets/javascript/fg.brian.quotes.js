@@ -69,7 +69,7 @@ function qLogic(data, element) {
 	console.important("Health Quotes:");
 	var whatToDo = data.split("-")[0];
 
-	if(whatToDo == "spawn" || whatToDo == "spawn_welecome"){
+	if(whatToDo == "spawn" || whatToDo == "spawn_welcome"){
 		var this_PopUp;
 
 		//any quotePopup(s) spawned?
@@ -135,7 +135,7 @@ function qConstructor(spawnType) {
 
 			// WITHININ CONTENT
 
-			if(spawnType == "spawn_welecome"){
+			if(spawnType == "spawn_welcome"){
 				var welcome = document.createElement("div");
 				welcome.className = "welcome";
 				content.appendChild( welcome ) ;
@@ -201,6 +201,6 @@ console.important = function( msg){
 	console.log( '%c%s %s %s', 'color: white; font-size: large; font-weight: bold; background-color: rgba(0,0,0,0.5)', '', msg, '');
 }
 
-$(function() {	
-	qLogic("spawn_welecome");
-});
+// $(function() {	
+// 	qLogic("spawn_welcome");
+// });
