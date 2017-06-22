@@ -1,5 +1,3 @@
-// console.log("jello");
-
 function bmiCalc(data, element) {
 	console.important("BMI Calculation:");
 	var whatToDo = data.split("-")[0];
@@ -88,7 +86,7 @@ function bmiCalc(data, element) {
 			var inches_current = heightsContainer[1].children[0].value;
 			if(!inches_current){ inches_current= 0;}
 			var in_txt =" inch";
-			if(inches_current > 1){ in_txt = " inches"; }
+			if(inches_current > 1){ in_txt = " inches"; }			
 
 			//COMBINE BOTH AS INCHES and convert to METERS
 
@@ -110,7 +108,7 @@ function bmiCalc(data, element) {
 			if(new_meters <= 0){ new_meters = ""; }
 			var meters = heightsContainer[2].children[0].value = new_meters;
 
-			console.log(feet_current+ ft_txt + inches_current+ in_txt
+			console.log(feet_current+ ft_txt + inches_current+ in_txt 
 				+" = " + total_inches_current + in_total_txt
 				+" = " + new_meters + new_meters_txt);
 		}
@@ -124,7 +122,7 @@ function bmiCalc(data, element) {
 
 			//convert meters to inches
 			var new_inches_total = meters_current / 0.0254;
-
+			
 			//check for feet
 			var new_feet = Math.floor(new_inches_total / 12);
 			var new_ft_txt =" foot";
@@ -147,7 +145,7 @@ function bmiCalc(data, element) {
 
 			console.log(new_feet + "'" + new_inches + "\"");
 
-			console.log(meters_current+ m_txt
+			console.log(meters_current+ m_txt 
 				+" = " + new_feet + new_ft_txt
 				+" & " + new_inches + new_in_txt);
 		}
@@ -156,7 +154,7 @@ function bmiCalc(data, element) {
 	//converts current user input of weight height into BMI
 	if(whatToDo == "calculate_BMI"){
 		console.log("Calculating BMI...");
-
+	
 		//we need metric user data, so...
 		//..even if user's "Unit of Measurement" is set on Imperial...
 		//...grab data from the metric sections
@@ -179,7 +177,7 @@ function bmiCalc(data, element) {
 
 			//push user BMI into bmi-results
 			var bmi_results_display = element.parentNode.children[4];
-			//place actual BMI # into
+			//place actual BMI # into 
 			//numerical-result
 			bmi_results_display.children[1].innerHTML = user_BMI;
 
@@ -206,7 +204,7 @@ function bmiCalc(data, element) {
 			}else if(user_BMI >= 39.9){
 				scaleHolder.children[5].children[0].className = "active";
 			}
-
+			
 			//un-hide results
 			bmi_results_display.className = "bmi-results";
 
@@ -215,14 +213,12 @@ function bmiCalc(data, element) {
 			console.log("ERROR Calulating...missing one or more input");
 		}
 	}
+}
 
-	if(whatToDo == "scroll_bmi"){
+function bmrCalc(data, element) {
 
-	}
 }
 
 console.important = function( msg){
 	console.log( '%c%s %s %s', 'color: white; font-size: large; font-weight: bold; background-color: rgba(0,0,0,0.5)', '', msg, '');
 }
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
