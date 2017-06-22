@@ -117,9 +117,9 @@ class Dashboard extends React.Component {
     return (
       <div className="container">
    	 	<div className="row">
-   	 		<div className="jumbotron">
+   	 		<div className="jumbotron" id="jumbo">
    	 			<div className="welcome" id="welcome">
-   	 				<h1 className="welcome">Welcome George</h1>
+   	 				<h1 className="welcome">George</h1>
    	 			</div>
    	 		</div>
    	 	</div>
@@ -127,7 +127,7 @@ class Dashboard extends React.Component {
    			<div className="col-md-4">
    				<div className="panel panel-default">
      					<div className="panel-heading">
-   							<h2>Initial Output</h2>
+   							<h2 data-background-icon='&#xf2c2;'>Initial Output</h2>
    						</div>
      					<div className="panel-body">
        					<div className="InitialOutput">
@@ -140,7 +140,7 @@ class Dashboard extends React.Component {
    			<div className="col-md-8">
    				<div className="panel panel-default">
      				<div className="panel-heading">
-   							<h2>George's Goals</h2>
+   							<h2 data-background-icon='&#xf140;'>George's Goals</h2>
    					</div>
      			<div className="panel-body">
    					<div className="userGoals">
@@ -155,7 +155,7 @@ class Dashboard extends React.Component {
    			<div className="col-md-4">
    				<div className="panel panel-default">
      					<div className="panel-heading">
-   							<h2>History</h2>
+   							<h2 data-background-icon='&#xf1da;'>History</h2>
    						</div>
      					<div className="panel-body">
        					<div className="history">
@@ -168,7 +168,7 @@ class Dashboard extends React.Component {
    			<div className="col-md-8">
    				<div className="panel panel-default">
      				<div className="panel-heading">
-   							<h2>Calorie Tracker</h2>
+   							<h2 data-background-icon='&#xf08d;'>Calorie Tracker</h2>
    					</div>
      			<div className="panel-body">
    					<div className="calorieTracker">

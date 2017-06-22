@@ -48,7 +48,7 @@ var History = function (_React$Component2) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the history section."
+        " This is a placeholder for the history section yo."
       );
     }
   }]);
@@ -286,14 +286,14 @@ var Dashboard = function (_React$Component7) {
           { className: "row" },
           React.createElement(
             "div",
-            { className: "jumbotron", id: "jumbo" },
+            { className: "jumbotron" },
             React.createElement(
               "div",
               { className: "welcome", id: "welcome" },
               React.createElement(
                 "h1",
                 { className: "welcome" },
-                "George"
+                "Welcome George"
               )
             )
           )
@@ -312,7 +312,7 @@ var Dashboard = function (_React$Component7) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  { "data-background-icon": "\uF2C2" },
+                  null,
                   "Initial Output"
                 )
               ),
@@ -339,7 +339,7 @@ var Dashboard = function (_React$Component7) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  { "data-background-icon": "\uF140" },
+                  null,
                   "George's Goals"
                 )
               ),
@@ -370,7 +370,7 @@ var Dashboard = function (_React$Component7) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  { "data-background-icon": "\uF1DA" },
+                  null,
                   "History"
                 )
               ),
@@ -397,7 +397,7 @@ var Dashboard = function (_React$Component7) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  { "data-background-icon": "\uF08D" },
+                  null,
                   "Calorie Tracker"
                 )
               ),
