@@ -4,26 +4,59 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<script src="https://use.fontawesome.com/f25223f08e.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-
-	<script src="./assets/javascript/fg.brian.formulas.js"></script>
-
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+	<script src="./assets/javascript/fg.brian.quotes.js"></script>
+	<script src="./assets/javascript/fg.brian.formulas.js"></script>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"></script>
-
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>
 
-	<title>BMI calculator v1</title>
+	<title>FITNESS GURU (TESTS)</title>
 </head>
 <body>
-	<div class="standalone opened">
+	
 
+<!-- 	<div class="quotePopup open">
+		<div class="content">
+
+			<div class="welcome"></div>
+
+			<div class="logo-txt"></div>
+
+			<div class="quote">
+
+				<div class="nav">
+					<div></div>
+					<button onclick="qLogic('hide',this)"></button>
+				</div>
+
+				<p>Physical fitness is not only one of the most important keys to a healthy body, it is the basis of dynamic and creative intellectual activity.</p>
+
+				<div class="author">John F. Kennedy</div>
+
+				<div class="more">
+					<a data-fa-icon="&#xf060" onclick="qLogic('-',this)"></a>
+					<a data-fa-icon="&#xf061" onclick="qLogic('+',this)"></a>
+				</div>
+
+			</div>
+		</div>
+		<div class="footer"></div>
+	</div> -->
+
+
+	<div class="standalone opened">
+		
 		<h1>Body Mass Index</h1>
 		<p>The BMI is an attempt to quantify the amount of tissue mass (muscle, fat, and bone) in an individual, and then categorize that person as underweight, normal weight, overweight, or obese based on that value.</p>
-
 
 		<div class="bmi-calc imperial">
 
@@ -56,7 +89,7 @@
 			   		<input type="text" class="height-m" name="meters" maxlength="6" placeholder="0" oninput="bmiCalc('h_inputs',this)"/>
 			   	</div>
 			</div>
-
+		
 			<button class="bmi-run" onclick="bmiCalc('calculate_BMI',this)"></button>
 
 			<div class="bmi-results hide">
@@ -78,9 +111,9 @@
 
 		</div>
 
+		
 
-
-
+	
 
 	</div>
 </body>
