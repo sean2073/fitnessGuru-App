@@ -103,8 +103,34 @@ var FoodSearch = function (_React$Component4) {
   return FoodSearch;
 }(React.Component);
 
-var Modal = function (_React$Component5) {
-  _inherits(Modal, _React$Component5);
+var UpcSearch = function (_React$Component5) {
+  _inherits(UpcSearch, _React$Component5);
+
+  function UpcSearch() {
+    _classCallCheck(this, UpcSearch);
+
+    return _possibleConstructorReturn(this, (UpcSearch.__proto__ || Object.getPrototypeOf(UpcSearch)).apply(this, arguments));
+  }
+
+  _createClass(UpcSearch, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        " ",
+        React.createElement("br", null),
+        "You can also search by UPC Code.",
+        React.createElement("br", null)
+      );
+    }
+  }]);
+
+  return UpcSearch;
+}(React.Component);
+
+var Modal = function (_React$Component6) {
+  _inherits(Modal, _React$Component6);
 
   function Modal() {
     _classCallCheck(this, Modal);
@@ -181,17 +207,17 @@ Modal.propTypes = {
   children: React.PropTypes.node
 };
 
-var CalorieTracker = function (_React$Component6) {
-  _inherits(CalorieTracker, _React$Component6);
+var CalorieTracker = function (_React$Component7) {
+  _inherits(CalorieTracker, _React$Component7);
 
   function CalorieTracker(props) {
     _classCallCheck(this, CalorieTracker);
 
-    var _this6 = _possibleConstructorReturn(this, (CalorieTracker.__proto__ || Object.getPrototypeOf(CalorieTracker)).call(this, props));
+    var _this7 = _possibleConstructorReturn(this, (CalorieTracker.__proto__ || Object.getPrototypeOf(CalorieTracker)).call(this, props));
 
-    _this6.state = { isOpen: false };
-    _this6.toggleModal = _this6.toggleModal.bind(_this6);
-    return _this6;
+    _this7.state = { isOpen: false };
+    _this7.toggleModal = _this7.toggleModal.bind(_this7);
+    return _this7;
   }
 
   _createClass(CalorieTracker, [{
@@ -206,41 +232,42 @@ var CalorieTracker = function (_React$Component6) {
         "div",
         null,
         React.createElement(FoodSearch, null),
+        React.createElement("br", null),
         React.createElement(
           "div",
           { className: "form-group has-warning " },
           React.createElement(
-            "form",
+            "label",
+            { className: "control-label", "for": "inputWarning" },
+            "Food Search:   "
+          ),
+          React.createElement("input", { size: "100", className: "" }),
+          React.createElement(
+            "a",
             null,
-            React.createElement(
-              "span",
-              null,
-              React.createElement(
-                "label",
-                { className: "control-label", "for": "inputWarning" },
-                "Food Search:   "
-              ),
-              React.createElement("input", { size: "100", className: "" }),
-              React.createElement(
-                "a",
-                null,
-                React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
-              )
-            )
+            React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
           ),
           React.createElement(
             "div",
-            { className: "form-group" },
+            null,
+            React.createElement(UpcSearch, null),
+            React.createElement("br", null),
             React.createElement(
               "label",
-              { className: "control-label", "for": "inputSmall" },
-              "Small input"
+              { className: "control-label", "for": "inputWarning" },
+              "UPC Search:  \xA0"
             ),
-            React.createElement("input", { className: "form-control input-sm", type: "text", id: "inputSmall" }),
+            React.createElement("input", { size: "100", className: "" }),
+            React.createElement(
+              "a",
+              null,
+              React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
+            ),
             React.createElement(
               "div",
               null,
-              " Keep track of your caloric intake here!",
+              React.createElement("br", null),
+              "Keep track of your caloric intake here!",
               React.createElement(
                 "div",
                 { className: "CalorieTracker" },
@@ -266,8 +293,8 @@ var CalorieTracker = function (_React$Component6) {
   return CalorieTracker;
 }(React.Component);
 
-var Dashboard = function (_React$Component7) {
-  _inherits(Dashboard, _React$Component7);
+var Dashboard = function (_React$Component8) {
+  _inherits(Dashboard, _React$Component8);
 
   function Dashboard() {
     _classCallCheck(this, Dashboard);

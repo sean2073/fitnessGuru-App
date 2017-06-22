@@ -28,6 +28,16 @@ class FoodSearch extends React.Component {
     )
   }
 }
+class UpcSearch extends React.Component {
+  render() {
+    return (
+      <div> <br />
+      You can also search by UPC Code.
+        <br />
+      </div>
+    )
+  }
+}
 class Modal extends React.Component{
   render() {
     // Render nothing if the "show" prop is false
@@ -76,28 +86,33 @@ render() {
     return (
       <div>
         <FoodSearch />
+        <br />
 
         <div className="form-group has-warning ">
-          <form>
-          <span>
+
           <label className="control-label" for="inputWarning">Food Search:   </label>
           {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
           <input size="100" className=""></input><a>
             <i className="fa fa-search" aria-hidden="true" type="button"></i></a>
-          </span>
-        </form>
-
-          <div className="form-group">
-  <label className="control-label" for="inputSmall">Small input</label>
-  <input className="form-control input-sm" type="text" id="inputSmall"></input>
-
-
-
+            <div>
+              <UpcSearch />
+              <br />
+            <label className="control-label" for="inputWarning">UPC Search:  &nbsp;</label>
+            {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
+            <input size="100" className=""></input><a>
+              <i className="fa fa-search" aria-hidden="true" type="button"></i></a>
 
 
 
 
-      <div> Keep track of your caloric intake here!
+
+
+
+
+
+      <div>
+        <br />
+        Keep track of your caloric intake here!
         <div className="CalorieTracker">
           <button type="submit" onClick={this.toggleModal} href="#" className="btn btn-primary btn-sm">add food</button>
           <Modal show={this.state.isOpen}
