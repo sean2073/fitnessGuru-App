@@ -237,7 +237,7 @@ footer{
 /*standalone CONTAINERS*/
 .standalone{
 	max-width: 600px;
-	background-color: rgba(0,0,0,0.1);
+	background-color: rgba(255,255,255,0.3);
 	font-family: sans-serif;
 	padding:20px;
 	margin:20px;
@@ -653,6 +653,217 @@ h2{
 form span input{
 	width: 100%;
 }
+
+
+/*LOGIN*/
+.login:after{
+	content: "Member Login";
+}
+/*SIGNUP*/
+.step-1:before{
+	color: rgba(255,255,255,0.6);
+	content: "STEP 1: ";
+}
+.step-1:after{
+	content: "Signup";
+}
+.user-login .psw{
+	margin-top: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+.user-login .psw a{
+	color: rgba(0,0,0,0.4);
+	text-decoration: none;
+}
+.user-login .psw a:hover{
+	color: rgba(0,0,0,0.8);
+	text-decoration: none;
+}
+
+
+/*PROFILE CREATOR*/
+.step-2:before{
+	color: rgba(255,255,255,0.6);
+	content: "STEP 2: ";
+}
+.step-2:after{
+	content: "Create A Profile";
+}
+.profile-creator,
+.goal-creator,
+.user-login,
+.user-signup{
+	display: flex;
+	flex-direction: column;
+	min-width: 50%;
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 20px;
+	padding:20px;
+}
+.profile-creator h2,
+.user-signup h2{
+	padding: 20px;
+	background-color: rgba(0,0,0,.05);
+	color: rgba(0,0,0,.3);
+	border-radius: 20px;
+	text-align: center;
+	margin: 10px 0;
+}
+.profile-creator h2:before,
+.user-signup h2:before{
+	content: "Please Fill Out The Form Below to Continue";
+}
+.profile-creator div,
+.goal-creator div,
+.user-login div,
+.user-signup div{
+	margin-top: 20px;
+	font-size: x-large;
+	display: flex;
+	align-items: center;
+    justify-content: left;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 10px;
+}
+.profile-creator label,
+.goal-creator label,
+.user-login label,
+.user-signup label{
+	padding-right: 10px;
+	display: flex;
+	text-align: center;
+}
+.profile-creator input,
+.profile-creator select,
+.goal-creator input,
+.goal-creator select,
+.user-login input,
+.user-login select,
+.user-signup input,
+.user-signup select{
+	background-color: rgba(0,0,0,.2);
+	text-align: center;
+	font-size: xx-large;
+	font-weight: light;
+	width: 100%;
+	border: 0px solid #000;
+	border-radius: 20px;
+	padding: 20px;
+	text-align-last:center;
+	text-transform: uppercase;
+	cursor: pointer;
+	-webkit-appearance: none; 
+   	-moz-appearance: none;
+   	appearance: none;       /* remove default arrow */
+   	background-image: url(...);   /* add custom arrow */
+   	color:black;
+}
+.profile-creator div:nth-of-type(4) input:nth-of-type(1){
+	margin-right: 20px;
+}
+.profile-creator input[type=submit],
+.goal-creator input[type=submit],
+.user-login input[type=submit],
+.user-signup input[type=submit]{
+	border-radius: 20px;
+	background-color: rgba(255,255,255,0.5);
+	font-weight: light;
+	letter-spacing: 2px;
+	color:rgba(0,0,0,0.5);
+	border: 5px solid rgba(0,0,0,0.5);
+}
+.profile-creator input[type=submit]:hover,
+.goal-creator input[type=submit]:hover,
+.user-login input[type=submit]:hover,
+.user-signup input[type=submit]:hover{
+	background-color: rgba(255,255,255,0.8);
+}
+.profile-creator ::-webkit-input-placeholder,
+.goal-creator ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:black;
+}
+.profile-creator ::-moz-placeholder,
+.goal-creator ::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.profile-creator :-ms-input-placeholder,
+.goal-creator :-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.profile-creator :-moz-placeholder,
+.goal-creator :-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
+/*GOAL CREATOR...specific*/
+/*THERES MORE ABOVE*/
+.step-3:before{
+	color: rgba(255,255,255,0.6);
+	content: "STEP 3: ";
+}
+.step-3:after{
+	content: "Set Your Goals";
+}
+.goal-creator input[type=radio]{
+	margin:10px;
+	width: auto;
+}
+.goal-creator div{
+	padding: 0px;
+}
+.goal-creator input.radio{
+	display: none;
+}
+.goal-creator input.radio:checked{
+	background-color: #4DCB6D;
+}
+.goal-creator label{
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.goal-creator input[type="radio"]:hover+label{
+	background-color: rgba(0,0,0,0.1);
+}
+.goal-creator input[type="radio"]:checked+label{
+	background-color: rgba(77,203,109,0.3);
+}
+.goal-creator h2{
+	padding: 20px;
+	font-size: xx-large;
+	text-align: center;
+	margin: 10px 0;
+	font-weight: bolder;
+	text-shadow:
+	-1px -1px 0 rgba(0,0,0,0.1),
+	1px -1px 0 rgba(0,0,0,0.1),
+	-1px 1px 0 rgba(0,0,0,0.1),
+	1px 1px 0 rgba(0,0,0,0.1);
+}
+.goal-creator h2:before{
+	content: "What Would You Like To Achive?";
+}
+.goal-creator i{
+	text-align: center;
+	color: rgb(248, 218, 5);
+	text-shadow:
+    0px 3px 3px #000,
+	-1px -1px 0 rgba(0,0,0,0.1),
+	1px -1px 0 rgba(0,0,0,0.1),
+	-1px 1px 0 rgba(0,0,0,0.1),
+	1px 1px 0 rgba(0,0,0,0.1);
+}
+
+
+
 /*!!!!!!!!!!!!!!!!*/
 /*MEDIA QUERIES*/
 /*!!!!!!!!!!!!!!*/
