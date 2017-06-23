@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var upc = "49000036756";
-  var foodItem = "simply lemonade";
+  var foodItem = "T bone steak";
   function upcSearch() {
     var queryURL =
       "https://api.nutritionix.com/v1_1/item?upc= " +

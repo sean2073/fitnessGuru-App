@@ -8,7 +8,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var contentNode = document.getElementById('content');
+var contentNode = document.getElementById("content");
 
 var InitialOutput = function (_React$Component) {
   _inherits(InitialOutput, _React$Component);
@@ -94,7 +94,8 @@ var FoodSearch = function (_React$Component4) {
       return React.createElement(
         "div",
         null,
-        " You can look up the calories for any food here.",
+        " ",
+        "You can look up the calories for any food here.",
         React.createElement("br", null)
       );
     }
@@ -141,13 +142,17 @@ var Modal = function (_React$Component6) {
   _createClass(Modal, [{
     key: "render",
     value: function render() {
+      var modalStyle = {
+        display: "block"
+      };
+
       // Render nothing if the "show" prop is false
       if (!this.props.show) {
         return null;
       }
       return React.createElement(
         "div",
-        { className: "modal" },
+        { className: "modal", style: modalStyle },
         React.createElement(
           "div",
           { className: "modal-dialog" },
@@ -159,31 +164,166 @@ var Modal = function (_React$Component6) {
               { className: "modal-header" },
               React.createElement(
                 "button",
-                { type: "button", onClick: this.props.onClose, className: "close", "data-dismiss": "modal", "aria-hidden": "true" },
+                {
+                  type: "button",
+                  onClick: this.props.onClose,
+                  className: "close",
+                  "data-dismiss": "modal",
+                  "aria-hidden": "true"
+                },
                 "\xD7"
               ),
               React.createElement(
                 "h4",
                 { className: "modal-title" },
-                "Modal title"
+                "Add Food to Calorie Tracker"
               )
             ),
             React.createElement(
               "div",
               { className: "modal-body" },
+              this.props.children,
               React.createElement(
-                "p",
-                null,
-                "One fine body\u2026"
-              ),
-              this.props.children
+                "div",
+                { className: "form-group" },
+                React.createElement(
+                  "div",
+                  { className: "row" },
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-2" },
+                    React.createElement(
+                      "label",
+                      { htmlFor: "inputItemName", className: "control-label" },
+                      "Item Name"
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-10" },
+                    React.createElement("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inputItemName",
+                      placeholder: "e.g. T Bone Steak"
+                    })
+                  )
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "div",
+                  { className: "row" },
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-2" },
+                    React.createElement(
+                      "label",
+                      { htmlFor: "inputBrandName", className: "control-label" },
+                      "Brand Name"
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-10" },
+                    React.createElement("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inputBrandName",
+                      placeholder: "e.g. Peter Leuger's Steak House"
+                    })
+                  )
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "div",
+                  { className: "row" },
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-2" },
+                    React.createElement(
+                      "label",
+                      { htmlFor: "inputCalories", className: "control-label" },
+                      "Calories"
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-10" },
+                    React.createElement("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inputCalories",
+                      placeholder: "e.g. 1050"
+                    })
+                  )
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "div",
+                  { className: "row" },
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-2" },
+                    React.createElement(
+                      "label",
+                      {
+                        htmlFor: "inputServingSizeQuantity",
+                        className: "control-label"
+                      },
+                      "Serving Size Quantity"
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-10" },
+                    React.createElement("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inputServingSizeQuantity",
+                      placeholder: "e.g. 1"
+                    })
+                  )
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "div",
+                  { className: "row" },
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-2" },
+                    React.createElement(
+                      "label",
+                      {
+                        htmlFor: "inputServingSizeUnit",
+                        className: "control-label"
+                      },
+                      "Serving Size Unit"
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "col-lg-10" },
+                    React.createElement("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inputServingSizeUnit",
+                      placeholder: "e.g. serving"
+                    })
+                  )
+                )
+              )
             ),
             React.createElement(
               "div",
               { className: "modal-footer" },
               React.createElement(
                 "button",
-                { onClick: this.props.onClose, type: "button", className: "btn btn-default", "data-dismiss": "modal" },
+                {
+                  onClick: this.props.onClose,
+                  type: "button",
+                  className: "btn btn-default",
+                  "data-dismiss": "modal"
+                },
                 "Close"
               ),
               React.createElement(
@@ -238,8 +378,9 @@ var CalorieTracker = function (_React$Component7) {
           { className: "form-group has-warning " },
           React.createElement(
             "label",
-            { className: "control-label", "for": "inputWarning" },
-            "Food Search:   "
+            { className: "control-label", htmlFor: "inputWarning" },
+            "Food Search:",
+            " "
           ),
           React.createElement("input", { size: "100", className: "" }),
           React.createElement(
@@ -254,8 +395,8 @@ var CalorieTracker = function (_React$Component7) {
             React.createElement("br", null),
             React.createElement(
               "label",
-              { className: "control-label", "for": "inputWarning" },
-              "UPC Search:  \xA0"
+              { className: "control-label", htmlFor: "inputWarning" },
+              "UPC Search: \xA0"
             ),
             React.createElement("input", { size: "100", className: "" }),
             React.createElement(
@@ -273,14 +414,258 @@ var CalorieTracker = function (_React$Component7) {
                 { className: "CalorieTracker" },
                 React.createElement(
                   "button",
-                  { type: "submit", onClick: this.toggleModal, href: "#", className: "btn btn-primary btn-sm" },
+                  {
+                    type: "submit",
+                    onClick: this.toggleModal,
+                    href: "#",
+                    className: "btn btn-primary btn-sm"
+                  },
                   "add food"
                 ),
+                React.createElement(Modal, { show: this.state.isOpen, onClose: this.toggleModal }),
                 React.createElement(
-                  Modal,
-                  { show: this.state.isOpen,
-                    onClose: this.toggleModal },
-                  "Here's some content for the modal"
+                  "table",
+                  { className: "table table-striped table-hover " },
+                  React.createElement(
+                    "thead",
+                    null,
+                    React.createElement(
+                      "tr",
+                      null,
+                      React.createElement(
+                        "th",
+                        null,
+                        "Item Name"
+                      ),
+                      React.createElement(
+                        "th",
+                        null,
+                        "Brand Name"
+                      ),
+                      React.createElement(
+                        "th",
+                        null,
+                        "Calories"
+                      ),
+                      React.createElement(
+                        "th",
+                        null,
+                        "Serving Size Quantity"
+                      ),
+                      React.createElement(
+                        "th",
+                        null,
+                        "Serving Size Unit"
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    "tbody",
+                    null,
+                    React.createElement(
+                      "tr",
+                      null,
+                      React.createElement(
+                        "td",
+                        { id: "contentItemName" },
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        { id: "contentBrandName" },
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        { id: "contentCalories" },
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        { id: "contentServingSizeQ" },
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        { id: "contentServingSizeU" },
+                        "Column content"
+                      )
+                    ),
+                    React.createElement(
+                      "tr",
+                      null,
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      )
+                    ),
+                    React.createElement(
+                      "tr",
+                      { className: "info" },
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      )
+                    ),
+                    React.createElement(
+                      "tr",
+                      { className: "success" },
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      )
+                    ),
+                    React.createElement(
+                      "tr",
+                      { className: "danger" },
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      )
+                    ),
+                    React.createElement(
+                      "tr",
+                      { className: "warning" },
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      )
+                    ),
+                    React.createElement(
+                      "tr",
+                      { className: "active" },
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      ),
+                      React.createElement(
+                        "td",
+                        null,
+                        "Column content"
+                      )
+                    )
+                  )
                 )
               )
             )

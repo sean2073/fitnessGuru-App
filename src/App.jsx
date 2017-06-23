@@ -1,68 +1,182 @@
-const contentNode = document.getElementById('content');
+const contentNode = document.getElementById("content");
 class InitialOutput extends React.Component {
   render() {
-    return (
-      <div> This is a placeholder for the initial output section.</div>
-    )
+    return <div> This is a placeholder for the initial output section.</div>;
   }
-}class History extends React.Component {
+}
+class History extends React.Component {
   render() {
-    return (
-      <div> This is a placeholder for the history section.</div>
-    )
+    return <div> This is a placeholder for the history section.</div>;
   }
 }
 class UserGoals extends React.Component {
   render() {
-    return (
-      <div> This is a placeholder for the goals section.</div>
-    )
+    return <div> This is a placeholder for the goals section.</div>;
   }
 }
 class FoodSearch extends React.Component {
   render() {
     return (
-      <div> You can look up the calories for any food here.
+      <div>
+        {" "}You can look up the calories for any food here.
         <br />
       </div>
-    )
+    );
   }
 }
 class UpcSearch extends React.Component {
   render() {
     return (
-      <div> <br />
-      You can also search by UPC Code.
+      <div>
+        {" "}<br />
+        You can also search by UPC Code.
         <br />
       </div>
-    )
+    );
   }
 }
-class Modal extends React.Component{
+class Modal extends React.Component {
   render() {
+    const modalStyle = {
+      display: "block"
+    };
+
     // Render nothing if the "show" prop is false
-    if(!this.props.show) {
+    if (!this.props.show) {
       return null;
     }
     return (
-      <div className="modal">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <button type="button" onClick={this.props.onClose} className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 className="modal-title">Modal title</h4>
+      <div className="modal" style={modalStyle}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                onClick={this.props.onClose}
+                className="close"
+                data-dismiss="modal"
+                aria-hidden="true"
+              >
+                &times;
+              </button>
+              <h4 className="modal-title">Add Food to Calorie Tracker</h4>
+            </div>
+            <div className="modal-body">
+              {this.props.children}
+
+              {/*
+              <p>One fine body…</p>
+              <label>Item Name:</label><input></input><br />
+              <label>Brand Name:</label><input></input><br />
+              <label>Calories:</label><input></input><br />
+              <label>Calorie Unit:</label><input></input>*/}
+              <div className="form-group">
+
+                <div className="row">
+                  <div className="col-lg-2">
+                    <label htmlFor="inputItemName" className="control-label">
+                      Item Name
+                    </label>
+                  </div>
+                  <div className="col-lg-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputItemName"
+                      placeholder="e.g. T Bone Steak"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-lg-2">
+                    <label htmlFor="inputBrandName" className="control-label">
+                      Brand Name
+                    </label>
+                  </div>
+                  <div className="col-lg-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputBrandName"
+                      placeholder="e.g. Peter Leuger's Steak House"
+                    />
+                  </div>
+                </div>
+                <br />
+
+                <div className="row">
+                  <div className="col-lg-2">
+                    <label htmlFor="inputCalories" className="control-label">
+                      Calories
+                    </label>
+                  </div>
+                  <div className="col-lg-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputCalories"
+                      placeholder="e.g. 1050"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-lg-2">
+                    <label
+                      htmlFor="inputServingSizeQuantity"
+                      className="control-label"
+                    >
+                      Serving Size Quantity
+                    </label>
+                  </div>
+                  <div className="col-lg-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputServingSizeQuantity"
+                      placeholder="e.g. 1"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-lg-2">
+                    <label
+                      htmlFor="inputServingSizeUnit"
+                      className="control-label"
+                    >
+                      Serving Size Unit
+                    </label>
+                  </div>
+                  <div className="col-lg-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputServingSizeUnit"
+                      placeholder="e.g. serving"
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div className="modal-footer">
+              <button
+                onClick={this.props.onClose}
+                type="button"
+                className="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="modal-body">
-        <p>One fine body…</p>
-        {this.props.children}
-      </div>
-      <div className="modal-footer">
-        <button onClick={this.props.onClose} type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
     );
   }
 }
@@ -73,16 +187,15 @@ Modal.propTypes = {
 };
 class CalorieTracker extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = { isOpen: false };
-      this.toggleModal = this.toggleModal.bind(this);
-    }
+    super(props);
+    this.state = { isOpen: false };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
 
-toggleModal() {
-  this.setState({ isOpen: !this.state.isOpen });
-
-};
-render() {
+  toggleModal() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+  render() {
     return (
       <div>
         <FoodSearch />
@@ -90,112 +203,189 @@ render() {
 
         <div className="form-group has-warning ">
 
-          <label className="control-label" for="inputWarning">Food Search:   </label>
+          <label className="control-label" htmlFor="inputWarning">
+            Food Search:{" "}
+          </label>
           {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
-          <input size="100" className=""></input><a>
-            <i className="fa fa-search" aria-hidden="true" type="button"></i></a>
-            <div>
-              <UpcSearch />
-              <br />
-            <label className="control-label" for="inputWarning">UPC Search:  &nbsp;</label>
+          <input size="100" className="" />
+          <a>
+            <i className="fa fa-search" aria-hidden="true" type="button" />
+          </a>
+          <div>
+            <UpcSearch />
+            <br />
+            <label className="control-label" htmlFor="inputWarning">
+              UPC Search: &nbsp;
+            </label>
             {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
-            <input size="100" className=""></input><a>
-              <i className="fa fa-search" aria-hidden="true" type="button"></i></a>
+            <input size="100" className="" />
+            <a>
+              <i className="fa fa-search" aria-hidden="true" type="button" />
+            </a>
 
+            <div>
+              <br />
+              Keep track of your caloric intake here!
+              <div className="CalorieTracker">
+                <button
+                  type="submit"
+                  onClick={this.toggleModal}
+                  href="#"
+                  className="btn btn-primary btn-sm"
+                >
+                  add food
+                </button>
+                <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+                  {/*Here's some content for the modal*/}
+                </Modal>
 
-
-
-
-
-
-
-
-      <div>
-        <br />
-        Keep track of your caloric intake here!
-        <div className="CalorieTracker">
-          <button type="submit" onClick={this.toggleModal} href="#" className="btn btn-primary btn-sm">add food</button>
-          <Modal show={this.state.isOpen}
-          onClose={this.toggleModal}>
-          Here's some content for the modal
-        </Modal>
+                <table className="table table-striped table-hover ">
+                  <thead>
+                    <tr>
+                      
+                      <th>Item Name</th>
+                      <th>Brand Name</th>
+                      <th>Calories</th>
+                      <th>Serving Size Quantity</th>
+                      <th>Serving Size Unit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                     
+                      <td id="contentItemName">Column content</td>
+                      <td id="contentBrandName">Column content</td>
+                      <td id="contentCalories">Column content</td>
+                      <td id="contentServingSizeQ">Column content</td>
+                      <td id="contentServingSizeU">Column content</td>
+                    </tr>
+                    <tr>
+                      
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr className="info">
+                     
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr className="success">
+                     
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr className="danger">
+                     
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr className="warning">
+                     
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr className="active">
+                      
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-    </div>
-  </div>
-  </div>
-    )
+    );
   }
 }
 class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
-   	 	<div className="row">
-   	 		<div className="jumbotron">
-   	 			<div className="welcome" id="welcome">
-   	 				<h1 className="welcome">Welcome George</h1>
-   	 			</div>
-   	 		</div>
-   	 	</div>
-   		<div className="row">
-   			<div className="col-md-4">
-   				<div className="panel panel-default">
-     					<div className="panel-heading">
-   							<h2>Initial Output</h2>
-   						</div>
-     					<div className="panel-body">
-       					<div className="InitialOutput">
-       									Panel content
-   											<InitialOutput />
-       					</div>
-     						</div>
-             </div>
-   			</div>
-   			<div className="col-md-8">
-   				<div className="panel panel-default">
-     				<div className="panel-heading">
-   							<h2>George's Goals</h2>
-   					</div>
-     			<div className="panel-body">
-   					<div className="userGoals">
-   								Panel content
-   								<UserGoals />
-   					</div>
-     			</div>
-   			</div>
-   	   </div>
-   	 </div>
-   		<div className="row">
-   			<div className="col-md-4">
-   				<div className="panel panel-default">
-     					<div className="panel-heading">
-   							<h2>History</h2>
-   						</div>
-     					<div className="panel-body">
-       					<div className="history">
-       									Panel content
-   											<History />
-       					</div>
-     						</div>
-             </div>
-   			</div>
-   			<div className="col-md-8">
-   				<div className="panel panel-default">
-     				<div className="panel-heading">
-   							<h2>Calorie Tracker</h2>
-   					</div>
-     			<div className="panel-body">
-   					<div className="calorieTracker">
+        <div className="row">
+          <div className="jumbotron">
+            <div className="welcome" id="welcome">
+              <h1 className="welcome">Welcome George</h1>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2>Initial Output</h2>
+              </div>
+              <div className="panel-body">
+                <div className="InitialOutput">
+                  Panel content
+                  <InitialOutput />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2>George's Goals</h2>
+              </div>
+              <div className="panel-body">
+                <div className="userGoals">
+                  Panel content
+                  <UserGoals />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2>History</h2>
+              </div>
+              <div className="panel-body">
+                <div className="history">
+                  Panel content
+                  <History />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2>Calorie Tracker</h2>
+              </div>
+              <div className="panel-body">
+                <div className="calorieTracker">
 
-   								<CalorieTracker />
-   					</div>
-     			</div>
-   			</div>
-   	   </div>
-   	 </div>
+                  <CalorieTracker />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-   </div> //<!-- close container -->
+      </div> //<!-- close container -->
     );
   }
 }
