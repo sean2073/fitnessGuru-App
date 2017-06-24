@@ -79,21 +79,114 @@ var UserGoals = function (_React$Component3) {
   return UserGoals;
 }(React.Component);
 
-var FoodSearch = function (_React$Component4) {
-  _inherits(FoodSearch, _React$Component4);
+var FoodModal = function (_React$Component4) {
+  _inherits(FoodModal, _React$Component4);
+
+  function FoodModal() {
+    _classCallCheck(this, FoodModal);
+
+    return _possibleConstructorReturn(this, (FoodModal.__proto__ || Object.getPrototypeOf(FoodModal)).apply(this, arguments));
+  }
+
+  _createClass(FoodModal, [{
+    key: "render",
+    value: function render() {
+      var modalStyle = {
+        display: "block"
+      };
+
+      // Render nothing if the "show" prop is false
+      if (!this.props.show) {
+        return null;
+      }
+      return React.createElement(
+        "div",
+        { className: "foodmodal", style: modalStyle },
+        React.createElement(
+          "div",
+          { className: "foodmodal-dialog" },
+          React.createElement(
+            "div",
+            { className: "foodmodal-content" },
+            React.createElement(
+              "div",
+              { className: "foodmodal-header" },
+              React.createElement(
+                "button",
+                {
+                  type: "button",
+                  onClick: this.props.onClose,
+                  className: "close",
+                  "data-dismiss": "foodmodal",
+                  "aria-hidden": "true"
+                },
+                "\xD7"
+              ),
+              React.createElement(
+                "h4",
+                { className: "foodmodal-title" },
+                "Add Food to Calorie Tracker"
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "foodmodal-body" },
+              this.props.children
+            ),
+            React.createElement(
+              "div",
+              { className: "foodmodal-footer" },
+              React.createElement(
+                "button",
+                {
+                  onClick: this.props.onClose,
+                  type: "button",
+                  className: "btn btn-default",
+                  "data-dismiss": "foodmodal"
+                },
+                "Close"
+              ),
+              React.createElement(
+                "button",
+                { type: "button", className: "btn btn-primary" },
+                "Save changes"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FoodModal;
+}(React.Component);
+
+FoodModal.propTypes = {
+  onClose: React.PropTypes.func.isRequired,
+  show: React.PropTypes.bool,
+  children: React.PropTypes.node
+};
+
+var FoodSearch = function (_React$Component5) {
+  _inherits(FoodSearch, _React$Component5);
 
   function FoodSearch(props) {
     _classCallCheck(this, FoodSearch);
 
-    var _this4 = _possibleConstructorReturn(this, (FoodSearch.__proto__ || Object.getPrototypeOf(FoodSearch)).call(this, props));
+    var _this5 = _possibleConstructorReturn(this, (FoodSearch.__proto__ || Object.getPrototypeOf(FoodSearch)).call(this, props));
 
-    _this4.state = {
+    _this5.state = {
       foods: []
     };
-    return _this4;
+    return _this5;
   }
 
   _createClass(FoodSearch, [{
+    key: "toggleFoodModal",
+    value: function toggleFoodModal() {
+      this.setState({ isOpen: !this.state.isOpen });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var foodItem = "T Bone Steak";
@@ -141,8 +234,9 @@ var FoodSearch = function (_React$Component4) {
           React.createElement(
             "a",
             null,
-            React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
-          )
+            React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button", onClick: this.toggleFoodModal })
+          ),
+          React.createElement(FoodModal, { show: this.state.isOpen, onClose: this.toggleFoodModal })
         )
       );
     }
@@ -151,8 +245,8 @@ var FoodSearch = function (_React$Component4) {
   return FoodSearch;
 }(React.Component);
 
-var UpcSearch = function (_React$Component5) {
-  _inherits(UpcSearch, _React$Component5);
+var UpcSearch = function (_React$Component6) {
+  _inherits(UpcSearch, _React$Component6);
 
   function UpcSearch() {
     _classCallCheck(this, UpcSearch);
@@ -177,8 +271,8 @@ var UpcSearch = function (_React$Component5) {
   return UpcSearch;
 }(React.Component);
 
-var Modal = function (_React$Component6) {
-  _inherits(Modal, _React$Component6);
+var Modal = function (_React$Component7) {
+  _inherits(Modal, _React$Component7);
 
   function Modal() {
     _classCallCheck(this, Modal);
@@ -398,17 +492,17 @@ Modal.propTypes = {
   children: React.PropTypes.node
 };
 
-var CalorieTracker = function (_React$Component7) {
-  _inherits(CalorieTracker, _React$Component7);
+var CalorieTracker = function (_React$Component8) {
+  _inherits(CalorieTracker, _React$Component8);
 
   function CalorieTracker(props) {
     _classCallCheck(this, CalorieTracker);
 
-    var _this7 = _possibleConstructorReturn(this, (CalorieTracker.__proto__ || Object.getPrototypeOf(CalorieTracker)).call(this, props));
+    var _this8 = _possibleConstructorReturn(this, (CalorieTracker.__proto__ || Object.getPrototypeOf(CalorieTracker)).call(this, props));
 
-    _this7.state = { isOpen: false };
-    _this7.toggleModal = _this7.toggleModal.bind(_this7);
-    return _this7;
+    _this8.state = { isOpen: false };
+    _this8.toggleModal = _this8.toggleModal.bind(_this8);
+    return _this8;
   }
 
   _createClass(CalorieTracker, [{
@@ -713,8 +807,8 @@ var CalorieTracker = function (_React$Component7) {
   return CalorieTracker;
 }(React.Component);
 
-var Dashboard = function (_React$Component8) {
-  _inherits(Dashboard, _React$Component8);
+var Dashboard = function (_React$Component9) {
+  _inherits(Dashboard, _React$Component9);
 
   function Dashboard() {
     _classCallCheck(this, Dashboard);

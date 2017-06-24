@@ -28,33 +28,33 @@ class FoodModal extends React.Component {
       return null;
     }
     return (
-      <div className="modal" style={modalStyle}>
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
+      <div className="foodmodal" style={modalStyle}>
+        <div className="foodmodal-dialog">
+          <div className="foodmodal-content">
+            <div className="foodmodal-header">
               <button
                 type="button"
                 onClick={this.props.onClose}
                 className="close"
-                data-dismiss="modal"
+                data-dismiss="foodmodal"
                 aria-hidden="true"
               >
                 &times;
               </button>
-              <h4 className="modal-title">Add Food to Calorie Tracker</h4>
+              <h4 className="foodmodal-title">Add Food to Calorie Tracker</h4>
             </div>
-            <div className="modal-body">
+            <div className="foodmodal-body">
               {this.props.children}
 
          
             </div>
 
-            <div className="modal-footer">
+            <div className="foodmodal-footer">
               <button
                 onClick={this.props.onClose}
                 type="button"
                 className="btn btn-default"
-                data-dismiss="modal"
+                data-dismiss="foodmodal"
               >
                 Close
               </button>
@@ -68,24 +68,29 @@ class FoodModal extends React.Component {
     );
   }
 }
-Modal.propTypes = {
+FoodModal.propTypes = {
   onClose: React.PropTypes.func.isRequired,
   show: React.PropTypes.bool,
   children: React.PropTypes.node
 };
 
-}
+
 class FoodSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       foods: []
     };
+    this.state = { isOpen: false };
+    this.toggleFoodModal = this.toggleFoodModal.bind(this);
+  }
+  toggleFoodModal() {
+    this.setState({ isOpen: !this.state.isOpen });
   }
  
   componentDidMount() {
     var foodItem = "T Bone Steak";
-    var foodItem = 
+    
       
     
      
@@ -134,10 +139,14 @@ class FoodSearch extends React.Component {
 
           <input size="100" className="" name="food-name"/>
           <a>
-            <i className="fa fa-search" aria-hidden="true" type="button" />
+            <i className="fa fa-search" aria-hidden="true" type="button" onClick={this.toggleFoodModal} />
           </a>
+          <FoodModal show={this.state.isOpen} onClose={this.toggleFoodModal}>
+                {/*Here's some content for the modal*/}
+              </FoodModal>
         </div>
       </div>
+      
     );
   }
 }
