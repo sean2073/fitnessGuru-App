@@ -1,6 +1,3 @@
-
-
-
 const contentNode = document.getElementById("content");
 class InitialOutput extends React.Component {
   render() {
@@ -12,7 +9,7 @@ class InitialOutput extends React.Component {
         <div>BMR</div>
         <div>CALORIES A DAY</div>
       </div>
-    )
+    );
   }
 }
 class History extends React.Component {
@@ -23,7 +20,7 @@ class History extends React.Component {
         <div>CURRENT WEEK DISPLAY</div>
         <div>DATE / CALORIES EATEN # / ITEMS (EX. STEAK - 679)</div>
       </div>
-    )
+    );
   }
 }
 class UserGoals extends React.Component {
@@ -55,12 +52,34 @@ class FoodModal extends React.Component {
               >
                 &times;
               </button>
-              <h4 className="modal-title">Add Food to Calorie Tracker</h4>
+              <h4 className="modal-title">Food Search</h4>
             </div>
             <div className="modal-body">
               {this.props.children}
+              <table className="table table-striped table-hover ">
+                <thead>
+                  <tr>
 
-         
+                    <th>Item Name</th>
+                    <th>Brand Name</th>
+                    <th>Calories</th>
+                    <th>Serving Size Quantity</th>
+                    <th>Serving Size Unit</th>
+                  </tr>
+                </thead>
+                <tbody id="foodSearchBody">
+                  <tr>
+{/*
+                    <td id="modalItemName">{this.foodItem}</td>
+                    <td id="modalBrandName">Column content</td>
+                    <td id="modalCalories">Column content</td>
+                    <td id="modalServingSizeQ">Column content</td>
+                    <td id="modalServingSizeU">Column content</td>
+                 */}
+                  </tr>
+                </tbody>
+              </table>
+
             </div>
 
             <div className="modal-footer">
@@ -88,48 +107,90 @@ FoodModal.propTypes = {
   children: React.PropTypes.node
 };
 
-
 class FoodSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       foods: [],
-      isOpen: false
+      isOpen: false,
+      value: ""
     };
-    {/*this.state = { isOpen: false }; */}
+    {
+      /*this.state = { isOpen: false }; */
+    }
     this.toggleFoodModal = this.toggleFoodModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   toggleFoodModal() {
+    this.foodSearch();
     this.setState({ isOpen: !this.state.isOpen });
   }
- 
-  componentDidMount() {
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+    console.log(this.state.value);
+  }
+  foodSearch() {
+    {
+      /*
     var foodItem = "T Bone Steak";
-    
-      
-    
-     
+  */
+    }
+    console.log(this.state.value);
+    var foodItem = this.state.value;
+    {
+      /* Sean's Key
+`https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=ab42c57c&appKey=a47f6ab0f0fc20d89c26c58fb6db580d`
+  Pat's Key
+  https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=44c1633e&appKey=93531e417a6ec2b7669086a543d4624c`
+  Brian's Key
+ `https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345`
+
+*/
+    }
     axios
       .get(
-        `https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=ab42c57c&appKey=a47f6ab0f0fc20d89c26c58fb6db580d`
+        `https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345`
       )
       .then(function(response) {
         {
           console.log(response);
-          console.log(response.data.hits['0'].fields.item_name);
+          console.log(response.data.hits["0"].fields.item_name);
           for (var i = 0; i < 10; i++) {
-        console.log("Item Name: " + response.data.hits[i].fields.item_name);
-        console.log("Brand Name: " + response.data.hits[i].fields.brand_name);
-        console.log(
-          "Food Search Calories = " + response.data.hits[i].fields.nf_calories);
-        console.log(
-          "Serving Size Quantity = " +
-            response.data.hits[i].fields.nf_serving_size_qty);
-        console.log(
-          "Serving Size Unit = " +
-            response.data.hits[i].fields.nf_serving_size_unit +
-            " \n "  );
-      }
+            console.log("Item Name: " + response.data.hits[i].fields.item_name);
+            {
+              /*
+            modalItemName = response.data.hits[i].fields.item_name;
+            */
+            }
+
+            console.log(
+              "Brand Name: " + response.data.hits[i].fields.brand_name
+            );
+            console.log(
+              "Food Search Calories = " +
+                response.data.hits[i].fields.nf_calories
+            );
+            console.log(
+              "Serving Size Quantity = " +
+                response.data.hits[i].fields.nf_serving_size_qty
+            );
+            console.log(
+              "Serving Size Unit = " +
+                response.data.hits[i].fields.nf_serving_size_unit +
+                " \n "
+            );
+           
+            var rowHtml = $("<tr>");
+            rowHtml.append(`<td>${response.data.hits[i].fields.item_name}</td>`);
+            rowHtml.append(`<td>${response.data.hits[i].fields.brand_name}</td>`);
+            rowHtml.append(`<td>${response.data.hits[i].fields.nf_calories}</td>`);
+            rowHtml.append(`<td>${response.data.hits[i].fields.nf_serving_size_qty}</td>`);
+            rowHtml.append(`<td>${response.data.hits[i].fields.nf_serving_size_unit}</td>`);
+            
+            $("#foodSearchBody").append(rowHtml);
+
+            
+          }
         }
         if (response) {
           return response.data.hits[0].fields.item_name;
@@ -148,20 +209,30 @@ class FoodSearch extends React.Component {
         <br />
         <div className="form-group has-warning ">
 
-          <label className="control-label" htmlFor="inputWarning" >
+          <label className="control-label" htmlFor="inputWarning">
             Food Search:{" "}
           </label>
 
-          <input size="100" className="" name="food-name"/>
+          <input
+            size="100"
+            className=""
+            name="foodname"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
           <a>
-            <i className="fa fa-search" aria-hidden="true" type="button" onClick={this.toggleFoodModal} />
+            <i
+              className="fa fa-search"
+              aria-hidden="true"
+              type="button"
+              onClick={this.toggleFoodModal}
+            />
           </a>
           <FoodModal show={this.state.isOpen} onClose={this.toggleFoodModal}>
-                {/*Here's some content for the modal*/}
-              </FoodModal>
+            {/*Here's some content for the modal*/}
+          </FoodModal>
         </div>
       </div>
-      
     );
   }
 }
@@ -171,7 +242,10 @@ class UpcSearch extends React.Component {
       <div>
         <div>You can look up the calories for any food here.</div>
         <div>CURRENT DATE DISPLAY</div>
-        <div>DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS (EX. STEAK - 679)</div>
+        <div>
+          DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS
+          (EX. STEAK - 679)
+        </div>
         {" "}<br />
         You can also search by UPC Code.
         <br />
@@ -457,72 +531,71 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
-   	 	<div className="row">
-   	 		<div className="jumbotron" id="jumbo">
-   	 			<div className="welcome" id="welcome">
-   	 				<h1 className="welcome">George</h1>
-   	 			</div>
-   	 		</div>
-   	 	</div>
-   		<div className="row">
-   			<div className="col-md-4">
-   				<div className="panel panel-default">
-     					<div className="panel-heading">
-   							<h2 data-background-icon='&#xf2c2;'>User Data</h2>
-   						</div>
-     					<div className="panel-body">
-       					<div className="InitialOutput">
-       									Panel content
-   											<InitialOutput />
-       					</div>
-     						</div>
-             </div>
-   			</div>
-   			<div className="col-md-8">
-   				<div className="panel panel-default">
-     				<div className="panel-heading">
-   							<h2 data-background-icon='&#xf140;'>Goals</h2>
-   					</div>
-     			<div className="panel-body">
-   					<div className="userGoals">
-   								Panel content
-   								<UserGoals />
-   					</div>
-     			</div>
-   			</div>
-   	   </div>
-   	 </div>
-   		<div className="row">
-   			<div className="col-md-4">
-   				<div className="panel panel-default">
-     					<div className="panel-heading">
-   							<h2 data-background-icon='&#xf1da;'>History</h2>
-   						</div>
-     					<div className="panel-body">
-       					<div className="history">
-       									Panel content
-   											<History />
-       					</div>
-     						</div>
-             </div>
-   			</div>
-   			<div className="col-md-8">
-   				<div className="panel panel-default">
-     				<div className="panel-heading">
-   							<h2 data-background-icon='&#xf08d;'>Calorie Tracker</h2>
-   					</div>
-     			<div className="panel-body">
-   					<div className="calorieTracker">
+        <div className="row">
+          <div className="jumbotron" id="jumbo">
+            <div className="welcome" id="welcome">
+              <h1 className="welcome">George</h1>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf2c2;">User Data</h2>
+              </div>
+              <div className="panel-body">
+                <div className="InitialOutput">
+                  Panel content
+                  <InitialOutput />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf140;">Goals</h2>
+              </div>
+              <div className="panel-body">
+                <div className="userGoals">
+                  Panel content
+                  <UserGoals />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf1da;">History</h2>
+              </div>
+              <div className="panel-body">
+                <div className="history">
+                  Panel content
+                  <History />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf08d;">Calorie Tracker</h2>
+              </div>
+              <div className="panel-body">
+                <div className="calorieTracker">
 
-   								<CalorieTracker />
-   					</div>
-     			</div>
-   			</div>
-   	   </div>
-   	 </div>
+                  <CalorieTracker />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-   </div> //<!-- close container -->
-
+      </div> //<!-- close container -->
     );
   }
 }
