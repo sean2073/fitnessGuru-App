@@ -24,31 +24,26 @@ var InitialOutput = function (_React$Component) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user-data" },
         React.createElement(
           "div",
           null,
-          "This is a placeholder for the initial output section."
+          "user bmi #"
         ),
         React.createElement(
           "div",
           null,
-          "BMI"
+          "user body fat %"
         ),
         React.createElement(
           "div",
           null,
-          "BODY FAT %"
+          "user bmr #"
         ),
         React.createElement(
           "div",
           null,
-          "BMR"
-        ),
-        React.createElement(
-          "div",
-          null,
-          "CALORIES A DAY"
+          "user calories a day #"
         )
       );
     }
@@ -108,8 +103,52 @@ var UserGoals = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
-        " This is a placeholder for the goals section."
+        { className: "goals" },
+        React.createElement(
+          "div",
+          { className: "current-goals" },
+          React.createElement(
+            "div",
+            { className: "holder" },
+            React.createElement(
+              "div",
+              { className: "goal" },
+              "Gain 10 pounds of muscle"
+            ),
+            React.createElement(
+              "div",
+              { className: "c-date" },
+              "6 / 24 / 17"
+            ),
+            React.createElement(
+              "div",
+              { className: "status" },
+              React.createElement(
+                "div",
+                { className: "bar-outer" },
+                React.createElement("div", { className: "bar-inner bar-5" })
+              )
+            )
+          )
+        ),
+        React.createElement(
+          "div",
+          { className: "achieved-goals" },
+          React.createElement(
+            "div",
+            { className: "holder" },
+            React.createElement(
+              "div",
+              { className: "goal" },
+              "Lose 10 pounds"
+            ),
+            React.createElement(
+              "div",
+              { className: "c-date" },
+              "1 / 1 / 17"
+            )
+          )
+        )
       );
     }
   }]);
@@ -1012,7 +1051,6 @@ var Dashboard = function (_React$Component9) {
                 React.createElement(
                   "div",
                   { className: "InitialOutput" },
-                  "Panel content",
                   React.createElement(InitialOutput, null)
                 )
               )
@@ -1039,7 +1077,6 @@ var Dashboard = function (_React$Component9) {
                 React.createElement(
                   "div",
                   { className: "userGoals" },
-                  "Panel content",
                   React.createElement(UserGoals, null)
                 )
               )
