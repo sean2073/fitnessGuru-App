@@ -202,13 +202,55 @@ var FoodModal = function (_React$Component4) {
               React.createElement(
                 "h4",
                 { className: "modal-title" },
-                "Add Food to Calorie Tracker"
+                "Food Search"
               )
             ),
             React.createElement(
               "div",
               { className: "modal-body" },
-              this.props.children
+              this.props.children,
+              React.createElement(
+                "table",
+                { className: "table table-striped table-hover " },
+                React.createElement(
+                  "thead",
+                  null,
+                  React.createElement(
+                    "tr",
+                    null,
+                    React.createElement(
+                      "th",
+                      null,
+                      "Item Name"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Brand Name"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Calories"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Serving Size Quantity"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Serving Size Unit"
+                    )
+                  )
+                ),
+                React.createElement(
+                  "tbody",
+                  { id: "foodSearchBody" },
+                  React.createElement("tr", null)
+                )
+              )
             ),
             React.createElement(
               "div",
@@ -254,33 +296,73 @@ var FoodSearch = function (_React$Component5) {
 
     _this5.state = {
       foods: [],
-      isOpen: false
+      isOpen: false,
+      value: ""
     };
-    {/*this.state = { isOpen: false }; */}
+    {
+      /*this.state = { isOpen: false }; */
+    }
     _this5.toggleFoodModal = _this5.toggleFoodModal.bind(_this5);
+    _this5.handleChange = _this5.handleChange.bind(_this5);
     return _this5;
   }
 
   _createClass(FoodSearch, [{
     key: "toggleFoodModal",
     value: function toggleFoodModal() {
+      this.foodSearch();
       this.setState({ isOpen: !this.state.isOpen });
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var foodItem = "T Bone Steak";
-
-      axios.get("https://api.nutritionix.com/v1_1/search/" + foodItem + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=ab42c57c&appKey=a47f6ab0f0fc20d89c26c58fb6db580d").then(function (response) {
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({ value: event.target.value });
+      console.log(this.state.value);
+    }
+  }, {
+    key: "foodSearch",
+    value: function foodSearch() {
+      {
+        /*
+        var foodItem = "T Bone Steak";
+        */
+      }
+      console.log(this.state.value);
+      var foodItem = this.state.value;
+      {
+        /* Sean's Key
+        `https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=ab42c57c&appKey=a47f6ab0f0fc20d89c26c58fb6db580d`
+        Pat's Key
+        https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=44c1633e&appKey=93531e417a6ec2b7669086a543d4624c`
+        Brian's Key
+        `https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345`
+        */
+      }
+      axios.get("https://api.nutritionix.com/v1_1/search/" + foodItem + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345").then(function (response) {
         {
           console.log(response);
-          console.log(response.data.hits['0'].fields.item_name);
+          console.log(response.data.hits["0"].fields.item_name);
           for (var i = 0; i < 10; i++) {
             console.log("Item Name: " + response.data.hits[i].fields.item_name);
+            {
+              /*
+              modalItemName = response.data.hits[i].fields.item_name;
+              */
+            }
+
             console.log("Brand Name: " + response.data.hits[i].fields.brand_name);
             console.log("Food Search Calories = " + response.data.hits[i].fields.nf_calories);
             console.log("Serving Size Quantity = " + response.data.hits[i].fields.nf_serving_size_qty);
             console.log("Serving Size Unit = " + response.data.hits[i].fields.nf_serving_size_unit + " \n ");
+
+            var rowHtml = $("<tr>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.item_name + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.brand_name + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.nf_calories + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_qty + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_unit + "</td>");
+
+            $("#foodSearchBody").append(rowHtml);
           }
         }
         if (response) {
@@ -310,11 +392,22 @@ var FoodSearch = function (_React$Component5) {
             "Food Search:",
             " "
           ),
-          React.createElement("input", { size: "100", className: "", name: "food-name" }),
+          React.createElement("input", {
+            size: "100",
+            className: "",
+            name: "foodname",
+            value: this.state.value,
+            onChange: this.handleChange
+          }),
           React.createElement(
             "a",
             null,
-            React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button", onClick: this.toggleFoodModal })
+            React.createElement("i", {
+              className: "fa fa-search",
+              "aria-hidden": "true",
+              type: "button",
+              onClick: this.toggleFoodModal
+            })
           ),
           React.createElement(FoodModal, { show: this.state.isOpen, onClose: this.toggleFoodModal })
         )
@@ -1048,7 +1141,6 @@ var Dashboard = function (_React$Component9) {
           )
         )
       ) //<!-- close container -->
-
       ;
     }
   }]);
