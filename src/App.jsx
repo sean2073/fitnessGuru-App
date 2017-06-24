@@ -42,33 +42,33 @@ class FoodModal extends React.Component {
       return null;
     }
     return (
-      <div className="foodmodal" style={modalStyle}>
-        <div className="foodmodal-dialog">
-          <div className="foodmodal-content">
-            <div className="foodmodal-header">
+      <div className="modal" style={modalStyle}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
               <button
                 type="button"
                 onClick={this.props.onClose}
                 className="close"
-                data-dismiss="foodmodal"
+                data-dismiss="modal"
                 aria-hidden="true"
               >
                 &times;
               </button>
-              <h4 className="foodmodal-title">Add Food to Calorie Tracker</h4>
+              <h4 className="modal-title">Add Food to Calorie Tracker</h4>
             </div>
-            <div className="foodmodal-body">
+            <div className="modal-body">
               {this.props.children}
 
          
             </div>
 
-            <div className="foodmodal-footer">
+            <div className="modal-footer">
               <button
                 onClick={this.props.onClose}
                 type="button"
                 className="btn btn-default"
-                data-dismiss="foodmodal"
+                data-dismiss="modal"
               >
                 Close
               </button>
@@ -93,9 +93,10 @@ class FoodSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      foods: []
+      foods: [],
+      isOpen: false
     };
-    this.state = { isOpen: false };
+    {/*this.state = { isOpen: false }; */}
     this.toggleFoodModal = this.toggleFoodModal.bind(this);
   }
   toggleFoodModal() {

@@ -109,21 +109,7 @@ var UserGoals = function (_React$Component3) {
       return React.createElement(
         "div",
         null,
-        React.createElement(
-          "div",
-          null,
-          "This is a placeholder for the goals section."
-        ),
-        React.createElement(
-          "div",
-          null,
-          "GOAL DISPLAY"
-        ),
-        React.createElement(
-          "div",
-          null,
-          "USERS DISTANCE TO GOAL"
-        )
+        " This is a placeholder for the goals section."
       );
     }
   }]);
@@ -153,48 +139,48 @@ var FoodModal = function (_React$Component4) {
       }
       return React.createElement(
         "div",
-        { className: "foodmodal", style: modalStyle },
+        { className: "modal", style: modalStyle },
         React.createElement(
           "div",
-          { className: "foodmodal-dialog" },
+          { className: "modal-dialog" },
           React.createElement(
             "div",
-            { className: "foodmodal-content" },
+            { className: "modal-content" },
             React.createElement(
               "div",
-              { className: "foodmodal-header" },
+              { className: "modal-header" },
               React.createElement(
                 "button",
                 {
                   type: "button",
                   onClick: this.props.onClose,
                   className: "close",
-                  "data-dismiss": "foodmodal",
+                  "data-dismiss": "modal",
                   "aria-hidden": "true"
                 },
                 "\xD7"
               ),
               React.createElement(
                 "h4",
-                { className: "foodmodal-title" },
+                { className: "modal-title" },
                 "Add Food to Calorie Tracker"
               )
             ),
             React.createElement(
               "div",
-              { className: "foodmodal-body" },
+              { className: "modal-body" },
               this.props.children
             ),
             React.createElement(
               "div",
-              { className: "foodmodal-footer" },
+              { className: "modal-footer" },
               React.createElement(
                 "button",
                 {
                   onClick: this.props.onClose,
                   type: "button",
                   className: "btn btn-default",
-                  "data-dismiss": "foodmodal"
+                  "data-dismiss": "modal"
                 },
                 "Close"
               ),
@@ -228,8 +214,11 @@ var FoodSearch = function (_React$Component5) {
     var _this5 = _possibleConstructorReturn(this, (FoodSearch.__proto__ || Object.getPrototypeOf(FoodSearch)).call(this, props));
 
     _this5.state = {
-      foods: []
+      foods: [],
+      isOpen: false
     };
+    {/*this.state = { isOpen: false }; */}
+    _this5.toggleFoodModal = _this5.toggleFoodModal.bind(_this5);
     return _this5;
   }
 
@@ -270,7 +259,6 @@ var FoodSearch = function (_React$Component5) {
       return React.createElement(
         "div",
         null,
-
         " ",
         "You can look up the calories for any food here.",
         React.createElement("br", null),
@@ -313,6 +301,21 @@ var UpcSearch = function (_React$Component6) {
       return React.createElement(
         "div",
         null,
+        React.createElement(
+          "div",
+          null,
+          "You can look up the calories for any food here."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "CURRENT DATE DISPLAY"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS (EX. STEAK - 679)"
+        ),
         " ",
         React.createElement("br", null),
         "You can also search by UPC Code.",
@@ -1008,6 +1011,7 @@ var Dashboard = function (_React$Component9) {
           )
         )
       ) //<!-- close container -->
+
       ;
     }
   }]);
