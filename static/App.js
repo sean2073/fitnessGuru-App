@@ -82,13 +82,44 @@ var UserGoals = function (_React$Component3) {
 var FoodSearch = function (_React$Component4) {
   _inherits(FoodSearch, _React$Component4);
 
-  function FoodSearch() {
+  function FoodSearch(props) {
     _classCallCheck(this, FoodSearch);
 
-    return _possibleConstructorReturn(this, (FoodSearch.__proto__ || Object.getPrototypeOf(FoodSearch)).apply(this, arguments));
+    var _this4 = _possibleConstructorReturn(this, (FoodSearch.__proto__ || Object.getPrototypeOf(FoodSearch)).call(this, props));
+
+    _this4.state = {
+      foods: []
+    };
+    return _this4;
   }
 
   _createClass(FoodSearch, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var foodItem = "T Bone Steak";
+
+      axios.get("https://api.nutritionix.com/v1_1/search/" + foodItem + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=ab42c57c&appKey=a47f6ab0f0fc20d89c26c58fb6db580d").then(function (response) {
+        {
+          console.log(response);
+          console.log(response.data.hits['0'].fields.item_name);
+          for (var i = 0; i < 10; i++) {
+            console.log("Item Name: " + response.data.hits[i].fields.item_name);
+            console.log("Brand Name: " + response.data.hits[i].fields.brand_name);
+            console.log("Food Search Calories = " + response.data.hits[i].fields.nf_calories);
+            console.log("Serving Size Quantity = " + response.data.hits[i].fields.nf_serving_size_qty);
+            console.log("Serving Size Unit = " + response.data.hits[i].fields.nf_serving_size_unit + " \n ");
+          }
+        }
+        if (response) {
+          return response.data.hits[0].fields.item_name;
+        }
+        // If we don't get any results, return an empty string
+        return "";
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -96,7 +127,23 @@ var FoodSearch = function (_React$Component4) {
         null,
         " ",
         "You can look up the calories for any food here.",
-        React.createElement("br", null)
+        React.createElement("br", null),
+        React.createElement(
+          "div",
+          { className: "form-group has-warning " },
+          React.createElement(
+            "label",
+            { className: "control-label", htmlFor: "inputWarning" },
+            "Food Search:",
+            " "
+          ),
+          React.createElement("input", { size: "100", className: "", name: "food-name" }),
+          React.createElement(
+            "a",
+            null,
+            React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
+          )
+        )
       );
     }
   }]);
@@ -184,131 +231,135 @@ var Modal = function (_React$Component6) {
               { className: "modal-body" },
               this.props.children,
               React.createElement(
-                "div",
-                { className: "form-group" },
+                "form",
+                { name: "modalForm" },
                 React.createElement(
                   "div",
-                  { className: "row" },
+                  { className: "form-group" },
                   React.createElement(
                     "div",
-                    { className: "col-lg-2" },
+                    { className: "row" },
                     React.createElement(
-                      "label",
-                      { htmlFor: "inputItemName", className: "control-label" },
-                      "Item Name"
+                      "div",
+                      { className: "col-lg-2" },
+                      React.createElement(
+                        "label",
+                        { htmlFor: "inputItemName", className: "control-label" },
+                        "Item Name"
+                      )
+                    ),
+                    React.createElement(
+                      "div",
+                      { className: "col-lg-10" },
+                      React.createElement("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inputItemName",
+                        placeholder: "e.g. T Bone Steak"
+                      })
                     )
                   ),
+                  React.createElement("br", null),
                   React.createElement(
                     "div",
-                    { className: "col-lg-10" },
-                    React.createElement("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inputItemName",
-                      placeholder: "e.g. T Bone Steak"
-                    })
-                  )
-                ),
-                React.createElement("br", null),
-                React.createElement(
-                  "div",
-                  { className: "row" },
-                  React.createElement(
-                    "div",
-                    { className: "col-lg-2" },
+                    { className: "row" },
                     React.createElement(
-                      "label",
-                      { htmlFor: "inputBrandName", className: "control-label" },
-                      "Brand Name"
+                      "div",
+                      { className: "col-lg-2" },
+                      React.createElement(
+                        "label",
+                        { htmlFor: "inputBrandName", className: "control-label" },
+                        "Brand Name"
+                      )
+                    ),
+                    React.createElement(
+                      "div",
+                      { className: "col-lg-10" },
+                      React.createElement("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inputBrandName",
+                        placeholder: "e.g. Peter Leuger's Steak House"
+                      })
                     )
                   ),
+                  React.createElement("br", null),
                   React.createElement(
                     "div",
-                    { className: "col-lg-10" },
-                    React.createElement("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inputBrandName",
-                      placeholder: "e.g. Peter Leuger's Steak House"
-                    })
-                  )
-                ),
-                React.createElement("br", null),
-                React.createElement(
-                  "div",
-                  { className: "row" },
-                  React.createElement(
-                    "div",
-                    { className: "col-lg-2" },
+                    { className: "row" },
                     React.createElement(
-                      "label",
-                      { htmlFor: "inputCalories", className: "control-label" },
-                      "Calories"
+                      "div",
+                      { className: "col-lg-2" },
+                      React.createElement(
+                        "label",
+                        { htmlFor: "inputCalories", className: "control-label" },
+                        "Calories"
+                      )
+                    ),
+                    React.createElement(
+                      "div",
+                      { className: "col-lg-10" },
+                      React.createElement("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inputCalories",
+                        placeholder: "e.g. 1050"
+                      })
                     )
                   ),
+                  React.createElement("br", null),
                   React.createElement(
                     "div",
-                    { className: "col-lg-10" },
-                    React.createElement("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inputCalories",
-                      placeholder: "e.g. 1050"
-                    })
-                  )
-                ),
-                React.createElement("br", null),
-                React.createElement(
-                  "div",
-                  { className: "row" },
-                  React.createElement(
-                    "div",
-                    { className: "col-lg-2" },
+                    { className: "row" },
                     React.createElement(
-                      "label",
-                      {
-                        htmlFor: "inputServingSizeQuantity",
-                        className: "control-label"
-                      },
-                      "Serving Size Quantity"
+                      "div",
+                      { className: "col-lg-2" },
+                      React.createElement(
+                        "label",
+                        {
+                          htmlFor: "inputServingSizeQuantity",
+                          className: "control-label"
+                        },
+                        "Serving Size Quantity"
+                      )
+                    ),
+                    React.createElement(
+                      "div",
+                      { className: "col-lg-10" },
+                      React.createElement("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inputServingSizeQuantity",
+                        placeholder: "e.g. 1"
+                      })
                     )
                   ),
+                  React.createElement("br", null),
                   React.createElement(
                     "div",
-                    { className: "col-lg-10" },
-                    React.createElement("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inputServingSizeQuantity",
-                      placeholder: "e.g. 1"
-                    })
-                  )
-                ),
-                React.createElement("br", null),
-                React.createElement(
-                  "div",
-                  { className: "row" },
-                  React.createElement(
-                    "div",
-                    { className: "col-lg-2" },
+                    { className: "row" },
                     React.createElement(
-                      "label",
-                      {
-                        htmlFor: "inputServingSizeUnit",
-                        className: "control-label"
-                      },
-                      "Serving Size Unit"
+                      "div",
+                      { className: "col-lg-2" },
+                      React.createElement(
+                        "label",
+                        {
+                          htmlFor: "inputServingSizeUnit",
+                          className: "control-label"
+                        },
+                        "Serving Size Unit"
+                      )
+                    ),
+                    React.createElement(
+                      "div",
+                      { className: "col-lg-10" },
+                      React.createElement("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inputServingSizeUnit",
+                        placeholder: "e.g. serving"
+                      })
                     )
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "col-lg-10" },
-                    React.createElement("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inputServingSizeUnit",
-                      placeholder: "e.g. serving"
-                    })
                   )
                 )
               )
@@ -375,12 +426,13 @@ var CalorieTracker = function (_React$Component7) {
         React.createElement("br", null),
         React.createElement(
           "div",
-          { className: "form-group has-warning " },
+          null,
+          React.createElement(UpcSearch, null),
+          React.createElement("br", null),
           React.createElement(
             "label",
             { className: "control-label", htmlFor: "inputWarning" },
-            "Food Search:",
-            " "
+            "UPC Search: \xA0"
           ),
           React.createElement("input", { size: "100", className: "" }),
           React.createElement(
@@ -391,279 +443,262 @@ var CalorieTracker = function (_React$Component7) {
           React.createElement(
             "div",
             null,
-            React.createElement(UpcSearch, null),
             React.createElement("br", null),
-            React.createElement(
-              "label",
-              { className: "control-label", htmlFor: "inputWarning" },
-              "UPC Search: \xA0"
-            ),
-            React.createElement("input", { size: "100", className: "" }),
-            React.createElement(
-              "a",
-              null,
-              React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
-            ),
+            "Keep track of your caloric intake here!",
             React.createElement(
               "div",
-              null,
-              React.createElement("br", null),
-              "Keep track of your caloric intake here!",
+              { className: "CalorieTracker" },
               React.createElement(
-                "div",
-                { className: "CalorieTracker" },
+                "button",
+                {
+                  type: "submit",
+                  onClick: this.toggleModal,
+                  href: "#",
+                  className: "btn btn-primary btn-sm"
+                },
+                "add food"
+              ),
+              React.createElement(Modal, { show: this.state.isOpen, onClose: this.toggleModal }),
+              React.createElement(
+                "table",
+                { className: "table table-striped table-hover " },
                 React.createElement(
-                  "button",
-                  {
-                    type: "submit",
-                    onClick: this.toggleModal,
-                    href: "#",
-                    className: "btn btn-primary btn-sm"
-                  },
-                  "add food"
-                ),
-                React.createElement(Modal, { show: this.state.isOpen, onClose: this.toggleModal }),
-                React.createElement(
-                  "table",
-                  { className: "table table-striped table-hover " },
+                  "thead",
+                  null,
                   React.createElement(
-                    "thead",
+                    "tr",
                     null,
                     React.createElement(
-                      "tr",
+                      "th",
                       null,
-                      React.createElement(
-                        "th",
-                        null,
-                        "Item Name"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Brand Name"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Calories"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Serving Size Quantity"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Serving Size Unit"
-                      )
+                      "Item Name"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Brand Name"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Calories"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Serving Size Quantity"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Serving Size Unit"
+                    )
+                  )
+                ),
+                React.createElement(
+                  "tbody",
+                  null,
+                  React.createElement(
+                    "tr",
+                    null,
+                    React.createElement(
+                      "td",
+                      { id: "contentItemName" },
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      { id: "contentBrandName" },
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      { id: "contentCalories" },
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      { id: "contentServingSizeQ" },
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      { id: "contentServingSizeU" },
+                      "Column content"
                     )
                   ),
                   React.createElement(
-                    "tbody",
+                    "tr",
                     null,
                     React.createElement(
-                      "tr",
+                      "td",
                       null,
-                      React.createElement(
-                        "td",
-                        { id: "contentItemName" },
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        { id: "contentBrandName" },
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        { id: "contentCalories" },
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        { id: "contentServingSizeQ" },
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        { id: "contentServingSizeU" },
-                        "Column content"
-                      )
+                      "Column content"
                     ),
                     React.createElement(
-                      "tr",
+                      "td",
                       null,
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      )
+                      "Column content"
                     ),
                     React.createElement(
-                      "tr",
-                      { className: "info" },
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      )
+                      "td",
+                      null,
+                      "Column content"
                     ),
                     React.createElement(
-                      "tr",
-                      { className: "success" },
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      )
+                      "td",
+                      null,
+                      "Column content"
                     ),
                     React.createElement(
-                      "tr",
-                      { className: "danger" },
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      )
+                      "td",
+                      null,
+                      "Column content"
+                    )
+                  ),
+                  React.createElement(
+                    "tr",
+                    { className: "info" },
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
                     ),
                     React.createElement(
-                      "tr",
-                      { className: "warning" },
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      )
+                      "td",
+                      null,
+                      "Column content"
                     ),
                     React.createElement(
-                      "tr",
-                      { className: "active" },
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      ),
-                      React.createElement(
-                        "td",
-                        null,
-                        "Column content"
-                      )
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    )
+                  ),
+                  React.createElement(
+                    "tr",
+                    { className: "success" },
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    )
+                  ),
+                  React.createElement(
+                    "tr",
+                    { className: "danger" },
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    )
+                  ),
+                  React.createElement(
+                    "tr",
+                    { className: "warning" },
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    )
+                  ),
+                  React.createElement(
+                    "tr",
+                    { className: "active" },
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
+                    ),
+                    React.createElement(
+                      "td",
+                      null,
+                      "Column content"
                     )
                   )
                 )
