@@ -619,14 +619,6 @@ class Dashboard extends React.Component {
    	   </div>
    	 </div>
 
-
-                  <CalorieTracker />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div> //<!-- close container -->
     );
   }
