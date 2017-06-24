@@ -4,12 +4,26 @@
 const contentNode = document.getElementById("content");
 class InitialOutput extends React.Component {
   render() {
-    return <div> This is a placeholder for the initial output section.</div>;
+    return (
+      <div>
+        <div>This is a placeholder for the initial output section.</div>
+        <div>BMI</div>
+        <div>BODY FAT %</div>
+        <div>BMR</div>
+        <div>CALORIES A DAY</div>
+      </div>
+    )
   }
 }
 class History extends React.Component {
   render() {
-    return <div> This is a placeholder for the history section.</div>;
+    return (
+      <div>
+        <div>This is a placeholder for the history section.</div>
+        <div>CURRENT WEEK DISPLAY</div>
+        <div>DATE / CALORIES EATEN # / ITEMS (EX. STEAK - 679)</div>
+      </div>
+    )
   }
 }
 class UserGoals extends React.Component {
@@ -145,6 +159,9 @@ class UpcSearch extends React.Component {
   render() {
     return (
       <div>
+        <div>You can look up the calories for any food here.</div>
+        <div>CURRENT DATE DISPLAY</div>
+        <div>DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS (EX. STEAK - 679)</div>
         {" "}<br />
         You can also search by UPC Code.
         <br />
@@ -430,71 +447,72 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="jumbotron">
-            <div className="welcome" id="welcome">
-              <h1 className="welcome">Welcome George</h1>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h2>Initial Output</h2>
-              </div>
-              <div className="panel-body">
-                <div className="InitialOutput">
-                  Panel content
-                  <InitialOutput />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-8">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h2>George's Goals</h2>
-              </div>
-              <div className="panel-body">
-                <div className="userGoals">
-                  Panel content
-                  <UserGoals />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h2>History</h2>
-              </div>
-              <div className="panel-body">
-                <div className="history">
-                  Panel content
-                  <History />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-8">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h2>Calorie Tracker</h2>
-              </div>
-              <div className="panel-body">
-                <div className="calorieTracker">
+   	 	<div className="row">
+   	 		<div className="jumbotron" id="jumbo">
+   	 			<div className="welcome" id="welcome">
+   	 				<h1 className="welcome">George</h1>
+   	 			</div>
+   	 		</div>
+   	 	</div>
+   		<div className="row">
+   			<div className="col-md-4">
+   				<div className="panel panel-default">
+     					<div className="panel-heading">
+   							<h2 data-background-icon='&#xf2c2;'>User Data</h2>
+   						</div>
+     					<div className="panel-body">
+       					<div className="InitialOutput">
+       									Panel content
+   											<InitialOutput />
+       					</div>
+     						</div>
+             </div>
+   			</div>
+   			<div className="col-md-8">
+   				<div className="panel panel-default">
+     				<div className="panel-heading">
+   							<h2 data-background-icon='&#xf140;'>Goals</h2>
+   					</div>
+     			<div className="panel-body">
+   					<div className="userGoals">
+   								Panel content
+   								<UserGoals />
+   					</div>
+     			</div>
+   			</div>
+   	   </div>
+   	 </div>
+   		<div className="row">
+   			<div className="col-md-4">
+   				<div className="panel panel-default">
+     					<div className="panel-heading">
+   							<h2 data-background-icon='&#xf1da;'>History</h2>
+   						</div>
+     					<div className="panel-body">
+       					<div className="history">
+       									Panel content
+   											<History />
+       					</div>
+     						</div>
+             </div>
+   			</div>
+   			<div className="col-md-8">
+   				<div className="panel panel-default">
+     				<div className="panel-heading">
+   							<h2 data-background-icon='&#xf08d;'>Calorie Tracker</h2>
+   					</div>
+     			<div className="panel-body">
+   					<div className="calorieTracker">
 
-                  <CalorieTracker />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+   								<CalorieTracker />
+   					</div>
+     			</div>
+   			</div>
+   	   </div>
+   	 </div>
 
-      </div> //<!-- close container -->
+   </div> //<!-- close container -->
+
     );
   }
 }

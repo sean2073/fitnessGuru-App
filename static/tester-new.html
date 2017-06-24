@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script src="https://use.fontawesome.com/f25223f08e.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src="./assets/javascript/fg.brian.quotes.js"></script>
+	<script src="./assets/javascript/fg.brian.formulas.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>
+
+	<title>FITNESS GURU (TESTS)</title>
+</head>
+<body>
+	
+
+	<button onclick="qLogic('spawn')">Spawn Quote</button>
+	<button onclick="qLogic('spawn_welcome')">Spawn Quote W/ Welcome</button>
+
+	<!-- START: LOGIN FORM -->
+	<div class="standalone opened">
+		<h1 class="login"></h1>
+		<p>For those who already have a Fitness Guru account</p>
+		<form class="user-login">
+			<div>
+				<label><b>Username</b></label>
+				<input type="text" name="uname" required>
+			</div>
+
+			<div>
+				<label><b>Password</b></label>
+				<input type="password" name="psw" required>
+			</div>
+
+			<div>
+				<input type="submit" value="Login">
+			</div>
+
+			<span class="psw"><a href="#">Forget your password?</a></span>
+		</form>
+	</div>
+	<!-- END: LOGIN FORM -->
+
+	<!-- START: SIGNUP FORM -->
+	<div class="standalone opened">
+		<h1 class="step-1"></h1>
+		<p>Please create an account in order access the Fitness Guru Health Software.</p>
+		<form class="user-signup">
+			<h2></h2>
+			<div>
+				<label><b>Email</b></label>
+				<input type="text" name="ename" required>
+			</div>
+
+			<div>
+				<label><b>Username</b></label>
+				<input type="text" name="uname" required>
+			</div>
+
+			<div>
+				<label><b>Password</b></label>
+				<input type="password" name="psw" required>
+			</div>
+
+			<div>
+				<input type="submit" value="Signup">
+			</div>
+		</form>
+	</div>
+	<!-- END: SIGNUP FORM -->
+
+
+	<!-- START: CREATE A PROFILE -->
+	<div class="standalone opened">
+		<h1 class="step-2"></h1>
+		<p>This form will allow users to fill in data pertaining to their health, which we will use in the app... all the time.</p>
+		<form class="profile-creator">
+			<h2></h2>
+			<div>
+			 	<label for="gender">Gender:</label>
+				<select name="gender">
+					<option value="empty-placeholder"></option>
+					<option value="male">male</option>
+					<option value="female">female</option>
+				</select>
+			</div>
+
+			<div>
+			 	<label for="age">Age:</label>
+			 	<input type="number" name="age" min="0" max="100">
+		 	</div>
+
+			<div>
+		 		<label for="weight">Weight:</label>
+				<input type="number" name="weight" min="0" max="600">
+			</div>
+		 	
+		 	<div>
+			 	<label for="height-ft">Height:</label>
+			 	<input type="number" name="height-ft" min="0" max="7">
+				<input type="number" name="height-in" min="0" max="12">
+			</div>
+
+			<div>
+			 	<label for="waist">Waist Circumference:</label>
+			 	<input type="number" name="weight" min="0" max="100">
+			</div>
+
+			<div>
+		 		<label for="hip">Hip Circumference:</label>
+		 		<input type="number" name="hip" min="0" max="100">
+		 	</div>
+
+			<div>
+		 		<label for="activity">Activity:</label>
+			 	<select name="activity">
+					<option value="empty-placeholder"></option>
+					<option value="option1">option1</option>
+					<option value="option2">option2</option>
+				</select>
+			</div>
+
+			<div>
+			 	<label for="exercise">Current Exercise Routine:</label>
+			 	<select name="exercise">
+					<option value="empty-placeholder"></option>
+					<option value="option1">option1</option>
+					<option value="option2">option2</option>
+				</select>
+			</div>
+
+			<div>
+				<input type="submit" value="Save Your Profile">
+			</div>
+		</form>
+	</div>
+	<!-- END: CREATE A PROFILE -->
+
+
+	<!-- START: SET GOALS -->
+	<div class="standalone opened">
+		<h1 class="step-3"></h1>
+		<p>This form helps users to specify what they would like to achieve through our application.</p>
+		<form class="goal-creator">
+			<i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
+			<h2></h2>
+			<div>
+				<input type="radio" name="radio" id="radio1" class="radio"/>
+				<label for="radio1">Lose 10 Pounds</label>
+			</div>
+
+			<div>
+				<input type="radio" name="radio" id="radio2" class="radio"/>
+				<label for="radio2">Lose 20 Pounds</label>
+			</div>
+
+			<div>	
+				<input type="radio" name="radio" id="radio3" class="radio"/>
+				<label for="radio3">Gain 10 Pounds of Muscle</label>
+			</div>
+
+			<div>	
+				<input type="radio" name="radio" id="radio4" class="radio"/>
+				<label for="radio4">Gain 20 Pounds of Muscle</label>
+			</div>
+
+			<div>	
+				<input type="radio" name="radio" id="radio5" class="radio"/>
+				<label for="radio5">Achieve or Maintain a Healthy Weight</label>
+			</div>
+			<div>
+				<input type="submit" value="Select Your Goal">
+			</div>
+		</form>
+	</div>
+	<!-- END: SET GOALS -->
+
+	<div class="standalone opened">
+		
+		<h1>Body Mass Index</h1>
+		<p>The BMI is an attempt to quantify the amount of tissue mass (muscle, fat, and bone) in an individual, and then categorize that person as underweight, normal weight, overweight, or obese based on that value.</p>
+
+		<div class="bmi-calc imperial">
+
+			<div class="unit-type">
+				<input type="radio" name="unit" checked="true" value="imperial" onchange="bmiCalc('changeUnit-imperial', this)">
+				Imperial (pounds, feet, &amp; inches)
+				<br>
+				<input type="radio" name="unit" value="metric" onchange="bmiCalc('changeUnit-metric', this)">
+				Metric (kilograms &amp; meters)
+			</div>
+
+			<div class="weight-wrap">
+				<div>
+			    	<input type="text" name="weight-p" maxlength="4" placeholder="000" oninput="bmiCalc('w_inputs',this)"/>
+			    </div>
+
+			    <div>
+			    	<input type="text" name="weight-kg" maxlength="4" placeholder="000" oninput="bmiCalc('w_inputs',this)"/>
+			    </div>
+			</div>
+
+			<div class="height-wrap">
+			    <div>
+			    	<input type="text" class="height-i" name="feet" maxlength="1" placeholder="0" oninput="bmiCalc('h_inputs',this)"/>
+			    </div>
+			   	<div>
+			   		<input type="text" class="height-i" name="inches" maxlength="4" placeholder="0" oninput="bmiCalc('h_inputs',this)"/>
+			   	</div>
+			   	<div>
+			   		<input type="text" class="height-m" name="meters" maxlength="6" placeholder="0" oninput="bmiCalc('h_inputs',this)"/>
+			   	</div>
+			</div>
+		
+			<button class="bmi-run" onclick="bmiCalc('calculate_BMI',this)"></button>
+
+			<div class="bmi-results hide">
+				<h1></h1>
+
+				<div class="numerical-result"></div>
+
+				<h2></h2>
+
+				<div class="bmi-scale">
+					<div class="categories"><div></div></div>
+					<div class="categories"><div></div></div>
+					<div class="categories"><div></div></div>
+					<div class="categories"><div></div></div>
+					<div class="categories"><div></div></div>
+					<div class="categories"><div></div></div>
+				</div>
+			</div>
+
+		</div>
+
+		
+
+	
+
+	</div>
+</body>
+</html>
