@@ -863,6 +863,209 @@ form span input{
 }
 
 
+/*USER DATA*/
+.user-data{
+	font-family: 'Nunito', sans-serif;
+	text-align: center;
+	padding-top: 10px;
+}
+.user-data:before{
+	color: rgba(0,0,0,.5);
+	text-align: center;
+	font-size: xx-large;
+}
+.user-data:before{
+	content: "Here are your stats!";
+}
+.user-data div{
+	background-color: rgba(0,0,0,.1);
+	font-size: x-large;
+	border-radius: 20px;
+	padding:20px;
+	margin:20px 0;
+	display: flex;
+}
+.user-data div:nth-of-type(1){
+	margin-top: 20px;
+}
+.user-data div:nth-of-type(4){
+	margin-bottom: 0px;
+}
+.user-data div:before{
+	font-weight: bolder;
+	padding-right: 20px;
+}
+.user-data div:nth-of-type(1):before{
+	content: "BMI: ";
+}
+
+.user-data div:nth-of-type(2){
+	background-color: rgba(0,0,0,.15);
+}
+.user-data div:nth-of-type(2):before{
+	content: "Body Fat %: ";
+}
+
+.user-data div:nth-of-type(3){
+	background-color: rgba(0,0,0,.2);
+}
+.user-data div:nth-of-type(3):before{
+	content: "BMR: ";
+}
+
+.user-data div:nth-of-type(4){
+	background-color: rgba(0,0,0,.25);
+}
+.user-data div:nth-of-type(4):before{
+	content: "Calories A Day: ";
+}
+
+.panel.panel-default{
+	border-radius: 20px;
+}
+.panel-heading{
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+/*GOAL DISPLAY*/
+.goals{
+	font-family: 'Nunito', sans-serif;
+}
+.current-goals,
+.achieved-goals{
+	border-radius: 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.achieved-goals{
+	margin-bottom: 0px;
+}
+.current-goals div,
+.achieved-goals div{
+	text-align: center;
+}
+.current-goals .holder,
+.achieved-goals .holder{
+	background-color: rgba(0,0,0,.1);
+	padding: 20px;
+	color:#333;
+	font-size: x-large;
+}
+
+.current-goals:before,
+.achieved-goals:before{
+	background-color: rgba(0,0,0,.3);
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	display: inline-block;
+	width: 100%;
+	padding: 20px;
+	content: "Current Goals";
+	color: rgba(0,0,0,.5);
+	text-align: center;
+	font-size: xx-large;
+	font-family: 'Nunito', sans-serif;
+}
+.current-goals .goal,
+.achieved-goals .goal{
+	padding-bottom: 0px;
+}
+
+.current-goals .status .bar-outer{
+	border-radius: 20px;
+	background-color: rgba(0,0,0,.1);
+	padding: 10px;
+	position: relative;
+}
+.current-goals .status .bar-inner{
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 15px 10px rgba(0,0,0,.2);
+	height: 60px;
+	border-radius: 20px;
+	background-color: rgb(111, 220, 111);
+	border: 5px solid rgba(50, 105, 50, 0.3);
+	border-bottom: 10px solid rgba(50, 205, 50, 0.4);
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	font-weight: lighter;
+	color:rgba(0,0,0,0.8);
+	font-size: xx-large;
+	text-shadow:
+   -1px -1px 2px rgba(0,0,0,.2),  
+    1px -1px 2px rgba(0,0,0,.2),  
+    -1px 1px 2px rgba(0,0,0,.2),  
+    1px 1px 2px rgba(0,0,0,.2);
+}
+.bar-0{ width: 1%; }
+.bar-0:before{ content:"0%"; }
+
+.bar-1{ width: 10%; }
+.bar-1:before{ content:"10%"; }
+
+.bar-2{ width: 20%; }
+.bar-2:before{ content:"20%"; }
+
+.bar-3{ width: 30%; }
+.bar-3:before{ content:"30%"; }
+
+.bar-4{ width: 40%; }
+.bar-4:before{ content:"40%"; }
+
+.bar-5{ width: 50%; }
+.bar-5:before{ content:"50%";}
+
+.bar-6{ width: 60%; }
+.bar-6:before{ content:"60%"; }
+
+.bar-7{ width: 70%; }
+.bar-7:before{ content:"70%"; }
+
+.bar-8{ width: 80%; }
+.bar-8:before{ content:"80%"; }
+
+.bar-9{ width: 90%; }
+.bar-9:before{ content:"90%"; }
+
+.bar-10{ width: 100%; }
+.bar-10:before{ content:"100%"; }
+
+.bar-1:before, .bar-2:before, .bar-3:before,
+.bar-4:before, .bar-5:before, .bar-6:before,
+.bar-7:before, .bar-8:before, .bar-9:before, .bar-10:before{ 
+ 	position: absolute; 
+ 	left:0px;
+ 	padding-left: 20px;
+}
+
+.bar-1:after, .bar-2:after, .bar-3:after,
+.bar-4:after, .bar-5:after, .bar-6:after,
+.bar-7:after, .bar-8:after, .bar-9:after, .bar-10:after{ 
+ 	position: absolute; 
+ 	right:0px;
+ 	padding-right: 20px;
+ 	content:"\2605";
+}
+
+.current-goals .c-date,
+.achieved-goals .c-date{
+	padding: 10px;
+	padding-bottom: 10px;
+	font-size: medium;
+}
+
+.achieved-goals:before{
+	content: "Achieved Goals";
+}
+
 
 /*!!!!!!!!!!!!!!!!*/
 /*MEDIA QUERIES*/

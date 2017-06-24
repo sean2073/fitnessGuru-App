@@ -5,12 +5,11 @@ const contentNode = document.getElementById("content");
 class InitialOutput extends React.Component {
   render() {
     return (
-      <div>
-        <div>This is a placeholder for the initial output section.</div>
-        <div>BMI</div>
-        <div>BODY FAT %</div>
-        <div>BMR</div>
-        <div>CALORIES A DAY</div>
+      <div className="user-data">
+        <div>user bmi #</div>
+        <div>user body fat %</div>
+        <div>user bmr #</div>
+        <div>user calories a day #</div>
       </div>
     )
   }
@@ -28,7 +27,32 @@ class History extends React.Component {
 }
 class UserGoals extends React.Component {
   render() {
-    return <div> This is a placeholder for the goals section.</div>;
+    return (
+    <div className="goals">
+
+      <div className="current-goals">
+
+        <div className="holder">
+          <div className="goal">Gain 10 pounds of muscle</div>
+          <div className="c-date">6 / 24 / 17</div>
+          <div className="status">
+            <div className="bar-outer">
+              <div className="bar-inner bar-5"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="achieved-goals">
+        <div className="holder">
+          <div className="goal">Lose 10 pounds</div>
+          <div className="c-date">1 / 1 / 17</div>
+        </div>
+      </div>
+      
+    </div>
+    );
   }
 }
 class FoodModal extends React.Component {
@@ -472,7 +496,7 @@ class Dashboard extends React.Component {
    						</div>
      					<div className="panel-body">
        					<div className="InitialOutput">
-       									Panel content
+       									
    											<InitialOutput />
        					</div>
      						</div>
@@ -485,7 +509,7 @@ class Dashboard extends React.Component {
    					</div>
      			<div className="panel-body">
    					<div className="userGoals">
-   								Panel content
+
    								<UserGoals />
    					</div>
      			</div>
