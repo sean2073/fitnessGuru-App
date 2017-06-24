@@ -25,7 +25,31 @@ var InitialOutput = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the initial output section."
+        React.createElement(
+          "div",
+          null,
+          "This is a placeholder for the initial output section."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "BMI"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "BODY FAT %"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "BMR"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "CALORIES A DAY"
+        )
       );
     }
   }]);
@@ -48,7 +72,21 @@ var History = function (_React$Component2) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the history section."
+        React.createElement(
+          "div",
+          null,
+          "This is a placeholder for the history section."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "CURRENT WEEK DISPLAY"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "DATE / CALORIES EATEN # / ITEMS (EX. STEAK - 679)"
+        )
       );
     }
   }]);
@@ -71,7 +109,21 @@ var UserGoals = function (_React$Component3) {
       return React.createElement(
         "div",
         null,
-        " This is a placeholder for the goals section."
+        React.createElement(
+          "div",
+          null,
+          "This is a placeholder for the goals section."
+        ),
+        React.createElement(
+          "div",
+          null,
+          "GOAL DISPLAY"
+        ),
+        React.createElement(
+          "div",
+          null,
+          "USERS DISTANCE TO GOAL"
+        )
       );
     }
   }]);
@@ -218,6 +270,7 @@ var FoodSearch = function (_React$Component5) {
       return React.createElement(
         "div",
         null,
+
         " ",
         "You can look up the calories for any food here.",
         React.createElement("br", null),
@@ -827,14 +880,14 @@ var Dashboard = function (_React$Component9) {
           { className: "row" },
           React.createElement(
             "div",
-            { className: "jumbotron" },
+            { className: "jumbotron", id: "jumbo" },
             React.createElement(
               "div",
               { className: "welcome", id: "welcome" },
               React.createElement(
                 "h1",
                 { className: "welcome" },
-                "Welcome George"
+                "George"
               )
             )
           )
@@ -853,8 +906,8 @@ var Dashboard = function (_React$Component9) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  null,
-                  "Initial Output"
+                  { "data-background-icon": "\uF2C2" },
+                  "User Data"
                 )
               ),
               React.createElement(
@@ -880,8 +933,8 @@ var Dashboard = function (_React$Component9) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  null,
-                  "George's Goals"
+                  { "data-background-icon": "\uF140" },
+                  "Goals"
                 )
               ),
               React.createElement(
@@ -911,7 +964,7 @@ var Dashboard = function (_React$Component9) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  null,
+                  { "data-background-icon": "\uF1DA" },
                   "History"
                 )
               ),
@@ -938,7 +991,7 @@ var Dashboard = function (_React$Component9) {
                 { className: "panel-heading" },
                 React.createElement(
                   "h2",
-                  null,
+                  { "data-background-icon": "\uF08D" },
                   "Calorie Tracker"
                 )
               ),

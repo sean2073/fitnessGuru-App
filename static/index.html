@@ -11,8 +11,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 -->
 
-	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>
@@ -20,12 +18,26 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+	<!-- Needed for styling -->
+	<script src="https://use.fontawesome.com/f25223f08e.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src="./assets/javascript/fg.brian.quotes.js"></script>
+	<script src="./assets/javascript/fg.brian.formulas.js"></script>
+	<!-- end of needed for styling -->
+
 	<title>FITNESS GURU</title>
 </head>
-<body>
-	<header>fitness guru (page header)</header>
+<body onload="qLogic('spawn_welcome')">
 
-	<div class="welcome-message">Welcome Message</div>
+	<header class="logo"></header>
+
+	<!-- <div class="welcome-message">Welcome Message</div> -->
 
 	<div class="content" id="content">
 
@@ -40,7 +52,7 @@
 		</div>
 	</div>
 
-	<footer>Footer Text</footer>
+	<footer class="main-footer"></footer>
   <script src='/App.js'>
   </script>
 </body>
