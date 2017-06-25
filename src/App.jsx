@@ -25,30 +25,30 @@ class History extends React.Component {
 class UserGoals extends React.Component {
   render() {
     return (
-    <div className="goals">
+      <div className="goals">
 
-      <div className="current-goals">
+        <div className="current-goals">
 
-        <div className="holder">
-          <div className="goal">Gain 10 pounds of muscle</div>
-          <div className="c-date">6 / 24 / 17</div>
-          <div className="status">
-            <div className="bar-outer">
-              <div className="bar-inner bar-5"></div>
+          <div className="holder">
+            <div className="goal">Gain 10 pounds of muscle</div>
+            <div className="c-date">6 / 24 / 17</div>
+            <div className="status">
+              <div className="bar-outer">
+                <div className="bar-inner bar-5" />
+              </div>
             </div>
+          </div>
+
+        </div>
+
+        <div className="achieved-goals">
+          <div className="holder">
+            <div className="goal">Lose 10 pounds</div>
+            <div className="c-date">1 / 1 / 17</div>
           </div>
         </div>
 
       </div>
-
-      <div className="achieved-goals">
-        <div className="holder">
-          <div className="goal">Lose 10 pounds</div>
-          <div className="c-date">1 / 1 / 17</div>
-        </div>
-      </div>
-      
-    </div>
     );
   }
 }
@@ -89,11 +89,12 @@ class FoodModal extends React.Component {
                     <th>Calories</th>
                     <th>Serving Size Quantity</th>
                     <th>Serving Size Unit</th>
+                    <th />
                   </tr>
                 </thead>
                 <tbody id="foodSearchBody">
                   <tr>
-{/*
+                    {/*
                     <td id="modalItemName">{this.foodItem}</td>
                     <td id="modalBrandName">Column content</td>
                     <td id="modalCalories">Column content</td>
@@ -203,17 +204,28 @@ class FoodSearch extends React.Component {
                 response.data.hits[i].fields.nf_serving_size_unit +
                 " \n "
             );
-           
-            var rowHtml = $("<tr>");
-            rowHtml.append(`<td>${response.data.hits[i].fields.item_name}</td>`);
-            rowHtml.append(`<td>${response.data.hits[i].fields.brand_name}</td>`);
-            rowHtml.append(`<td>${response.data.hits[i].fields.nf_calories}</td>`);
-            rowHtml.append(`<td>${response.data.hits[i].fields.nf_serving_size_qty}</td>`);
-            rowHtml.append(`<td>${response.data.hits[i].fields.nf_serving_size_unit}</td>`);
-            
-            $("#foodSearchBody").append(rowHtml);
 
-            
+            var rowHtml = $("<tr>");
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.item_name}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.brand_name}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.nf_calories}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.nf_serving_size_qty}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.nf_serving_size_unit}</td>`
+            );
+            rowHtml.append(
+              '<td><i id="savefood" class="fa fa-plus-square" aria-hidden="true"></i></td>'
+            );
+
+            $("#foodSearchBody").append(rowHtml);
           }
         }
         if (response) {
@@ -278,6 +290,61 @@ class UpcSearch extends React.Component {
   }
 }
 class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      brand: "",
+      calory: "",
+      serving1: "",
+      serving2: ""
+    };
+    console.log(this.state);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChange3 = this.handleChange3.bind(this);
+    this.handleChange4 = this.handleChange4.bind(this);
+    this.handleChange5 = this.handleChange5.bind(this);
+    this.handleChange6 = this.handleChange6.bind(this);
+  }
+  handleChange2(event) {
+    this.setState({
+      name: event.target.value
+    });
+    console.log(this.state.name);
+  }
+  handleChange3(event) {
+    this.setState({ brand: event.target.value });
+    console.log(this.state.brand);
+  }
+  handleChange4(event) {
+    this.setState({ calory: event.target.value });
+    console.log(this.state.calory);
+  }
+  handleChange5(event) {
+    this.setState({ serving1: event.target.value });
+    console.log(this.state.serving1);
+  }
+  handleChange6(event) {
+    this.setState({ serving2: event.target.value });
+    console.log(this.state.serving2);
+  }
+  addToCalorieTracker() {
+    var foodName = $("#inputItemName").val().trim();
+    var brandName = $("#inputBrandName").val().trim();
+    var calories = $("#inputCalories").val().trim();
+    var servingSizeQ = $("#inputServingSizeQuantity").val().trim();
+    var servingSizeU = $("#inputServingSizeUnit").val().trim();
+    console.log("The food name is " + foodName);
+
+    var rowHtml = $("<tr>");
+    rowHtml.append(`<td>${foodName}</td>`);
+    rowHtml.append(`<td>${brandName}</td>`);
+    rowHtml.append(`<td>${calories}</td>`);
+    rowHtml.append(`<td>${servingSizeQ}</td>`);
+    rowHtml.append(`<td>${servingSizeU}</td>`);
+
+    $("#calorieTrackerBody").append(rowHtml);
+  }
   render() {
     const modalStyle = {
       display: "block"
@@ -327,6 +394,8 @@ class Modal extends React.Component {
                         className="form-control"
                         id="inputItemName"
                         placeholder="e.g. T Bone Steak"
+                        value={this.state.name}
+                        onChange={this.handleChange2}
                       />
                     </div>
                   </div>
@@ -342,6 +411,8 @@ class Modal extends React.Component {
                         type="text"
                         className="form-control"
                         id="inputBrandName"
+                        value={this.state.brand}
+                        onChange={this.handleChange3}
                         placeholder="e.g. Peter Leuger's Steak House"
                       />
                     </div>
@@ -360,6 +431,8 @@ class Modal extends React.Component {
                         className="form-control"
                         id="inputCalories"
                         placeholder="e.g. 1050"
+                        value={this.state.calory}
+                        onChange={this.handleChange4}
                       />
                     </div>
                   </div>
@@ -378,6 +451,8 @@ class Modal extends React.Component {
                         type="text"
                         className="form-control"
                         id="inputServingSizeQuantity"
+                        value={this.state.serving1}
+                        onChange={this.handleChange5}
                         placeholder="e.g. 1"
                       />
                     </div>
@@ -398,6 +473,8 @@ class Modal extends React.Component {
                         className="form-control"
                         id="inputServingSizeUnit"
                         placeholder="e.g. serving"
+                        value={this.state.serving2}
+                        onChange={this.handleChange6}
                       />
                     </div>
                   </div>
@@ -414,7 +491,11 @@ class Modal extends React.Component {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={this.addToCalorieTracker}
+              >
                 Save changes
               </button>
             </div>
@@ -484,62 +565,15 @@ class CalorieTracker extends React.Component {
                     <th>Serving Size Unit</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="calorieTrackerBody">
                   <tr>
-
-                    <td id="contentItemName">Column content</td>
-                    <td id="contentBrandName">Column content</td>
-                    <td id="contentCalories">Column content</td>
-                    <td id="contentServingSizeQ">Column content</td>
-                    <td id="contentServingSizeU">Column content</td>
-                  </tr>
-                  <tr>
-
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr className="info">
-
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr className="success">
-
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr className="danger">
-
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr className="warning">
-
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr className="active">
-
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
+                    {/*}
+                    //<td id="contentItemName">Column content</td>
+                    //<td id="contentBrandName">Column content</td>
+                    //<td id="contentCalories">Column content</td>
+                    //<td id="contentServingSizeQ">Column content</td>
+                    //<td id="contentServingSizeU">Column content</td>
+*/}
                   </tr>
                 </tbody>
               </table>
@@ -555,69 +589,69 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
-   	 	<div className="row">
-   	 		<div className="jumbotron" id="jumbo">
-   	 			<div className="welcome" id="welcome">
-   	 				<h1 className="welcome">George</h1>
-   	 			</div>
-   	 		</div>
-   	 	</div>
-   		<div className="row">
-   			<div className="col-md-4">
-   				<div className="panel panel-default">
-     					<div className="panel-heading">
-   							<h2 data-background-icon='&#xf2c2;'>User Data</h2>
-   						</div>
-     					<div className="panel-body">
-       					<div className="InitialOutput">
-       									
-   											<InitialOutput />
-       					</div>
-     						</div>
-             </div>
-   			</div>
-   			<div className="col-md-8">
-   				<div className="panel panel-default">
-     				<div className="panel-heading">
-   							<h2 data-background-icon='&#xf140;'>Goals</h2>
-   					</div>
-     			<div className="panel-body">
-   					<div className="userGoals">
+        <div className="row">
+          <div className="jumbotron" id="jumbo">
+            <div className="welcome" id="welcome">
+              <h1 className="welcome">George</h1>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf2c2;">User Data</h2>
+              </div>
+              <div className="panel-body">
+                <div className="InitialOutput">
 
-   								<UserGoals />
-   					</div>
-     			</div>
-   			</div>
-   	   </div>
-   	 </div>
-   		<div className="row">
-   			<div className="col-md-4">
-   				<div className="panel panel-default">
-     					<div className="panel-heading">
-   							<h2 data-background-icon='&#xf1da;'>History</h2>
-   						</div>
-     					<div className="panel-body">
-       					<div className="history">
-       									Panel content
-   											<History />
-       					</div>
-     						</div>
-             </div>
-   			</div>
-   			<div className="col-md-8">
-   				<div className="panel panel-default">
-     				<div className="panel-heading">
-   							<h2 data-background-icon='&#xf08d;'>Calorie Tracker</h2>
-   					</div>
-     			<div className="panel-body">
-   					<div className="calorieTracker">
+                  <InitialOutput />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf140;">Goals</h2>
+              </div>
+              <div className="panel-body">
+                <div className="userGoals">
 
-   								<CalorieTracker />
-   					</div>
-     			</div>
-   			</div>
-   	   </div>
-   	 </div>
+                  <UserGoals />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf1da;">History</h2>
+              </div>
+              <div className="panel-body">
+                <div className="history">
+                  Panel content
+                  <History />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 data-background-icon="&#xf08d;">Calorie Tracker</h2>
+              </div>
+              <div className="panel-body">
+                <div className="calorieTracker">
+
+                  <CalorieTracker />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div> //<!-- close container -->
     );

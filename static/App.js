@@ -242,7 +242,8 @@ var FoodModal = function (_React$Component4) {
                       "th",
                       null,
                       "Serving Size Unit"
-                    )
+                    ),
+                    React.createElement("th", null)
                   )
                 ),
                 React.createElement(
@@ -361,6 +362,7 @@ var FoodSearch = function (_React$Component5) {
             rowHtml.append("<td>" + response.data.hits[i].fields.nf_calories + "</td>");
             rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_qty + "</td>");
             rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_unit + "</td>");
+            rowHtml.append('<td><i id="savefood" class="fa fa-plus-square" aria-hidden="true"></i></td>');
 
             $("#foodSearchBody").append(rowHtml);
           }
@@ -462,13 +464,79 @@ var UpcSearch = function (_React$Component6) {
 var Modal = function (_React$Component7) {
   _inherits(Modal, _React$Component7);
 
-  function Modal() {
+  function Modal(props) {
     _classCallCheck(this, Modal);
 
-    return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
+    var _this7 = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
+
+    _this7.state = {
+      name: "",
+      brand: "",
+      calory: "",
+      serving1: "",
+      serving2: ""
+    };
+    console.log(_this7.state);
+    _this7.handleChange2 = _this7.handleChange2.bind(_this7);
+    _this7.handleChange3 = _this7.handleChange3.bind(_this7);
+    _this7.handleChange4 = _this7.handleChange4.bind(_this7);
+    _this7.handleChange5 = _this7.handleChange5.bind(_this7);
+    _this7.handleChange6 = _this7.handleChange6.bind(_this7);
+    return _this7;
   }
 
   _createClass(Modal, [{
+    key: "handleChange2",
+    value: function handleChange2(event) {
+      this.setState({
+        name: event.target.value
+      });
+      console.log(this.state.name);
+    }
+  }, {
+    key: "handleChange3",
+    value: function handleChange3(event) {
+      this.setState({ brand: event.target.value });
+      console.log(this.state.brand);
+    }
+  }, {
+    key: "handleChange4",
+    value: function handleChange4(event) {
+      this.setState({ calory: event.target.value });
+      console.log(this.state.calory);
+    }
+  }, {
+    key: "handleChange5",
+    value: function handleChange5(event) {
+      this.setState({ serving1: event.target.value });
+      console.log(this.state.serving1);
+    }
+  }, {
+    key: "handleChange6",
+    value: function handleChange6(event) {
+      this.setState({ serving2: event.target.value });
+      console.log(this.state.serving2);
+    }
+  }, {
+    key: "addToCalorieTracker",
+    value: function addToCalorieTracker() {
+      var foodName = $("#inputItemName").val().trim();
+      var brandName = $("#inputBrandName").val().trim();
+      var calories = $("#inputCalories").val().trim();
+      var servingSizeQ = $("#inputServingSizeQuantity").val().trim();
+      var servingSizeU = $("#inputServingSizeUnit").val().trim();
+      console.log("The food name is " + foodName);
+
+      var rowHtml = $("<tr>");
+      rowHtml.append("<td>" + foodName + "</td>");
+      rowHtml.append("<td>" + brandName + "</td>");
+      rowHtml.append("<td>" + calories + "</td>");
+      rowHtml.append("<td>" + servingSizeQ + "</td>");
+      rowHtml.append("<td>" + servingSizeU + "</td>");
+
+      $("#calorieTrackerBody").append(rowHtml);
+    }
+  }, {
     key: "render",
     value: function render() {
       var modalStyle = {
@@ -537,7 +605,9 @@ var Modal = function (_React$Component7) {
                         type: "text",
                         className: "form-control",
                         id: "inputItemName",
-                        placeholder: "e.g. T Bone Steak"
+                        placeholder: "e.g. T Bone Steak",
+                        value: this.state.name,
+                        onChange: this.handleChange2
                       })
                     )
                   ),
@@ -561,6 +631,8 @@ var Modal = function (_React$Component7) {
                         type: "text",
                         className: "form-control",
                         id: "inputBrandName",
+                        value: this.state.brand,
+                        onChange: this.handleChange3,
                         placeholder: "e.g. Peter Leuger's Steak House"
                       })
                     )
@@ -585,7 +657,9 @@ var Modal = function (_React$Component7) {
                         type: "text",
                         className: "form-control",
                         id: "inputCalories",
-                        placeholder: "e.g. 1050"
+                        placeholder: "e.g. 1050",
+                        value: this.state.calory,
+                        onChange: this.handleChange4
                       })
                     )
                   ),
@@ -612,6 +686,8 @@ var Modal = function (_React$Component7) {
                         type: "text",
                         className: "form-control",
                         id: "inputServingSizeQuantity",
+                        value: this.state.serving1,
+                        onChange: this.handleChange5,
                         placeholder: "e.g. 1"
                       })
                     )
@@ -639,7 +715,9 @@ var Modal = function (_React$Component7) {
                         type: "text",
                         className: "form-control",
                         id: "inputServingSizeUnit",
-                        placeholder: "e.g. serving"
+                        placeholder: "e.g. serving",
+                        value: this.state.serving2,
+                        onChange: this.handleChange6
                       })
                     )
                   )
@@ -661,7 +739,11 @@ var Modal = function (_React$Component7) {
               ),
               React.createElement(
                 "button",
-                { type: "button", className: "btn btn-primary" },
+                {
+                  type: "button",
+                  className: "btn btn-primary",
+                  onClick: this.addToCalorieTracker
+                },
                 "Save changes"
               )
             )
@@ -779,210 +861,8 @@ var CalorieTracker = function (_React$Component8) {
                 ),
                 React.createElement(
                   "tbody",
-                  null,
-                  React.createElement(
-                    "tr",
-                    null,
-                    React.createElement(
-                      "td",
-                      { id: "contentItemName" },
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      { id: "contentBrandName" },
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      { id: "contentCalories" },
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      { id: "contentServingSizeQ" },
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      { id: "contentServingSizeU" },
-                      "Column content"
-                    )
-                  ),
-                  React.createElement(
-                    "tr",
-                    null,
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    )
-                  ),
-                  React.createElement(
-                    "tr",
-                    { className: "info" },
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    )
-                  ),
-                  React.createElement(
-                    "tr",
-                    { className: "success" },
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    )
-                  ),
-                  React.createElement(
-                    "tr",
-                    { className: "danger" },
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    )
-                  ),
-                  React.createElement(
-                    "tr",
-                    { className: "warning" },
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    )
-                  ),
-                  React.createElement(
-                    "tr",
-                    { className: "active" },
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    ),
-                    React.createElement(
-                      "td",
-                      null,
-                      "Column content"
-                    )
-                  )
+                  { id: "calorieTrackerBody" },
+                  React.createElement("tr", null)
                 )
               )
             )
