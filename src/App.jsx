@@ -138,13 +138,15 @@ class FoodSearch extends React.Component {
     this.state = {
       foods: [],
       isOpen: false,
-      value: ""
+      value: "",
+      id: "savefood"
     };
     {
       /*this.state = { isOpen: false }; */
     }
     this.toggleFoodModal = this.toggleFoodModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   toggleFoodModal() {
     this.foodSearch();
@@ -154,6 +156,15 @@ class FoodSearch extends React.Component {
     this.setState({ value: event.target.value });
     console.log(this.state.value);
   }
+  
+ handleClick(event){
+   console.log("I'm here");
+   this.setState({id: event.target.id});
+  
+   console.log(this.state.id);
+   $("#calorieTrackerBody").append("#foodSearchBody");
+ }
+  
   foodSearch() {
     {
       /*
@@ -222,7 +233,7 @@ class FoodSearch extends React.Component {
               `<td>${response.data.hits[i].fields.nf_serving_size_unit}</td>`
             );
             rowHtml.append(
-              '<td><i id="savefood" class="fa fa-plus-square" aria-hidden="true"></i></td>'
+              '<td><i id="savefood" type="button" class="fa fa-plus-square" aria-hidden="true" onClick={this.handleClick}></i></td>'
             );
 
             $("#foodSearchBody").append(rowHtml);
@@ -241,7 +252,7 @@ class FoodSearch extends React.Component {
   render() {
     return (
       <div>
-        {" "}You can look up the calories for any food here.
+        {" "}<h2>You can look up the calories for any food here.</h2>
         <br />
         <div className="form-group has-warning ">
 
@@ -273,18 +284,134 @@ class FoodSearch extends React.Component {
   }
 }
 class UpcSearch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      foods: [],
+      isOpen: false,
+      upc: ""
+    };
+    {
+      /*this.state = { isOpen: false }; */
+    }
+    this.toggleFoodModal = this.toggleFoodModal.bind(this);
+    this.handleChange7 = this.handleChange7.bind(this);
+  }
+  toggleFoodModal() {
+    this.upcSearch();
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+  handleChange7(event) {
+    this.setState({ upc: event.target.value });
+    console.log(this.state.upc);
+  }
+  upcSearch() {
+    console.log(this.state.value);
+    var upcItem = this.state.value;
+
+    axios
+      .get(
+        `https://api.nutritionix.com/v1_1/search/${upcItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345`
+      )
+      .then(function(response) {
+        {
+          console.log(response);
+          console.log(response.data.hits["0"].fields.item_name);
+          for (var i = 0; i < 10; i++) {
+            console.log("Item Name: " + response.data.hits[i].fields.item_name);
+            {
+              /*
+            modalItemName = response.data.hits[i].fields.item_name;
+            */
+            }
+
+            console.log(
+              "Brand Name: " + response.data.hits[i].fields.brand_name
+            );
+            console.log(
+              "Food Search Calories = " +
+                response.data.hits[i].fields.nf_calories
+            );
+            console.log(
+              "Serving Size Quantity = " +
+                response.data.hits[i].fields.nf_serving_size_qty
+            );
+            console.log(
+              "Serving Size Unit = " +
+                response.data.hits[i].fields.nf_serving_size_unit +
+                " \n "
+            );
+
+            var rowHtml = $("<tr>");
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.item_name}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.brand_name}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.nf_calories}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.nf_serving_size_qty}</td>`
+            );
+            rowHtml.append(
+              `<td>${response.data.hits[i].fields.nf_serving_size_unit}</td>`
+            );
+            rowHtml.append(
+              '<td><i id="savefood" type="button" class="fa fa-plus-square" aria-hidden="true" onClick={this.moveToCalorieTracker}></i></td>'
+            );
+
+            $("#foodSearchBody").append(rowHtml);
+          }
+        }
+        if (response) {
+          return response.data.hits[0].fields.item_name;
+        }
+        // If we don't get any results, return an empty string
+        return "";
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   render() {
     return (
-      <div>
+      <div className="form-group has-warning ">
+        <h2>You can also search by UPC Code.</h2>
+        <br />
+        {/*
         <div>You can look up the calories for any food here.</div>
         <div>CURRENT DATE DISPLAY</div>
         <div>
           DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS
           (EX. STEAK - 679)
         </div>
-        {" "}<br />
-        You can also search by UPC Code.
-        <br />
+        {" "}
+        
+    */}
+        <label className="control-label" htmlFor="inputWarning">
+          UPC Search: &nbsp;
+        </label>
+        {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
+        <input
+          size="100"
+          className=""
+          value={this.state.upc}
+          onChange={this.handleChange7}
+        />
+        <a>
+          <i
+            className="fa fa-search"
+            aria-hidden="true"
+            type="button"
+            onClick={this.toggleFoodModal}
+          />
+        </a>
+        <FoodModal show={this.state.isOpen} onClose={this.toggleFoodModal}>
+          {/*Here's some content for the modal*/}
+        </FoodModal>
+
       </div>
     );
   }
@@ -342,9 +469,13 @@ class Modal extends React.Component {
     rowHtml.append(`<td>${calories}</td>`);
     rowHtml.append(`<td>${servingSizeQ}</td>`);
     rowHtml.append(`<td>${servingSizeU}</td>`);
+    rowHtml.append(
+      '<td><i id="deleteFood" class="fa fa-minus-circle" aria-hidden="true"></i></td>'
+    );
 
     $("#calorieTrackerBody").append(rowHtml);
   }
+
   render() {
     const modalStyle = {
       display: "block"
@@ -524,23 +655,14 @@ class CalorieTracker extends React.Component {
     return (
       <div>
         <FoodSearch />
-        <br />
 
         <div>
           <UpcSearch />
-          <br />
-          <label className="control-label" htmlFor="inputWarning">
-            UPC Search: &nbsp;
-          </label>
-          {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
-          <input size="100" className="" />
-          <a>
-            <i className="fa fa-search" aria-hidden="true" type="button" />
-          </a>
 
           <div>
-            <br />
-            Keep track of your caloric intake here!
+            
+            <hr />
+            <h1><b>Keep track of your caloric intake here!</b></h1>
             <div className="CalorieTracker">
               <button
                 type="submit"
@@ -563,6 +685,7 @@ class CalorieTracker extends React.Component {
                     <th>Calories</th>
                     <th>Serving Size Quantity</th>
                     <th>Serving Size Unit</th>
+                    <th />
                   </tr>
                 </thead>
                 <tbody id="calorieTrackerBody">

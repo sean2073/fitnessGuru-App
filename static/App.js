@@ -298,13 +298,15 @@ var FoodSearch = function (_React$Component5) {
     _this5.state = {
       foods: [],
       isOpen: false,
-      value: ""
+      value: "",
+      id: "savefood"
     };
     {
       /*this.state = { isOpen: false }; */
     }
     _this5.toggleFoodModal = _this5.toggleFoodModal.bind(_this5);
     _this5.handleChange = _this5.handleChange.bind(_this5);
+    _this5.handleClick = _this5.handleClick.bind(_this5);
     return _this5;
   }
 
@@ -319,6 +321,15 @@ var FoodSearch = function (_React$Component5) {
     value: function handleChange(event) {
       this.setState({ value: event.target.value });
       console.log(this.state.value);
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(event) {
+      console.log("I'm here");
+      this.setState({ id: event.target.id });
+
+      console.log(this.state.id);
+      $("#calorieTrackerBody").append("#foodSearchBody");
     }
   }, {
     key: "foodSearch",
@@ -362,7 +373,7 @@ var FoodSearch = function (_React$Component5) {
             rowHtml.append("<td>" + response.data.hits[i].fields.nf_calories + "</td>");
             rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_qty + "</td>");
             rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_unit + "</td>");
-            rowHtml.append('<td><i id="savefood" class="fa fa-plus-square" aria-hidden="true"></i></td>');
+            rowHtml.append('<td><i id="savefood" type="button" class="fa fa-plus-square" aria-hidden="true" onClick={this.handleClick}></i></td>');
 
             $("#foodSearchBody").append(rowHtml);
           }
@@ -383,7 +394,11 @@ var FoodSearch = function (_React$Component5) {
         "div",
         null,
         " ",
-        "You can look up the calories for any food here.",
+        React.createElement(
+          "h2",
+          null,
+          "You can look up the calories for any food here."
+        ),
         React.createElement("br", null),
         React.createElement(
           "div",
@@ -423,37 +438,113 @@ var FoodSearch = function (_React$Component5) {
 var UpcSearch = function (_React$Component6) {
   _inherits(UpcSearch, _React$Component6);
 
-  function UpcSearch() {
+  function UpcSearch(props) {
     _classCallCheck(this, UpcSearch);
 
-    return _possibleConstructorReturn(this, (UpcSearch.__proto__ || Object.getPrototypeOf(UpcSearch)).apply(this, arguments));
+    var _this6 = _possibleConstructorReturn(this, (UpcSearch.__proto__ || Object.getPrototypeOf(UpcSearch)).call(this, props));
+
+    _this6.state = {
+      foods: [],
+      isOpen: false,
+      upc: ""
+    };
+    {
+      /*this.state = { isOpen: false }; */
+    }
+    _this6.toggleFoodModal = _this6.toggleFoodModal.bind(_this6);
+    _this6.handleChange7 = _this6.handleChange7.bind(_this6);
+    return _this6;
   }
 
   _createClass(UpcSearch, [{
+    key: "toggleFoodModal",
+    value: function toggleFoodModal() {
+      this.upcSearch();
+      this.setState({ isOpen: !this.state.isOpen });
+    }
+  }, {
+    key: "handleChange7",
+    value: function handleChange7(event) {
+      this.setState({ upc: event.target.value });
+      console.log(this.state.upc);
+    }
+  }, {
+    key: "upcSearch",
+    value: function upcSearch() {
+      console.log(this.state.value);
+      var upcItem = this.state.value;
+
+      axios.get("https://api.nutritionix.com/v1_1/search/" + upcItem + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345").then(function (response) {
+        {
+          console.log(response);
+          console.log(response.data.hits["0"].fields.item_name);
+          for (var i = 0; i < 10; i++) {
+            console.log("Item Name: " + response.data.hits[i].fields.item_name);
+            {
+              /*
+              modalItemName = response.data.hits[i].fields.item_name;
+              */
+            }
+
+            console.log("Brand Name: " + response.data.hits[i].fields.brand_name);
+            console.log("Food Search Calories = " + response.data.hits[i].fields.nf_calories);
+            console.log("Serving Size Quantity = " + response.data.hits[i].fields.nf_serving_size_qty);
+            console.log("Serving Size Unit = " + response.data.hits[i].fields.nf_serving_size_unit + " \n ");
+
+            var rowHtml = $("<tr>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.item_name + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.brand_name + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.nf_calories + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_qty + "</td>");
+            rowHtml.append("<td>" + response.data.hits[i].fields.nf_serving_size_unit + "</td>");
+            rowHtml.append('<td><i id="savefood" type="button" class="fa fa-plus-square" aria-hidden="true" onClick={this.moveToCalorieTracker}></i></td>');
+
+            $("#foodSearchBody").append(rowHtml);
+          }
+        }
+        if (response) {
+          return response.data.hits[0].fields.item_name;
+        }
+        // If we don't get any results, return an empty string
+        return "";
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "form-group has-warning " },
         React.createElement(
-          "div",
+          "h2",
           null,
-          "You can look up the calories for any food here."
+          "You can also search by UPC Code."
         ),
-        React.createElement(
-          "div",
-          null,
-          "CURRENT DATE DISPLAY"
-        ),
-        React.createElement(
-          "div",
-          null,
-          "DATE / CALORIES LEFT # / + (ADD FOOR OR DRINK) / ALREADY ADDED ITEMS (EX. STEAK - 679)"
-        ),
-        " ",
         React.createElement("br", null),
-        "You can also search by UPC Code.",
-        React.createElement("br", null)
+        React.createElement(
+          "label",
+          { className: "control-label", htmlFor: "inputWarning" },
+          "UPC Search: \xA0"
+        ),
+        React.createElement("input", {
+          size: "100",
+          className: "",
+          value: this.state.upc,
+          onChange: this.handleChange7
+        }),
+        React.createElement(
+          "a",
+          null,
+          React.createElement("i", {
+            className: "fa fa-search",
+            "aria-hidden": "true",
+            type: "button",
+            onClick: this.toggleFoodModal
+          })
+        ),
+        React.createElement(FoodModal, { show: this.state.isOpen, onClose: this.toggleFoodModal })
       );
     }
   }]);
@@ -533,6 +624,7 @@ var Modal = function (_React$Component7) {
       rowHtml.append("<td>" + calories + "</td>");
       rowHtml.append("<td>" + servingSizeQ + "</td>");
       rowHtml.append("<td>" + servingSizeU + "</td>");
+      rowHtml.append('<td><i id="deleteFood" class="fa fa-minus-circle" aria-hidden="true"></i></td>');
 
       $("#calorieTrackerBody").append(rowHtml);
     }
@@ -787,28 +879,23 @@ var CalorieTracker = function (_React$Component8) {
         "div",
         null,
         React.createElement(FoodSearch, null),
-        React.createElement("br", null),
         React.createElement(
           "div",
           null,
           React.createElement(UpcSearch, null),
-          React.createElement("br", null),
-          React.createElement(
-            "label",
-            { className: "control-label", htmlFor: "inputWarning" },
-            "UPC Search: \xA0"
-          ),
-          React.createElement("input", { size: "100", className: "" }),
-          React.createElement(
-            "a",
-            null,
-            React.createElement("i", { className: "fa fa-search", "aria-hidden": "true", type: "button" })
-          ),
           React.createElement(
             "div",
             null,
-            React.createElement("br", null),
-            "Keep track of your caloric intake here!",
+            React.createElement("hr", null),
+            React.createElement(
+              "h1",
+              null,
+              React.createElement(
+                "b",
+                null,
+                "Keep track of your caloric intake here!"
+              )
+            ),
             React.createElement(
               "div",
               { className: "CalorieTracker" },
@@ -856,7 +943,8 @@ var CalorieTracker = function (_React$Component8) {
                       "th",
                       null,
                       "Serving Size Unit"
-                    )
+                    ),
+                    React.createElement("th", null)
                   )
                 ),
                 React.createElement(
