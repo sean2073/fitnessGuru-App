@@ -40,43 +40,47 @@ var UserSchema = new Schema({
 
       },
       weight: {
-
+        type: Number
       },
       height: {
-
+        type: Number
       },
       waist: {
+        type: Number
 
       },
       hip: {
-
+        type: Number
       },
       activity: {
         type: String
 
       },
-      goals: {
+      goals: [{
+        description: {type:String},
+        dateBegin: {type: Date},
+        dateEnd: {type: Date}
 
-      }
+  }]
   },
   userData: {
     bmi: {
-
+      type: Number
     },
     caloriesDaily: {
-      
+      type: Number
     },
     bodyFat: {
 
     },
     bmr: {
-
+      type: Number
     }
-  },
-  goals: [{
-
-  }]
+    
+  }
+  
 });
+
 
 var User = mongoose.model("User", UserSchema);
 module.exports = User;

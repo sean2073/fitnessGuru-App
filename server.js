@@ -12,7 +12,7 @@ var History = require("./models/User");
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-
+app.use(express.static('static'));
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -26,7 +26,7 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
-mongoose.connect("mongodb://sean2073:sb012073@ds127802.mlab.com:27802/fitnessguru");
+mongoose.connect("mongodb://Patrick316:marvingaye316@ds127802.mlab.com:27802/fitnessguru");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
@@ -60,9 +60,11 @@ app.get("/api", function(req, res) {
     }
   });
 });
-app.use(express.static('static'));
+
 */
-app.listen(8081, function() {
-console.log('App started on port 8081');
+
 });
+
+app.listen(8081, function() {
+  console.log('App started on port 8081');
 });
