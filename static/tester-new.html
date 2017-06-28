@@ -185,6 +185,7 @@
 	</div>
 	<!-- END: SET GOALS -->
 
+	<!-- START: BMI -->
 	<div class="standalone opened">
 		
 		<h1>Body Mass Index</h1>
@@ -242,11 +243,47 @@
 			</div>
 
 		</div>
-
-		
-
-	
-
 	</div>
+	<!-- END: BMI -->
+
+	<!-- START: BMR -->
+	<div class="standalone opened">
+		<h1>Basal Metabloic Rate Calculator</h1>
+		<p>BMR is your minimum calorie expenditue rate, ther rate at which you must expend calories in order to stay alive.</p>
+
+		<form class="bmrCalc" onsubmit="return false;">
+			<h2></h2>
+			<div>
+		 		<label for="gender">Gender:</label>
+			 	<select name="gender">
+					<option value="empty-placeholder"></option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</div>
+
+			<div>
+			 	<label for="age">Age:</label>
+			 	<input type="number" name="age" min="0" max="100">
+		 	</div>
+
+			<div>
+		 		<label for="weight">Weight:</label>
+				<input type="number" name="weight" min="0" max="600">
+			</div>
+		 	
+		 	<div>
+			 	<label for="height-ft">Height:</label>
+			 	<input type="number" name="height-ft" min="0" max="7">
+				<input type="number" name="height-in" min="0" max="12">
+			</div>
+
+			<div>
+				<input type="submit" value="Calculate BMR" onclick="bmrCalc('calculate_BMR',this)">
+			</div>
+		</form>
+	</div>
+	<!-- END: BMR -->
+
 </body>
 </html>
