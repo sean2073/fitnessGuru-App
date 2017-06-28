@@ -694,7 +694,8 @@ form span input{
 .profile-creator,
 .goal-creator,
 .user-login,
-.user-signup{
+.user-signup,
+.bmrCalc{
 	display: flex;
 	flex-direction: column;
 	min-width: 50%;
@@ -703,7 +704,8 @@ form span input{
 	padding:20px;
 }
 .profile-creator h2,
-.user-signup h2{
+.user-signup h2,
+.bmrCalc h2{
 	padding: 20px;
 	background-color: rgba(0,0,0,.05);
 	color: rgba(0,0,0,.3);
@@ -712,13 +714,15 @@ form span input{
 	margin: 10px 0;
 }
 .profile-creator h2:before,
-.user-signup h2:before{
+.user-signup h2:before,
+.bmrCalc h2:before{
 	content: "Please Fill Out The Form Below to Continue";
 }
 .profile-creator div,
 .goal-creator div,
 .user-login div,
-.user-signup div{
+.user-signup div,
+.bmrCalc div{
 	margin-top: 20px;
 	font-size: x-large;
 	display: flex;
@@ -731,7 +735,8 @@ form span input{
 .profile-creator label,
 .goal-creator label,
 .user-login label,
-.user-signup label{
+.user-signup label,
+.bmrCalc label{
 	padding-right: 10px;
 	display: flex;
 	text-align: center;
@@ -743,7 +748,9 @@ form span input{
 .user-login input,
 .user-login select,
 .user-signup input,
-.user-signup select{
+.user-signup select,
+.bmrCalc input,
+.bmrCalc select{
 	background-color: rgba(0,0,0,.2);
 	text-align: center;
 	font-size: xx-large;
@@ -767,7 +774,8 @@ form span input{
 .profile-creator input[type=submit],
 .goal-creator input[type=submit],
 .user-login input[type=submit],
-.user-signup input[type=submit]{
+.user-signup input[type=submit],
+.bmrCalc input[type=submit]{
 	border-radius: 20px;
 	background-color: rgba(255,255,255,0.5);
 	font-weight: light;
@@ -778,7 +786,8 @@ form span input{
 .profile-creator input[type=submit]:hover,
 .goal-creator input[type=submit]:hover,
 .user-login input[type=submit]:hover,
-.user-signup input[type=submit]:hover{
+.user-signup input[type=submit]:hover,
+.bmrCalc input[type=submit]:hover{
 	background-color: rgba(255,255,255,0.8);
 }
 .profile-creator ::-webkit-input-placeholder,
@@ -1066,6 +1075,9 @@ form span input{
 	content: "Achieved Goals";
 }
 
+.bmrCalc div:nth-of-type(4) input:nth-of-type(1){
+	margin-right: 20px;
+}
 
 /*!!!!!!!!!!!!!!!!*/
 /*MEDIA QUERIES*/
