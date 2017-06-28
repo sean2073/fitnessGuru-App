@@ -216,7 +216,62 @@ function bmiCalc(data, element) {
 }
 
 function bmrCalc(data, element) {
+	console.important("BMR Calculation:");
+	var whatToDo = data.split("-")[0];
 
+	if(whatToDo == "calculate_BMR"){
+		var canCalculate = true;
+
+		//get GENDER
+		var user_gender = element.parentNode.parentNode.children[1].children[1].value;
+
+		//get AGE
+		var user_age = element.parentNode.parentNode.children[2].children[1].value;
+
+		//get WEIGHT
+		var user_weight = element.parentNode.parentNode.children[3].children[1].value;
+		//convert it from pounds to kg
+		//and round up to nears 0.000
+		var user_weight_KG =  Math.round( (user_weight * 0.45359237) * 1000) / 1000;
+
+		//get HEIGHT
+		//then convert height to inches
+		var user_height_FT = element.parentNode.parentNode.children[4].children[1].value;
+		var user_height_IN = element.parentNode.parentNode.children[4].children[2].value;
+		if(!user_height_FT){ user_height_FT = 0;}
+		if(!user_height_IN){ user_height_IN= 0;}
+		//convert feet to inches
+		var feet_as_inches = user_height_FT * 12;
+		//add it to inches
+		var user_total_inches = parseInt(user_height_IN) + feet_as_inches;
+		//convert it to CM
+		var user_height_CM = Math.round( (user_total_inches * 2.54) * 1000) / 1000;
+
+
+		//check for missing VARS
+		if(user_gender == "empty-placeholder" 
+			|| user_gender == ""
+			|| user_weight == "" || user_weight == 0
+			|| user_height_CM == "" || user_height_CM == 0){
+			canCalculate = false; 
+		}
+
+		if(canCalculate){
+			console.log("User is: " +user_gender
+			+ ", Age: " + user_age
+			+ ", Weight: " + user_weight
+			+ ", Height: " + user_height_FT + "ft "+ user_height_CM + "in");
+
+			var bmr_GenderSwitch = 5;
+			if(user_gender == "female"){ bmr_GenderSwitch = -161; }
+			var bmr = (user_height_CM * 6.25) + (user_weight_KG * 9.99) - (user_age * 4.92) + bmr_GenderSwitch;
+
+			console.log("User BMR: " + bmr);
+		}else{
+			console.log("ERROR Calulating...missing one or more input");
+		}
+
+	}
 }
 
 console.important = function( msg){
