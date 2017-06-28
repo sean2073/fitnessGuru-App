@@ -52,16 +52,76 @@ class UserGoals extends React.Component {
     );
   }
 }
+class FoodTableRow extends React.Component {
+  render() {
+    console.log(this.props);
+    // let foodNode = this.props.foodSearchResponse.data.hits.map(food => {
+    //   console.log("food ", food);
+    //   return (
+    //      <td id="modalItemName">{this.foodItem}</td>
+    //                 <td id="modalBrandName">Column content</td>
+    //                 <td id="modalCalories">Column content</td>
+    //                 <td id="modalServingSizeQ">Column content</td>
+    //                 <td id="modalServingSizeU">Column content</td>
+    //   )
+    // });
+  }
+}
+
 class FoodModal extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("PROPS");
+    console.log(this.props);
+  }
   render() {
     const modalStyle = {
       display: "block"
     };
-
     // Render nothing if the "show" prop is false
     if (!this.props.show) {
       return null;
     }
+    console.log("FoodModal Props: ");
+    console.log(this.props);
+   // const indexNum = [{"num1": 0, "num2": 1, "num3": 2, "num4": 3, "num5": 4, "num6": 5, "num7": 6, "num8": 7, "num9": 8, "num10": 9}];
+    //const hitNum = indexNum.map((hit) =>
+    //<li key={hit.num1} />);
+
+     // console.log("the index should be: " , hitNum);
+      //console.log(this.props.foodSearchResponse.hits[0]);
+
+  
+   
+    //var foodNodes = this.props.foodSearchResponse.hits[hitNum].map(food => {
+      const rowHits = this.props.foodSearchResponse.hits;
+      const foodNodes = rowHits.map(food => {
+      
+      
+      console.log("food ", food);
+      console.log("rowhits = " ,foodNodes);
+      console.log("test if right " + food.fields.brand_name);
+      return (
+        <div>
+          <tr key={food.rowHits}>
+          <td id="modalItemName">{food.fields.item_name}</td>
+          <td id="modalBrandName">{food.fields.brand_name}</td>
+          <td id="modalCalories">{food.fields.nf_calories}</td>
+          <td id="modalServingSizeQ">{food.fields.nf_serving_size_qty}</td>
+          <td id="modalServingSizeU">{food.fields.nf_serving_size_unit}</td>
+          <td>
+            <i
+              id="savefood"
+              type="button"
+              className="fa fa-plus-square"
+              aria-hidden="true"
+              onClick={this.handleClick}
+            />
+          </td></tr>
+        </div>
+      );
+    });
+
     return (
       <div className="modal" style={modalStyle}>
         <div className="modal-dialog">
@@ -77,7 +137,7 @@ class FoodModal extends React.Component {
                 &times;
               </button>
               <h4 className="modal-title">Food Search</h4>
-            </div>
+            
             <div className="modal-body">
               {this.props.children}
               <table className="table table-striped table-hover ">
@@ -94,18 +154,13 @@ class FoodModal extends React.Component {
                 </thead>
                 <tbody id="foodSearchBody">
                   <tr>
-                    {/*
-                    <td id="modalItemName">{this.foodItem}</td>
-                    <td id="modalBrandName">Column content</td>
-                    <td id="modalCalories">Column content</td>
-                    <td id="modalServingSizeQ">Column content</td>
-                    <td id="modalServingSizeU">Column content</td>
-                 */}
+                    {foodNodes}
+                 
                   </tr>
                 </tbody>
               </table>
 
-            </div>
+           
 
             <div className="modal-footer">
               <button
@@ -119,6 +174,8 @@ class FoodModal extends React.Component {
               <button type="button" className="btn btn-primary">
                 Save changes
               </button>
+              </div>
+               </div>
             </div>
           </div>
         </div>
@@ -139,7 +196,8 @@ class FoodSearch extends React.Component {
       foods: [],
       isOpen: false,
       value: "",
-      id: "savefood"
+      id: "savefood",
+      searchResults: {}
     };
     {
       /*this.state = { isOpen: false }; */
@@ -147,6 +205,7 @@ class FoodSearch extends React.Component {
     this.toggleFoodModal = this.toggleFoodModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.foodSearch = this.foodSearch.bind(this);
   }
   toggleFoodModal() {
     this.foodSearch();
@@ -156,16 +215,17 @@ class FoodSearch extends React.Component {
     this.setState({ value: event.target.value });
     console.log(this.state.value);
   }
-  
- handleClick(event){
-   console.log("I'm here");
-   this.setState({id: event.target.id});
-  
-   console.log(this.state.id);
-   $("#calorieTrackerBody").append("#foodSearchBody");
- }
-  
+
+  handleClick(event) {
+    console.log("I'm here");
+    this.setState({ id: event.target.id });
+
+    console.log(this.state.id);
+    $("#calorieTrackerBody").append("#foodSearchBody");
+  }
+
   foodSearch() {
+    var searchResThing;
     {
       /*
     var foodItem = "T Bone Steak";
@@ -183,11 +243,14 @@ class FoodSearch extends React.Component {
 
 */
     }
+
     axios
       .get(
         `https://api.nutritionix.com/v1_1/search/${foodItem}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=72f3ed22&appKey=37030fdbef37ca11eaa7f4f557ccf345`
       )
-      .then(function(response) {
+      .then(response => {
+        this.setState({ searchResults: response.data });
+       
         {
           console.log(response);
           console.log(response.data.hits["0"].fields.item_name);
@@ -216,7 +279,7 @@ class FoodSearch extends React.Component {
                 " \n "
             );
 
-            var rowHtml = $("<tr>");
+            /*var rowHtml = $("<tr>");
             rowHtml.append(
               `<td>${response.data.hits[i].fields.item_name}</td>`
             );
@@ -237,6 +300,7 @@ class FoodSearch extends React.Component {
             );
 
             $("#foodSearchBody").append(rowHtml);
+            */
           }
         }
         if (response) {
@@ -275,7 +339,11 @@ class FoodSearch extends React.Component {
               onClick={this.toggleFoodModal}
             />
           </a>
-          <FoodModal show={this.state.isOpen} onClose={this.toggleFoodModal}>
+          <FoodModal
+            foodSearchResponse={this.state.searchResults}
+            show={this.state.isOpen}
+            onClose={this.toggleFoodModal}
+          >
             {/*Here's some content for the modal*/}
           </FoodModal>
         </div>
@@ -660,7 +728,7 @@ class CalorieTracker extends React.Component {
           <UpcSearch />
 
           <div>
-            
+
             <hr />
             <h1><b>Keep track of your caloric intake here!</b></h1>
             <div className="CalorieTracker">
