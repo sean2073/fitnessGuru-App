@@ -285,5 +285,60 @@
 	</div>
 	<!-- END: BMR -->
 
+
+
+	<!-- START: BODY FAT % -->
+		<div class="standalone opened">
+		<h1>Body Fat Percentage</h1>
+		<p>Body Fat is the amount of fat in your body, compared to everything else. The numbers can be broken up into categories of health for men and women.</p>
+
+		<form class="bodyFatCalc" onsubmit="return false;">
+			<h2></h2>
+
+			<div class="gender-type">
+				<label for="gender-m">Male</label>
+				<input type="radio" name="genders" onclick="bodyFatCalc('change_toMale',this)">
+
+				<label for="gender-f">Female</label>
+				<input type="radio" name="genders" onclick="bodyFatCalc('change_toFemale',this)">
+			</div>
+
+			<div style="display: none">
+		 		<label for="weight">Weight:</label>
+				<input type="number" name="weight" maxlength="3">
+			</div>
+
+			<div style="display: none">
+			 	<label for="waist">Waist at Umbilicus: </label>
+				<input type="number" name="waist" step="0.01">
+			</div>
+
+			<div style="display: none">
+			 	<label for="wrist">Wrist at Widest:</label>
+				<input type="number" name="wrist" step="0.01">
+			</div>
+
+			<div style="display: none">
+			 	<label for="hip">Hip at Widest: </label>
+				<input type="number" name="hip" step="0.01">
+			</div>
+
+			<div style="display: none">
+			 	<label for="forearm">Forearm at Widest: </label>
+				<input type="number" name="forearm" step="0.01">
+			</div>
+
+			<div>
+				<input type="submit" value="Calculate Body Fat" onclick="bodyFatCalc('calculate',this)">
+			</div>
+
+			<div id="hide">
+				<!-- results placeholder -->
+			</div>
+
+		</form>
+	</div>
+	<!-- END: BODY FAT % -->
+
 </body>
 </html>

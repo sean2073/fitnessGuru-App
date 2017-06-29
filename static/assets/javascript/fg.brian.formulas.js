@@ -274,6 +274,126 @@ function bmrCalc(data, element) {
 	}
 }
 
+function bodyFatCalc(data, element) {
+	console.important("Body Fat % Calculation:");
+	var whatToDo = data.split("-")[0];
+
+	if(whatToDo == "change_toMale"){
+		//hide every input except for
+		//bodyweight & waist....
+		//also dont his the calculation result...and submit button
+		var bodyFat_formHolder = element.parentNode.parentNode.children;
+		
+		for (var i = 1; i < 4; i++) {
+			//show bodyweight & waist
+			//just in case
+			bodyFat_formHolder[i].style.display="";
+		}
+
+		for (var i = 4; i < bodyFat_formHolder.length-2; i++) {
+			bodyFat_formHolder[i].style.display="none";
+		}
+		console.log("Form-Type Changed To Male.");
+
+		//hide result div
+		element.parentNode.parentNode.children[8].id = "hide";
+	}
+	if(whatToDo == "change_toFemale"){
+		//show every input
+		var bodyFat_formHolder = element.parentNode.parentNode.children;
+		for (var i = 4; i < bodyFat_formHolder.length-2; i++) {
+			bodyFat_formHolder[i].style.display="";
+		}
+		console.log("Form-Type Changed To Female.");
+
+		//hide result div
+		element.parentNode.parentNode.children[8].id = "hide";		
+	}
+
+	if(whatToDo == "calculate"){
+		//which?
+		var isGenderMale = element.parentNode.parentNode.children[1].children[1].checked;
+		var isGenderFemale = element.parentNode.parentNode.children[1].children[3].checked;
+
+		if(isGenderMale == true){ 
+			bodyFatCalc("calculate_male", element);
+		}else if(isGenderFemale == true){ 
+			bodyFatCalc("calculate_female", element); 
+		}else{
+			console.log("ERROR Calulating...missing one or more input");
+		}
+	}
+
+	if(whatToDo == "calculate_male"){
+		var bodyFat_formHolder = element.parentNode.parentNode.children;
+
+		var weight = bodyFat_formHolder[2].children[1].value;
+		var waist = bodyFat_formHolder[3].children[1].value;
+
+		if(weight == "" || waist == ""){
+			console.log("ERROR Calulating...missing one or more input");
+		}else{
+			//calculate!
+			console.log("Calulating...Body Fat %");
+
+			var value1 = (weight * 1.082) + 94.42;
+			var value2 = (waist * 4.15);
+			//your weight IF you had No fat in your body
+			var leanBody_Mass = Math.round(value1 - value2);
+			var bodyFat = (((weight - leanBody_Mass) * 100) / weight).toFixed(2);
+
+			var resultDIV = element.parentNode.parentNode.children[8];
+			resultDIV.innerHTML = bodyFat;
+			resultDIV.id = "";//unhide result div
+
+			console.log("User's body fat = "+ bodyFat + "%");
+		}
+	}
+
+	if(whatToDo == "calculate_female"){
+		var bodyFat_formHolder = element.parentNode.parentNode.children;
+
+		var weight = bodyFat_formHolder[2].children[1].value;
+		var waist = bodyFat_formHolder[3].children[1].value;
+		var wrist = bodyFat_formHolder[4].children[1].value;
+		var hip = bodyFat_formHolder[5].children[1].value;
+		var forearm = bodyFat_formHolder[6].children[1].value;
+
+		if(weight == "" || waist == "" || wrist == "" 
+			|| hip == "" || forearm == ""){
+			console.log("ERROR Calulating...missing one or more input");
+		}else{
+			//calculate!
+			console.log("Calulating...Body Fat %");
+
+			//this code is not to nicely-written...
+			//...but the forumla I wrote it from was even worse...
+			//...so I got that going for me I guess...
+
+			var result1 = weight * 0.732;
+			var result2 = result1 + 8.987;
+			var result3 = wrist / 3.14;
+			var result4 = waist * 0.157;
+			var result5 = hip * 0.249;
+			var result6 = forearm * 0.434;
+			var result7 = result2 + result3;
+			var result8 = result7 - result4;
+			var result9 = result8 - result5;
+
+			var leanBody_Mass = Math.round(result6 + result9);
+
+			var bodyFat = (((weight - leanBody_Mass) * 100) / weight).toFixed(2);
+
+			var resultDIV = element.parentNode.parentNode.children[8];
+			resultDIV.innerHTML = bodyFat;
+			resultDIV.id = ""; //unhide result div
+
+			console.log("User's body fat = "+ bodyFat + "%");
+		}
+	}
+
+}
+
 console.important = function( msg){
 	console.log( '%c%s %s %s', 'color: white; font-size: large; font-weight: bold; background-color: rgba(0,0,0,0.5)', '', msg, '');
 }
