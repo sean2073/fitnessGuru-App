@@ -68,13 +68,63 @@ class FoodTableRow extends React.Component {
   }
 }
 
+
 class FoodModal extends React.Component {
   constructor(props) {
     super(props);
     console.log("PROPS");
     console.log(this.props);
+    
+    this.newCalorieRow = this.newCalorieRow.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
+  
+newCalorieRow(foodItemName) { 
+  
+    <tr>
+      
+          <td id="contentItemName">{foodItemName}</td>
+         // <td id="contentBrandName">{this.props.foodBrandName}</td>
+        //  <td id="contentCalories">{this.props.foodCalories}</td>
+        //  <td id="contentServingSizeQ">{this.props.foodServingSizeQ}</td>
+        //  <td id="contentServingSizeU">{this.props.foodServingSzieU}</td>
+        
+        //  <td><i id="deleteFood" class="fa fa-minus-circle" aria-hidden="true"></i></td>'
+          
+          
+          </tr>
+  }
+  handleClick(event) {
+    console.log("I'm here");
+    //console.log("food Item: ",foodItemName);
+    this.newCalorieRow(foodItemName);
+   /* <td id="modalItemName">{food.fields.item_name}</td>
+          <td id="modalBrandName">{food.fields.brand_name}</td>
+          <td id="modalCalories">{food.fields.nf_calories}</td>
+          <td id="modalServingSizeQ">{food.fields.nf_serving_size_qty}</td>
+          <td id="modalServingSizeU">{food.fields.nf_serving_size_unit}</td>
+    */
+    <tr>
+    <td id="contentItemName"> foodItemName</td>
+    </tr>
+    /*
+                    //<td id="contentBrandName">Column content</td>
+                    //<td id="contentCalories">Column content</td>
+                    //<td id="contentServingSizeQ">Column content</td>
+                    //<td id="contentServingSizeU">Column content</td>
+    /*
+    < NewCalorieRow foodItemName="{this.food.fields.item_name}"
+      foodBrandName="{this.food.fields.brand_name}"
+      foodCalories="{this.food.fields.nf_calories}"
+      foodServingSizeQ="{this.food.fields.nf_serving_size_qty}"
+      foodServingSzieU="{this.food.fields.nf_serving_size_unit}" />
+
+    */
+  }
+  
+
   render() {
+    
     const modalStyle = {
       display: "block"
     };
@@ -94,16 +144,21 @@ class FoodModal extends React.Component {
   
    
     //var foodNodes = this.props.foodSearchResponse.hits[hitNum].map(food => {
-      const rowHits = this.props.foodSearchResponse.hits;
-      const foodNodes = rowHits.map(food => {
+      console.log(`Food Search Response Hits: ${this.props.foodSearchResponse.hits}`);
+      let rowHits = this.props.foodSearchResponse.hits;
       
+      if(!rowHits){ rowHits = []; }
+
+      const foodNodes = rowHits.map((food, index) => {
       
+     
+      console.log("food Item: ",foodItemName);
       console.log("food ", food);
       console.log("rowhits = " ,foodNodes);
       console.log("test if right " + food.fields.brand_name);
       return (
-        <div>
-          <tr key={food.rowHits}>
+        
+          <tr key={index} className="{index}">
           <td id="modalItemName">{food.fields.item_name}</td>
           <td id="modalBrandName">{food.fields.brand_name}</td>
           <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -118,9 +173,11 @@ class FoodModal extends React.Component {
               onClick={this.handleClick}
             />
           </td></tr>
-        </div>
+    
       );
-    });
+    }
+    );
+    const {foodItemName} = this.props.food.fields.brand_name;
 
     return (
       <div className="modal" style={modalStyle}>
@@ -142,7 +199,7 @@ class FoodModal extends React.Component {
               {this.props.children}
               <table className="table table-striped table-hover ">
                 <thead>
-                  <tr>
+                  <tr className="calorieTrackerRow">
 
                     <th>Item Name</th>
                     <th>Brand Name</th>
@@ -153,10 +210,7 @@ class FoodModal extends React.Component {
                   </tr>
                 </thead>
                 <tbody id="foodSearchBody">
-                  <tr>
                     {foodNodes}
-                 
-                  </tr>
                 </tbody>
               </table>
 
@@ -204,7 +258,7 @@ class FoodSearch extends React.Component {
     }
     this.toggleFoodModal = this.toggleFoodModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    
     this.foodSearch = this.foodSearch.bind(this);
   }
   toggleFoodModal() {
@@ -216,13 +270,7 @@ class FoodSearch extends React.Component {
     console.log(this.state.value);
   }
 
-  handleClick(event) {
-    console.log("I'm here");
-    this.setState({ id: event.target.id });
-
-    console.log(this.state.id);
-    $("#calorieTrackerBody").append("#foodSearchBody");
-  }
+  
 
   foodSearch() {
     var searchResThing;
@@ -253,7 +301,7 @@ class FoodSearch extends React.Component {
        
         {
           console.log(response);
-          console.log(response.data.hits["0"].fields.item_name);
+         // console.log(response.data.hits["0"].fields.item_name);
           for (var i = 0; i < 10; i++) {
             console.log("Item Name: " + response.data.hits[i].fields.item_name);
             {
@@ -546,7 +594,13 @@ class Modal extends React.Component {
 
   render() {
     const modalStyle = {
-      display: "block"
+      display: "block",
+      
+    };
+    const modalStyle2 = {
+      maxWidth: 900,
+      minHeight: 700
+      
     };
 
     // Render nothing if the "show" prop is false
@@ -555,8 +609,8 @@ class Modal extends React.Component {
     }
     return (
       <div className="modal" style={modalStyle}>
-        <div className="modal-dialog">
-          <div className="modal-content">
+        <div className="modal-dialog">>
+          <div className="modal-content" >
             <div className="modal-header">
               <button
                 type="button"

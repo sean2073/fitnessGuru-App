@@ -195,10 +195,92 @@ var FoodModal = function (_React$Component5) {
 
     console.log("PROPS");
     console.log(_this5.props);
+
+    _this5.newCalorieRow = _this5.newCalorieRow.bind(_this5);
+    _this5.handleClick = _this5.handleClick.bind(_this5);
     return _this5;
   }
 
   _createClass(FoodModal, [{
+    key: "newCalorieRow",
+    value: function newCalorieRow(foodItemName) {
+
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "td",
+          { id: "contentItemName" },
+          foodItemName
+        ),
+        "// ",
+        React.createElement(
+          "td",
+          { id: "contentBrandName" },
+          this.props.foodBrandName
+        ),
+        "//  ",
+        React.createElement(
+          "td",
+          { id: "contentCalories" },
+          this.props.foodCalories
+        ),
+        "//  ",
+        React.createElement(
+          "td",
+          { id: "contentServingSizeQ" },
+          this.props.foodServingSizeQ
+        ),
+        "//  ",
+        React.createElement(
+          "td",
+          { id: "contentServingSizeU" },
+          this.props.foodServingSzieU
+        ),
+        "//  ",
+        React.createElement(
+          "td",
+          null,
+          React.createElement("i", { id: "deleteFood", "class": "fa fa-minus-circle", "aria-hidden": "true" })
+        ),
+        "'"
+      );
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(event) {
+      console.log("I'm here");
+      //console.log("food Item: ",foodItemName);
+      this.newCalorieRow(foodItemName);
+      /* <td id="modalItemName">{food.fields.item_name}</td>
+             <td id="modalBrandName">{food.fields.brand_name}</td>
+             <td id="modalCalories">{food.fields.nf_calories}</td>
+             <td id="modalServingSizeQ">{food.fields.nf_serving_size_qty}</td>
+             <td id="modalServingSizeU">{food.fields.nf_serving_size_unit}</td>
+       */
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "td",
+          { id: "contentItemName" },
+          " foodItemName"
+        )
+      );
+      /*
+                      //<td id="contentBrandName">Column content</td>
+                      //<td id="contentCalories">Column content</td>
+                      //<td id="contentServingSizeQ">Column content</td>
+                      //<td id="contentServingSizeU">Column content</td>
+      /*
+      < NewCalorieRow foodItemName="{this.food.fields.item_name}"
+        foodBrandName="{this.food.fields.brand_name}"
+        foodCalories="{this.food.fields.nf_calories}"
+        foodServingSizeQ="{this.food.fields.nf_serving_size_qty}"
+        foodServingSzieU="{this.food.fields.nf_serving_size_unit}" />
+       */
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this6 = this;
@@ -221,57 +303,62 @@ var FoodModal = function (_React$Component5) {
 
 
       //var foodNodes = this.props.foodSearchResponse.hits[hitNum].map(food => {
+      console.log("Food Search Response Hits: " + this.props.foodSearchResponse.hits);
       var rowHits = this.props.foodSearchResponse.hits;
-      var foodNodes = rowHits.map(function (food) {
 
+      if (!rowHits) {
+        rowHits = [];
+      }
+
+      var foodNodes = rowHits.map(function (food, index) {
+
+        console.log("food Item: ", foodItemName);
         console.log("food ", food);
         console.log("rowhits = ", foodNodes);
         console.log("test if right " + food.fields.brand_name);
         return React.createElement(
-          "div",
-          null,
+          "tr",
+          { key: index, className: "{index}" },
           React.createElement(
-            "tr",
-            { key: food.rowHits },
-            React.createElement(
-              "td",
-              { id: "modalItemName" },
-              food.fields.item_name
-            ),
-            React.createElement(
-              "td",
-              { id: "modalBrandName" },
-              food.fields.brand_name
-            ),
-            React.createElement(
-              "td",
-              { id: "modalCalories" },
-              food.fields.nf_calories
-            ),
-            React.createElement(
-              "td",
-              { id: "modalServingSizeQ" },
-              food.fields.nf_serving_size_qty
-            ),
-            React.createElement(
-              "td",
-              { id: "modalServingSizeU" },
-              food.fields.nf_serving_size_unit
-            ),
-            React.createElement(
-              "td",
-              null,
-              React.createElement("i", {
-                id: "savefood",
-                type: "button",
-                className: "fa fa-plus-square",
-                "aria-hidden": "true",
-                onClick: _this6.handleClick
-              })
-            )
+            "td",
+            { id: "modalItemName" },
+            food.fields.item_name
+          ),
+          React.createElement(
+            "td",
+            { id: "modalBrandName" },
+            food.fields.brand_name
+          ),
+          React.createElement(
+            "td",
+            { id: "modalCalories" },
+            food.fields.nf_calories
+          ),
+          React.createElement(
+            "td",
+            { id: "modalServingSizeQ" },
+            food.fields.nf_serving_size_qty
+          ),
+          React.createElement(
+            "td",
+            { id: "modalServingSizeU" },
+            food.fields.nf_serving_size_unit
+          ),
+          React.createElement(
+            "td",
+            null,
+            React.createElement("i", {
+              id: "savefood",
+              type: "button",
+              className: "fa fa-plus-square",
+              "aria-hidden": "true",
+              onClick: _this6.handleClick
+            })
           )
         );
       });
+      var foodItemName = this.props.food.fields.brand_name.foodItemName;
+
 
       return React.createElement(
         "div",
@@ -313,7 +400,7 @@ var FoodModal = function (_React$Component5) {
                     null,
                     React.createElement(
                       "tr",
-                      null,
+                      { className: "calorieTrackerRow" },
                       React.createElement(
                         "th",
                         null,
@@ -345,11 +432,7 @@ var FoodModal = function (_React$Component5) {
                   React.createElement(
                     "tbody",
                     { id: "foodSearchBody" },
-                    React.createElement(
-                      "tr",
-                      null,
-                      foodNodes
-                    )
+                    foodNodes
                   )
                 ),
                 React.createElement(
@@ -408,7 +491,7 @@ var FoodSearch = function (_React$Component6) {
     }
     _this7.toggleFoodModal = _this7.toggleFoodModal.bind(_this7);
     _this7.handleChange = _this7.handleChange.bind(_this7);
-    _this7.handleClick = _this7.handleClick.bind(_this7);
+
     _this7.foodSearch = _this7.foodSearch.bind(_this7);
     return _this7;
   }
@@ -424,15 +507,6 @@ var FoodSearch = function (_React$Component6) {
     value: function handleChange(event) {
       this.setState({ value: event.target.value });
       console.log(this.state.value);
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick(event) {
-      console.log("I'm here");
-      this.setState({ id: event.target.id });
-
-      console.log(this.state.id);
-      $("#calorieTrackerBody").append("#foodSearchBody");
     }
   }, {
     key: "foodSearch",
@@ -462,7 +536,7 @@ var FoodSearch = function (_React$Component6) {
 
         {
           console.log(response);
-          console.log(response.data.hits["0"].fields.item_name);
+          // console.log(response.data.hits["0"].fields.item_name);
           for (var i = 0; i < 10; i++) {
             console.log("Item Name: " + response.data.hits[i].fields.item_name);
             {
@@ -758,6 +832,12 @@ var Modal = function (_React$Component8) {
     value: function render() {
       var modalStyle = {
         display: "block"
+
+      };
+      var modalStyle2 = {
+        maxWidth: 900,
+        minHeight: 700
+
       };
 
       // Render nothing if the "show" prop is false
@@ -770,6 +850,7 @@ var Modal = function (_React$Component8) {
         React.createElement(
           "div",
           { className: "modal-dialog" },
+          ">",
           React.createElement(
             "div",
             { className: "modal-content" },
