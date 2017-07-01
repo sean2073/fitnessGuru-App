@@ -251,7 +251,7 @@ var FoodModal = function (_React$Component5) {
     value: function handleClick(event) {
       console.log("I'm here");
       //console.log("food Item: ",foodItemName);
-      this.newCalorieRow(foodItemName);
+      // this.newCalorieRow(foodItemName);
       /* <td id="modalItemName">{food.fields.item_name}</td>
              <td id="modalBrandName">{food.fields.brand_name}</td>
              <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -312,7 +312,7 @@ var FoodModal = function (_React$Component5) {
 
       var foodNodes = rowHits.map(function (food, index) {
 
-        console.log("food Item: ", foodItemName);
+        // console.log("food Item: ",foodItemName);
         console.log("food ", food);
         console.log("rowhits = ", foodNodes);
         console.log("test if right " + food.fields.brand_name);
@@ -357,8 +357,7 @@ var FoodModal = function (_React$Component5) {
           )
         );
       });
-      var foodItemName = this.props.food.fields.brand_name.foodItemName;
-
+      // const {foodItemName} = this.props.food.fields.brand_name;
 
       return React.createElement(
         "div",
@@ -387,72 +386,66 @@ var FoodModal = function (_React$Component5) {
                 "h4",
                 { className: "modal-title" },
                 "Food Search"
-              ),
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "modal-body" },
+              this.props.children,
               React.createElement(
-                "div",
-                { className: "modal-body" },
-                this.props.children,
+                "table",
+                { className: "table table-striped table-hover " },
                 React.createElement(
-                  "table",
-                  { className: "table table-striped table-hover " },
+                  "thead",
+                  null,
                   React.createElement(
-                    "thead",
-                    null,
+                    "tr",
+                    { className: "calorieTrackerRow" },
                     React.createElement(
-                      "tr",
-                      { className: "calorieTrackerRow" },
-                      React.createElement(
-                        "th",
-                        null,
-                        "Item Name"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Brand Name"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Calories"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Serving Size Quantity"
-                      ),
-                      React.createElement(
-                        "th",
-                        null,
-                        "Serving Size Unit"
-                      ),
-                      React.createElement("th", null)
+                      "th",
+                      null,
+                      "Item Name"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Brand Name"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Calories"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Serving Size Quantity"
+                    ),
+                    React.createElement(
+                      "th",
+                      null,
+                      "Serving Size Unit"
                     )
-                  ),
-                  React.createElement(
-                    "tbody",
-                    { id: "foodSearchBody" },
-                    foodNodes
                   )
                 ),
                 React.createElement(
-                  "div",
-                  { className: "modal-footer" },
-                  React.createElement(
-                    "button",
-                    {
-                      onClick: this.props.onClose,
-                      type: "button",
-                      className: "btn btn-default",
-                      "data-dismiss": "modal"
-                    },
-                    "Close"
-                  ),
-                  React.createElement(
-                    "button",
-                    { type: "button", className: "btn btn-primary" },
-                    "Save changes"
-                  )
+                  "tbody",
+                  { id: "foodSearchBody" },
+                  foodNodes
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "modal-footer" },
+                React.createElement(
+                  "button",
+                  {
+                    onClick: this.props.onClose,
+                    type: "button",
+                    className: "btn btn-default",
+                    "data-dismiss": "modal"
+                  },
+                  "Close"
                 )
               )
             )
@@ -588,6 +581,12 @@ var FoodSearch = function (_React$Component6) {
       return React.createElement(
         "div",
         null,
+        React.createElement(
+          "label",
+          { className: "control-label", htmlFor: "inputWarning" },
+          "Food Search",
+          " "
+        ),
         " ",
         React.createElement(
           "h2",
@@ -597,13 +596,7 @@ var FoodSearch = function (_React$Component6) {
         React.createElement("br", null),
         React.createElement(
           "div",
-          { className: "form-group has-warning " },
-          React.createElement(
-            "label",
-            { className: "control-label", htmlFor: "inputWarning" },
-            "Food Search:",
-            " "
-          ),
+          { className: "search-group" },
           React.createElement("input", {
             size: "100",
             className: "",
@@ -615,7 +608,7 @@ var FoodSearch = function (_React$Component6) {
             "a",
             null,
             React.createElement("i", {
-              className: "fa fa-search",
+              className: "fa fa-search fa-3x",
               "aria-hidden": "true",
               type: "button",
               onClick: this.toggleFoodModal
@@ -715,35 +708,39 @@ var UpcSearch = function (_React$Component7) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "form-group has-warning " },
+        null,
+        React.createElement(
+          "label",
+          { className: "control-label", htmlFor: "inputWarning" },
+          "UPC Search \xA0"
+        ),
         React.createElement(
           "h2",
           null,
           "You can also search by UPC Code."
         ),
-        React.createElement("br", null),
         React.createElement(
-          "label",
-          { className: "control-label", htmlFor: "inputWarning" },
-          "UPC Search: \xA0"
-        ),
-        React.createElement("input", {
-          size: "100",
-          className: "",
-          value: this.state.upc,
-          onChange: this.handleChange7
-        }),
-        React.createElement(
-          "a",
-          null,
-          React.createElement("i", {
-            className: "fa fa-search",
-            "aria-hidden": "true",
-            type: "button",
-            onClick: this.toggleFoodModal
-          })
-        ),
-        React.createElement(FoodModal, { show: this.state.isOpen, onClose: this.toggleFoodModal })
+          "div",
+          { className: "search-group" },
+          React.createElement("br", null),
+          React.createElement("input", {
+            size: "100",
+            className: "",
+            value: this.state.upc,
+            onChange: this.handleChange7
+          }),
+          React.createElement(
+            "a",
+            null,
+            React.createElement("i", {
+              className: "fa fa-search fa-3x",
+              "aria-hidden": "true",
+              type: "button",
+              onClick: this.toggleFoodModal
+            })
+          ),
+          React.createElement(FoodModal, { show: this.state.isOpen, onClose: this.toggleFoodModal })
+        )
       );
     }
   }]);
@@ -810,6 +807,7 @@ var Modal = function (_React$Component8) {
   }, {
     key: "addToCalorieTracker",
     value: function addToCalorieTracker() {
+
       var foodName = $("#inputItemName").val().trim();
       var brandName = $("#inputBrandName").val().trim();
       var calories = $("#inputCalories").val().trim();
@@ -850,7 +848,6 @@ var Modal = function (_React$Component8) {
         React.createElement(
           "div",
           { className: "modal-dialog" },
-          ">",
           React.createElement(
             "div",
             { className: "modal-content" },
@@ -1084,83 +1081,77 @@ var CalorieTracker = function (_React$Component9) {
       return React.createElement(
         "div",
         null,
-        React.createElement(FoodSearch, null),
         React.createElement(
           "div",
           null,
-          React.createElement(UpcSearch, null),
+          React.createElement(
+            "h2",
+            null,
+            "Keep track of your caloric intake here!"
+          ),
           React.createElement(
             "div",
-            null,
-            React.createElement("hr", null),
+            { className: "calorieDiv" },
             React.createElement(
-              "h1",
-              null,
-              React.createElement(
-                "b",
-                null,
-                "Keep track of your caloric intake here!"
-              )
+              "button",
+              {
+                type: "submit",
+                onClick: this.toggleModal,
+                href: "#",
+                className: "btn btn-primary btn-sm"
+              },
+              "add food"
             ),
+            React.createElement(Modal, { show: this.state.isOpen, onClose: this.toggleModal }),
             React.createElement(
-              "div",
-              { className: "CalorieTracker" },
+              "table",
+              { className: "table table-striped table-hover " },
               React.createElement(
-                "button",
-                {
-                  type: "submit",
-                  onClick: this.toggleModal,
-                  href: "#",
-                  className: "btn btn-primary btn-sm"
-                },
-                "add food"
-              ),
-              React.createElement(Modal, { show: this.state.isOpen, onClose: this.toggleModal }),
-              React.createElement(
-                "table",
-                { className: "table table-striped table-hover " },
+                "thead",
+                null,
                 React.createElement(
-                  "thead",
+                  "tr",
                   null,
                   React.createElement(
-                    "tr",
+                    "th",
                     null,
-                    React.createElement(
-                      "th",
-                      null,
-                      "Item Name"
-                    ),
-                    React.createElement(
-                      "th",
-                      null,
-                      "Brand Name"
-                    ),
-                    React.createElement(
-                      "th",
-                      null,
-                      "Calories"
-                    ),
-                    React.createElement(
-                      "th",
-                      null,
-                      "Serving Size Quantity"
-                    ),
-                    React.createElement(
-                      "th",
-                      null,
-                      "Serving Size Unit"
-                    ),
-                    React.createElement("th", null)
+                    "Item Name"
+                  ),
+                  React.createElement(
+                    "th",
+                    null,
+                    "Brand Name"
+                  ),
+                  React.createElement(
+                    "th",
+                    null,
+                    "Calories"
+                  ),
+                  React.createElement(
+                    "th",
+                    null,
+                    "Serving Size Quantity"
+                  ),
+                  React.createElement(
+                    "th",
+                    null,
+                    "Serving Size Unit"
                   )
-                ),
-                React.createElement(
-                  "tbody",
-                  { id: "calorieTrackerBody" },
-                  React.createElement("tr", null)
                 )
-              )
+              ),
+              React.createElement("tbody", { id: "calorieTrackerBody" })
             )
           )
+        ),
+        React.createElement(
+          "div",
+          { className: "calorieDiv" },
+          React.createElement(FoodSearch, null)
+        ),
+        React.createElement(
+          "div",
+          { className: "calorieDiv" },
+          React.createElement(UpcSearch, null)
         )
       );
     }
