@@ -25,28 +25,27 @@ function guru(data, element) {
 	}
 }
 
-// HOW TO: Return BMR
-var bodyObject_BMR = { gender: "male", age: 29, weight: 145, height_ft: 5, height_in: 8 };
-var guru_Get_BMR = guru("BMR", bodyObject_BMR);
-console.log(guru_Get_BMR);
+// // HOW TO: Return BMR
+// var bodyObject_BMR = { gender: "male", age: 29, weight: 145, height_ft: 5, height_in: 8 };
+// var guru_Get_BMR = guru("BMR", bodyObject_BMR);
+// console.log(guru_Get_BMR);
 
-// HOW TO: Return BMI
-var bodyObject_BMI = { weight: 145, height_ft: 5, height_in: 8 };
-var guru_Get_BMI = guru("BMI", bodyObject_BMI);
-console.log(guru_Get_BMI);
+// // HOW TO: Return BMI
+// var bodyObject_BMI = { weight: 145, height_ft: 5, height_in: 8 };
+// var guru_Get_BMI = guru("BMI", bodyObject_BMI);
+// console.log(guru_Get_BMI);
 
-// HOW TO: Return BODY FAT %
-var bodyObject_BodyFat = { gender: "male", weight: 145, waist: 29, wrist: 0, hip: 0, forearm: 0};
-//this is a male test...women REQUIRE more data... wrist, hip, forearm
-//..to reiterate..men dont need wrist, hip, or forearm, but ive included them as 0 for some reason
-var guru_Get_BodyFat = guru("BodyFat", bodyObject_BodyFat);
-console.log(guru_Get_BodyFat);
+// // HOW TO: Return BODY FAT %
+// var bodyObject_BodyFat = { gender: "male", weight: 145, waist: 29, wrist: 0, hip: 0, forearm: 0};
+// //this is a male test...women REQUIRE more data... wrist, hip, forearm
+// //..to reiterate..men dont need wrist, hip, or forearm, but ive included them as 0 for some reason
+// var guru_Get_BodyFat = guru("BodyFat", bodyObject_BodyFat);
+// console.log(guru_Get_BodyFat);
 
 // // HOW TO: Return ALL OF THOSE AS AN OBJECT
-var bodyObject_ALL = { gender: "male", age: 29, weight: 145, height_ft: 5, height_in: 8 , waist: 29, wrist: 0, hip: 0, forearm: 0 };
-var guru_Get_ALL = guru("ALL", bodyObject_ALL);
-console.log(guru_Get_ALL);
-
+// var bodyObject_ALL = { gender: "male", age: 29, weight: 145, height_ft: 5, height_in: 8 , waist: 29, wrist: 0, hip: 0, forearm: 0 };
+// var guru_Get_ALL = guru("ALL", bodyObject_ALL);
+// console.log(guru_Get_ALL);
 
 
 function bmiCalc(data, element) {
