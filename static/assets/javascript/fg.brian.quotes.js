@@ -66,7 +66,7 @@ var quotes = [
 var currentQuote = -1;
 
 function qLogic(data, element) {
-	console.important("Health Quotes:");
+	// console.important("Health Quotes:");
 	var whatToDo = data.split("-")[0];
 
 	if(whatToDo == "spawn" || whatToDo == "spawn_welcome"){
@@ -109,7 +109,7 @@ function qLogic(data, element) {
 				}else{ currentQuote = quotes.length; }
 			}
 		}
-		console.log("quote update to #: " + currentQuote);
+		// console.log("quote update to #: " + currentQuote);
 		qLogic("update");
 	}
 	

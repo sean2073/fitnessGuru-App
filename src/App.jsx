@@ -97,7 +97,11 @@ newCalorieRow(foodItemName) {
   handleClick(event) {
     console.log("I'm here");
     //console.log("food Item: ",foodItemName);
+<<<<<<< HEAD
   // this.newCalorieRow(foodItemName);
+=======
+    // this.newCalorieRow(foodItemName);
+>>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
    /* <td id="modalItemName">{food.fields.item_name}</td>
           <td id="modalBrandName">{food.fields.brand_name}</td>
           <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -152,7 +156,11 @@ newCalorieRow(foodItemName) {
       const foodNodes = rowHits.map((food, index) => {
       
      
+<<<<<<< HEAD
    //   console.log("food Item: ",foodItemName);
+=======
+      // console.log("food Item: ",foodItemName);
+>>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
       console.log("food ", food);
       console.log("rowhits = " ,foodNodes);
       console.log("test if right " + food.fields.brand_name);
@@ -177,13 +185,18 @@ newCalorieRow(foodItemName) {
       );
     }
     );
+<<<<<<< HEAD
     //const {foodItemName} = this.props.food.fields.brand_name;
+=======
+    // const {foodItemName} = this.props.food.fields.brand_name;
+>>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
 
     return (
       <div className="modal" style={modalStyle}>
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+           
+           <div className="modal-header">
               <button
                 type="button"
                 onClick={this.props.onClose}
@@ -194,27 +207,24 @@ newCalorieRow(foodItemName) {
                 &times;
               </button>
               <h4 className="modal-title">Food Search</h4>
-            
+            </div>
+              
             <div className="modal-body">
               {this.props.children}
               <table className="table table-striped table-hover ">
                 <thead>
                   <tr className="calorieTrackerRow">
-
                     <th>Item Name</th>
                     <th>Brand Name</th>
                     <th>Calories</th>
                     <th>Serving Size Quantity</th>
                     <th>Serving Size Unit</th>
-                    <th />
                   </tr>
                 </thead>
                 <tbody id="foodSearchBody">
                     {foodNodes}
                 </tbody>
               </table>
-
-           
 
             <div className="modal-footer">
               <button
@@ -225,13 +235,10 @@ newCalorieRow(foodItemName) {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
               </div>
                </div>
             </div>
-          </div>
+        
         </div>
       </div>
     );
@@ -364,13 +371,12 @@ class FoodSearch extends React.Component {
   render() {
     return (
       <div>
+        <label className="control-label" htmlFor="inputWarning">
+            Food Search{" "}
+        </label>
         {" "}<h2>You can look up the calories for any food here.</h2>
         <br />
-        <div className="form-group has-warning ">
-
-          <label className="control-label" htmlFor="inputWarning">
-            Food Search:{" "}
-          </label>
+        <div className="search-group">
 
           <input
             size="100"
@@ -381,7 +387,7 @@ class FoodSearch extends React.Component {
           />
           <a>
             <i
-              className="fa fa-search"
+              className="fa fa-search fa-3x"
               aria-hidden="true"
               type="button"
               onClick={this.toggleFoodModal}
@@ -493,8 +499,14 @@ class UpcSearch extends React.Component {
   }
   render() {
     return (
-      <div className="form-group has-warning ">
+      <div>
+        <label className="control-label" htmlFor="inputWarning">
+          UPC Search &nbsp;
+        </label>
         <h2>You can also search by UPC Code.</h2>
+
+        <div className="search-group">
+
         <br />
         {/*
         <div>You can look up the calories for any food here.</div>
@@ -504,11 +516,8 @@ class UpcSearch extends React.Component {
           (EX. STEAK - 679)
         </div>
         {" "}
-        
-    */}
-        <label className="control-label" htmlFor="inputWarning">
-          UPC Search: &nbsp;
-        </label>
+
+        */}
         {/*<input type="text" className="form-control " id="inputWarning"  ></input>*/}
         <input
           size="100"
@@ -518,7 +527,7 @@ class UpcSearch extends React.Component {
         />
         <a>
           <i
-            className="fa fa-search"
+            className="fa fa-search fa-3x"
             aria-hidden="true"
             type="button"
             onClick={this.toggleFoodModal}
@@ -528,6 +537,7 @@ class UpcSearch extends React.Component {
           {/*Here's some content for the modal*/}
         </FoodModal>
 
+        </div>
       </div>
     );
   }
@@ -572,6 +582,7 @@ class Modal extends React.Component {
     console.log(this.state.serving2);
   }
   addToCalorieTracker() {
+
     var foodName = $("#inputItemName").val().trim();
     var brandName = $("#inputBrandName").val().trim();
     var calories = $("#inputCalories").val().trim();
@@ -590,6 +601,7 @@ class Modal extends React.Component {
     );
 
     $("#calorieTrackerBody").append(rowHtml);
+
   }
 
   render() {
@@ -609,8 +621,8 @@ class Modal extends React.Component {
     }
     return (
       <div className="modal" style={modalStyle}>
-        <div className="modal-dialog">>
-          <div className="modal-content" >
+        <div className="modal-dialog">
+          <div className="modal-content">
             <div className="modal-header">
               <button
                 type="button"
@@ -755,6 +767,9 @@ class Modal extends React.Component {
           </div>
         </div>
       </div>
+
+
+
     );
   }
 }
@@ -776,16 +791,10 @@ class CalorieTracker extends React.Component {
   render() {
     return (
       <div>
-        <FoodSearch />
 
         <div>
-          <UpcSearch />
-
-          <div>
-
-            <hr />
-            <h1><b>Keep track of your caloric intake here!</b></h1>
-            <div className="CalorieTracker">
+            <h2>Keep track of your caloric intake here!</h2>
+            <div className="calorieDiv">
               <button
                 type="submit"
                 onClick={this.toggleModal}
@@ -801,31 +810,29 @@ class CalorieTracker extends React.Component {
               <table className="table table-striped table-hover ">
                 <thead>
                   <tr>
-
                     <th>Item Name</th>
                     <th>Brand Name</th>
                     <th>Calories</th>
                     <th>Serving Size Quantity</th>
                     <th>Serving Size Unit</th>
-                    <th />
                   </tr>
                 </thead>
-                <tbody id="calorieTrackerBody">
-                  <tr>
-                    {/*}
-                    //<td id="contentItemName">Column content</td>
-                    //<td id="contentBrandName">Column content</td>
-                    //<td id="contentCalories">Column content</td>
-                    //<td id="contentServingSizeQ">Column content</td>
-                    //<td id="contentServingSizeU">Column content</td>
-*/}
-                  </tr>
-                </tbody>
+                <tbody id="calorieTrackerBody"></tbody>
               </table>
 
             </div>
-          </div>
+            
         </div>
+
+
+        <div className="calorieDiv">     
+          <FoodSearch />
+        </div>
+
+        <div className="calorieDiv">
+          <UpcSearch />
+        </div>
+
       </div>
     );
   }

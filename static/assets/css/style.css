@@ -85,7 +85,6 @@ footer{
 		padding-top: 80px;
 		display: flex;
 		flex-direction: column;
-		display: flex;
 	    align-items: center;
     	justify-content: center;
     	z-index: 1002;
@@ -1138,6 +1137,328 @@ form span input{
 	background-color: rgba(77,203,109,0.3);
 }
 
+
+/*START: CALORIE TRACKER*/
+.calorieTracker{
+	font-family: 'Nunito', sans-serif;
+}
+.calorieTracker a{
+	cursor: pointer;
+	margin-left: 20px;
+	color:rgba(0,0,0,.5);
+}
+.calorieTracker a:hover{
+	color: white;
+}
+.calorieTracker input{
+	width: 100%;
+	min-width: 50%;
+	padding: 20px;
+	font-size: larger;
+	border: 0px;
+	border-radius: 20px;
+}
+/*.calorieTracker div div:nth-of-type(1):not(.modal){*/
+.calorieDiv{
+	padding:20px;
+	border-radius: 20px;
+	background-color: rgba(0,0,0,.1);
+}
+.calorieDiv:nth-of-type(3){
+	margin-top: 20px;
+}
+.calorieTracker div div:nth-of-type(1) h2{
+	padding: 20px;
+	color: rgba(0,0,0,.3);
+	text-align: center;
+}
+.calorieTracker div div:nth-of-type(1) label{
+	text-align: center;
+	width: 100%;
+    font-size: xx-large;
+    color: rgba(0,0,0,.5);
+}
+.calorieTracker .search-group{
+	display: flex;
+    /*align-items: center;*/
+	/*justify-content: center;*/
+	overflow: scroll;
+}
+.calorieTracker div:first-child{
+	margin-bottom: 20px;
+}
+
+.calorieTracker .modal-content{
+	background-color: #ccc !important;
+}
+.calorieTracker button{
+	border-radius: 20px;
+	font-size: larger;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 15px 10px rgba(0,0,0,.2);
+}
+.calorieTracker button:hover{
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 10px 10px rgba(0,0,0,.2);
+}
+.calorieTracker button:active{
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 5px 10px rgba(0,0,0,.2);
+}
+
+.calorieTracker .modal label{
+	font-size: xx-small;
+}
+
+.calorieTracker table{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0px;
+	width: 100%;
+}
+.calorieTracker table thead tr{
+	display: flex;
+	margin-bottom: 0px;
+	width: calc(100% - 40px);
+}
+
+.calorieTracker thead tr th{
+	flex: 1;
+	background-color: rgba(0,0,0,.2);
+	color:#333;
+	border: 1px solid rgba(0,0,0,.1) !important;
+	text-align: center;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.calorieTracker thead tr th:first-of-type{
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+.calorieTracker thead tr th:last-of-type{
+	-webkit-border-top-right-radius: 20px;
+	-webkit-border-bottom-right-radius: 20px;
+	-moz-border-radius-topright: 20px;
+	-moz-border-radius-bottomright: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.calorieTracker .modal .modal-content .modal-header{
+	padding:20px;
+	margin:0px;
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+    justify-content: center;
+}
+.calorieTracker .modal .modal-content .modal-header button{
+	display: none;
+	background-color: #000;
+	width: 40px;
+	height: 40px;
+	margin-left: 20px;
+}
+.modal-header .modal-close{
+	padding: 0px;
+	margin:0px;
+}
+.calorieTracker .modal-content{
+	display: flex;
+	flex-direction: column;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+#calorieTrackerBody{
+	display: flex;
+	width: 100%;
+}
+#calorieTrackerBody tr{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border-radius: 20px;
+	min-width: 10%;
+}
+#calorieTrackerBody td{
+	flex: 1;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+#calorieTrackerBody td:nth-of-type(6){
+	flex: .2;
+	color: red;
+	width: 20px !important;
+}
+.calorieTracker .modal-header{
+	background-color: #333;
+}
+.calorieTracker .modal-title{
+	color:#fff;
+}
+
+.modal {
+    overflow-y: scroll;
+}
+
+
+#foodSearchBody tr:nth-of-type(1){
+	margin-top: 10px;
+}
+#foodSearchBody tr{
+	display: flex;
+	cursor: pointer;
+}
+#foodSearchBody td{
+	flex: 1;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+#foodSearchBody tr:nth-of-type(odd){
+	background-color: rgba(255,255,255,0.6);
+}
+#foodSearchBody tr:nth-of-type(even){
+	background-color: rgba(255,255,255,0.7);
+}
+#foodSearchBody tr:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+#foodSearchBody tr:first-of-type{
+	border-radius: 0px;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+#foodSearchBody tr:last-of-type{
+	border-radius: 0px;
+	-webkit-border-bottom-right-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	-moz-border-radius-bottomright: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+#foodSearchBody tr:hover i{
+	color: rgb(111, 220, 111);
+}
+
+.modal-body .modal-footer{
+	border-top: 0px !important;
+}
+
+
+/*END: CALORIE TRACKER*/
+
+
+.popup {
+	background-color: rgba(255,255,255,.9);
+    display: none;
+    height: 100%;
+    left: 0;
+    right: 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 0px;
+}
+	.popup.open {
+	   display: flex;
+	   flex-direction: column;
+	}
+
+
+	/* POPUP CONTENT*/
+
+	.popup .content {
+	    height: 100%;
+	    overflow-y: auto;
+		background-color: transparent;
+		padding: 20px;
+		padding-top: 80px;
+		display: flex;
+		flex-direction: column;
+	    align-items: center;
+    	justify-content: center;
+    	z-index: 1002;
+    	background-color: rgba(0,0,0,0.78);
+    	width: 100%;
+    	box-shadow:inset 0px 0px 100px 10px rgba(0,0,0,0.1);
+	}
+
+	.popup .quote{
+		max-width: 550px;
+		width: calc(100% - 40px);
+		font-size: x-large;
+		text-align: left;
+    	display: flex;
+    	flex-direction: column;
+	}
+	.popup .nav{
+		max-width: 550px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: rgba(200,200,200,1);
+		color:rgba(0,0,0,0.4);
+		font-size: large;
+		padding: 0px 20px;
+		min-height: 20px;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(200,200,200,1);
+	}
+
+	.popup .nav button{
+	 	font-size: larger;
+	 	background-color: transparent;
+	 	border: 0px;
+	 	cursor: pointer;
+	 	padding: 10px;
+	 	border-radius: 20px;
+	 	color:rgba(0,0,0,0.4);
+
+	}
+	.popup .nav button:before{
+		content: "x";
+	}
+	.popup .nav button:hover{
+		border-radius: 20px;
+		font-weight: bolder;
+		background-color: #333;
+		color:#fff;
+	}
+
+	.popup .footer {
+		position: absolute;
+	    text-align: center;
+	    bottom:0px;
+		z-index: 1001;
+	    width: 100%;
+	    padding-top:10px;
+	    color: rgba(0,0,0,0.3);
+	}
+	.popup .footer:before{
+		text-transform: uppercase;
+		content: "\00a9  2017 Fitness guru. all rights reserved."
+	}
+
+
 /*!!!!!!!!!!!!!!!!*/
 /*MEDIA QUERIES*/
 /*!!!!!!!!!!!!!!*/
@@ -1153,5 +1474,28 @@ form span input{
     .logo {
     	text-align: center;
     }
+
+
+    .calorieTracker table thead tr{
+		flex-direction: column;
+	}
+	.calorieTracker thead tr th:first-of-type{
+		border-radius: 0px;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.calorieTracker thead tr th:last-of-type{
+		border-radius: 0px;
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
 }
 
