@@ -29,6 +29,7 @@ var UserSchema = new Schema({
   },
   dateCreated: { 
     type: Date, 
+    required: true,
     default: Date.now 
   },
   profile: {
@@ -44,7 +45,12 @@ var UserSchema = new Schema({
         type: Number
       },
       height: {
-        type: Number
+        ft: {
+          type: Number
+        },
+        inch: {
+          type: Number
+        }
       },
       waist: {
         type: Number
@@ -57,12 +63,9 @@ var UserSchema = new Schema({
         type: String
 
       },
-      goals: [{
-        description: {type:String},
-        dateBegin: {type: Date},
-        dateEnd: {type: Date}
-
-  }]
+      currentExerciseRoutine: {
+        type: String
+      }
   },
   userData: {
     bmi: {
@@ -78,7 +81,20 @@ var UserSchema = new Schema({
       type: Number
     }
     
-  }
+  },
+  goals: [{
+    description: {
+      type:String
+    },
+    dateBegin: {
+      type: Date
+    },
+    dateEnd: {
+      type: Date
+    }
+
+  }]
+
   
 });
 

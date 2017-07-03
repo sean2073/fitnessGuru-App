@@ -83,7 +83,7 @@ newCalorieRow(foodItemName) {
   
     <tr>
       
-          <td id="contentItemName">{foodItemName}</td>
+        //  <td id="contentItemName"></td>
          // <td id="contentBrandName">{this.props.foodBrandName}</td>
         //  <td id="contentCalories">{this.props.foodCalories}</td>
         //  <td id="contentServingSizeQ">{this.props.foodServingSizeQ}</td>
@@ -97,7 +97,7 @@ newCalorieRow(foodItemName) {
   handleClick(event) {
     console.log("I'm here");
     //console.log("food Item: ",foodItemName);
-    this.newCalorieRow(foodItemName);
+  // this.newCalorieRow(foodItemName);
    /* <td id="modalItemName">{food.fields.item_name}</td>
           <td id="modalBrandName">{food.fields.brand_name}</td>
           <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -152,7 +152,7 @@ newCalorieRow(foodItemName) {
       const foodNodes = rowHits.map((food, index) => {
       
      
-      console.log("food Item: ",foodItemName);
+   //   console.log("food Item: ",foodItemName);
       console.log("food ", food);
       console.log("rowhits = " ,foodNodes);
       console.log("test if right " + food.fields.brand_name);
@@ -177,7 +177,7 @@ newCalorieRow(foodItemName) {
       );
     }
     );
-    const {foodItemName} = this.props.food.fields.brand_name;
+    //const {foodItemName} = this.props.food.fields.brand_name;
 
     return (
       <div className="modal" style={modalStyle}>

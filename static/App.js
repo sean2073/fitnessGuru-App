@@ -208,11 +208,8 @@ var FoodModal = function (_React$Component5) {
       React.createElement(
         "tr",
         null,
-        React.createElement(
-          "td",
-          { id: "contentItemName" },
-          foodItemName
-        ),
+        "//  ",
+        React.createElement("td", { id: "contentItemName" }),
         "// ",
         React.createElement(
           "td",
@@ -251,7 +248,7 @@ var FoodModal = function (_React$Component5) {
     value: function handleClick(event) {
       console.log("I'm here");
       //console.log("food Item: ",foodItemName);
-      this.newCalorieRow(foodItemName);
+      // this.newCalorieRow(foodItemName);
       /* <td id="modalItemName">{food.fields.item_name}</td>
              <td id="modalBrandName">{food.fields.brand_name}</td>
              <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -312,7 +309,7 @@ var FoodModal = function (_React$Component5) {
 
       var foodNodes = rowHits.map(function (food, index) {
 
-        console.log("food Item: ", foodItemName);
+        //   console.log("food Item: ",foodItemName);
         console.log("food ", food);
         console.log("rowhits = ", foodNodes);
         console.log("test if right " + food.fields.brand_name);
@@ -357,8 +354,7 @@ var FoodModal = function (_React$Component5) {
           )
         );
       });
-      var foodItemName = this.props.food.fields.brand_name.foodItemName;
-
+      //const {foodItemName} = this.props.food.fields.brand_name;
 
       return React.createElement(
         "div",
