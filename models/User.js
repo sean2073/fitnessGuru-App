@@ -82,6 +82,17 @@ var UserSchema = new Schema({
     }
     
   },
+  calorieHistory:[{
+    date: {
+      type: Date.now
+    },
+    caloriesEaten:{
+      type: string
+    },
+    BMR: {
+      type: Number
+    }
+  }],
   goals: [{
     description: {
       type:String

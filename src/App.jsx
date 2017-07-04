@@ -97,11 +97,11 @@ newCalorieRow(foodItemName) {
   handleClick(event) {
     console.log("I'm here");
     //console.log("food Item: ",foodItemName);
-<<<<<<< HEAD
+//<<<<<<< HEAD
   // this.newCalorieRow(foodItemName);
-=======
+//=======
     // this.newCalorieRow(foodItemName);
->>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
+//>>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
    /* <td id="modalItemName">{food.fields.item_name}</td>
           <td id="modalBrandName">{food.fields.brand_name}</td>
           <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -156,11 +156,11 @@ newCalorieRow(foodItemName) {
       const foodNodes = rowHits.map((food, index) => {
       
      
-<<<<<<< HEAD
+//<<<<<<< HEAD
    //   console.log("food Item: ",foodItemName);
-=======
+//
       // console.log("food Item: ",foodItemName);
->>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
+//>>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
       console.log("food ", food);
       console.log("rowhits = " ,foodNodes);
       console.log("test if right " + food.fields.brand_name);
@@ -185,11 +185,11 @@ newCalorieRow(foodItemName) {
       );
     }
     );
-<<<<<<< HEAD
+//<<<<<<< HEAD
     //const {foodItemName} = this.props.food.fields.brand_name;
-=======
+//=======
     // const {foodItemName} = this.props.food.fields.brand_name;
->>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
+//>>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
 
     return (
       <div className="modal" style={modalStyle}>
