@@ -8,6 +8,7 @@ var mongoose = require("mongoose");
 
 // Require History Schema
 var User = require("./models/User");
+import Profile from './src/components/utility/validateForm.js';
 
 // Create Instance of Express
 var app = express();
@@ -70,7 +71,7 @@ app.get("/users", function(req, res) {
     }
   });
 });
-app.post("/profile/:_id", function(req, res) {
+app.put("/profile/:id", function(req, res) {
   let userId;
   try {
     userId = new ObjectId(req.params.id);
@@ -81,23 +82,24 @@ app.post("/profile/:_id", function(req, res) {
   }
 
   const newProfile = req.body;
-  
+  /*
   newProfile.gender = "female";
   newProfile.age = 42;
   newProfile.hip = 54;
   newProfile.waist = 49;
-  newProfile.height = 60;
+  newProfile.heightFt = 6;
+  newProfile.heightIn = 11;
   newProfile.weight = 195;
   activity = "none";
   exercise = "none";
-
-  const err = validateProfile(newProfile)
+  */
+  const err = Profile.validateProfile(newProfile)
   if (err) {
     res.status(422).json({message: `Invalid Request: $(err)`});
     return;
   }
-  db.collection('User').update({_id: userId, gender: gender, age: age, weight: weight, height: height, waist: waist, hip: hip, activity: activity, exercise: excercise },
-  convertProfile(newProfile)).then(() =>
+  db.collection('User').update({_id: userId, gender: gender, age: age, weight: weight, height_ft: height_ft, height_inch: height_inch, waist: waist, hip: hip, wrist: wrist, forearm: forearm, activity: activity, exercise: excercise },
+  //convertProfile(newProfile)).then(() =>
   db.collection('User').find({_id: userId }).limit(1)
   .next()
   ).then(savedProfile => {

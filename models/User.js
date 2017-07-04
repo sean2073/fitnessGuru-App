@@ -54,14 +54,18 @@ var UserSchema = new Schema({
       },
       waist: {
         type: Number
-
       },
       hip: {
         type: Number
       },
+      wrist: {
+        type: Number
+      },
+      forearm: {
+        type: Number
+      },
       activity: {
         type: String
-
       },
       currentExerciseRoutine: {
         type: String
@@ -84,10 +88,10 @@ var UserSchema = new Schema({
   },
   calorieHistory:[{
     date: {
-      type: Date.now
+      type: Date
     },
     caloriesEaten:{
-      type: string
+      type: String
     },
     BMR: {
       type: Number
@@ -95,7 +99,7 @@ var UserSchema = new Schema({
   }],
   goals: [{
     description: {
-      type:String
+      type: String
     },
     dateBegin: {
       type: Date
