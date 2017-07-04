@@ -1,4 +1,4 @@
-var mongoose = require(“mongoose”);
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -7,8 +7,8 @@ var UserSchema = new Schema({
     trim: true,
     unique: true,
     required: true,
-    //match: [/.+\@.+\..+/, “Please enter a valid e-mail address”
-    match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, “Please enter a valid e-mail address”
+    //match: [/.+\@.+\..+/, "Please enter a valid e-mail address"
+    match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, "Please enter a valid e-mail address"
     ]
   },
   username: {
@@ -19,28 +19,28 @@ var UserSchema = new Schema({
   password: {
     type: String,
     trim: true,
-    required: “Password is Required”,
+    required: "Password is Required",
     validate: [
       function(input) {
         return input.length >= 6;
         },
-        “Password should be longer.”
+        "Password should be longer."
          ]
   },
-  dateCreated: {
-    type: Date,
+  dateCreated: { 
+    type: Date, 
     required: true,
-    default: Date.now
+    default: Date.now 
   },
   profile: {
       gender: {
         type: String
 
-     },
+      },
       age: {
         type: Number
 
-     },
+      },
       weight: {
         type: Number
       },
@@ -55,14 +55,14 @@ var UserSchema = new Schema({
       waist: {
         type: Number
 
-     },
+      },
       hip: {
         type: Number
       },
       activity: {
         type: String
 
-     },
+      },
       currentExerciseRoutine: {
         type: String
       }
@@ -76,12 +76,12 @@ var UserSchema = new Schema({
     },
     bodyFat: {
 
-   },
+    },
     bmr: {
       type: Number
     }
     
- },
+  },
   goals: [{
     description: {
       type:String
@@ -93,11 +93,11 @@ var UserSchema = new Schema({
       type: Date
     }
 
- }]
+  }]
 
- 
+  
 });
 
 
-var User = mongoose.model(“User”, UserSchema);
+var User = mongoose.model("User", UserSchema);
 module.exports = User;
