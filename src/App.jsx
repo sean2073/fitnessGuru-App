@@ -97,6 +97,7 @@ newCalorieRow(foodItemName) {
   handleClick(event) {
     console.log("I'm here");
     //console.log("food Item: ",foodItemName);
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //<<<<<<< HEAD
   // this.newCalorieRow(foodItemName);
@@ -110,6 +111,9 @@ newCalorieRow(foodItemName) {
     // this.newCalorieRow(foodItemName);
 // >>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
 //>>>>>>> 6c10ddb4b6de0f08549a1aae101ab4122bde17bd
+=======
+  // this.newCalorieRow(foodItemName);
+>>>>>>> e8de36a5b904c9e9d60bb1017f66c71361fd3c4a
    /* <td id="modalItemName">{food.fields.item_name}</td>
           <td id="modalBrandName">{food.fields.brand_name}</td>
           <td id="modalCalories">{food.fields.nf_calories}</td>
@@ -163,6 +167,7 @@ newCalorieRow(foodItemName) {
 
       const foodNodes = rowHits.map((food, index) => {
       
+<<<<<<< HEAD
      
 //<<<<<<< HEAD
 //<<<<<<< HEAD
@@ -177,6 +182,9 @@ newCalorieRow(foodItemName) {
       // console.log("food Item: ",foodItemName);
 // >>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
 //>>>>>>> 6c10ddb4b6de0f08549a1aae101ab4122bde17bd
+=======
+   //   console.log("food Item: ",foodItemName);
+>>>>>>> e8de36a5b904c9e9d60bb1017f66c71361fd3c4a
       console.log("food ", food);
       console.log("rowhits = " ,foodNodes);
       console.log("test if right " + food.fields.brand_name);
@@ -201,6 +209,7 @@ newCalorieRow(foodItemName) {
       );
     }
     );
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //<<<<<<< HEAD
     //const {foodItemName} = this.props.food.fields.brand_name;
@@ -214,7 +223,10 @@ newCalorieRow(foodItemName) {
     // const {foodItemName} = this.props.food.fields.brand_name;
 // >>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
 //>>>>>>> 6c10ddb4b6de0f08549a1aae101ab4122bde17bd
+=======
+>>>>>>> e8de36a5b904c9e9d60bb1017f66c71361fd3c4a
 
+    // const {foodItemName} = this.props.food.fields.brand_name;
     return (
       <div className="modal" style={modalStyle}>
         <div className="modal-dialog">
