@@ -38,11 +38,7 @@ var Profile = function (_React$Component) {
   _createClass(Profile, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(NewProfile, null)
-      );
+      return _react2.default.createElement("div", null, _react2.default.createElement(NewProfile, null));
     }
   }]);
 
@@ -293,249 +289,76 @@ var NewProfile = function (_React$Component2) {
     key: "render",
     value: function render() {
       var newProfile = this.state.newProfile;
-      var validationMessage = Object.keys(this.state.invalidFields).length === 0 ? null : _react2.default.createElement(
-        "div",
-        { className: "error" },
-        "Please correct invalid fields before submitting."
-      );
-      return _react2.default.createElement(
-        "div",
-        { className: "standalone opened" },
-        _react2.default.createElement("h1", { className: "step-2" }),
-        _react2.default.createElement(
-          "p",
-          null,
-          "This form will allow users to fill in data pertaining to their health, which we will use in the app... all the time."
-        ),
-        _react2.default.createElement(
-          "form",
-          { className: "profile-creator", onSubmit: this.onSubmit },
-          _react2.default.createElement(
-            "h2",
-            null,
-            "ID: ",
-            newProfile._id
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "gender" },
-              "Gender:"
-            ),
-            _react2.default.createElement(
-              "select",
-              {
-                name: "gender",
-                value: newProfile.gender,
-                onChange: this.onChange
-              },
-              _react2.default.createElement("option", { value: "empty-placeholder" }),
-              _react2.default.createElement(
-                "option",
-                { value: "male" },
-                "male"
-              ),
-              _react2.default.createElement(
-                "option",
-                { value: "female" },
-                "female"
-              )
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "age" },
-              "Age:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "age",
-              min: "0",
-              max: "100",
-              value: newProfile.age,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "weight" },
-              "Weight:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "weight",
-              min: "0",
-              max: "600",
-              value: newProfile.weight,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "height_ft" },
-              "Height:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "height_ft",
-              min: "0",
-              max: "7",
-              value: newProfile.height_ft,
-              onChange: this.onChange
-            }),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "height_inch",
-              min: "0",
-              max: "12",
-              value: newProfile.height_inch,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "waist" },
-              "Waist Circumference:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "waist",
-              min: "0",
-              max: "100",
-              value: newProfile.waist,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "hip" },
-              "Hip Circumference:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "hip",
-              min: "0",
-              max: "100",
-              value: newProfile.hip,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "hip" },
-              "Wrist:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "wrist",
-              min: "0",
-              max: "100",
-              value: newProfile.wrist,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "hip" },
-              "Forearm:"
-            ),
-            _react2.default.createElement(_NumInput2.default, {
-              type: "number",
-              name: "forearm",
-              min: "0",
-              max: "100",
-              value: newProfile.forearm,
-              onChange: this.onChange
-            })
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "activity" },
-              "Activity:"
-            ),
-            _react2.default.createElement(
-              "select",
-              {
-                name: "activity",
-                value: newProfile.activity,
-                onChange: this.onChange
-              },
-              _react2.default.createElement("option", { value: "empty-placeholder" }),
-              _react2.default.createElement(
-                "option",
-                { value: "option1" },
-                "option1"
-              ),
-              _react2.default.createElement(
-                "option",
-                { value: "option2" },
-                "option2"
-              )
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              "label",
-              { htmlFor: "exercise" },
-              "Current Exercise Routine:"
-            ),
-            _react2.default.createElement(
-              "select",
-              {
-                name: "exercise",
-                value: newProfile.exercise,
-                onChange: this.onChange
-              },
-              _react2.default.createElement("option", { value: "empty-placeholder" }),
-              _react2.default.createElement(
-                "option",
-                { value: "option1" },
-                "option1"
-              ),
-              _react2.default.createElement(
-                "option",
-                { value: "option2" },
-                "option2"
-              )
-            ),
-            _react2.default.createElement("br", null),
-            validationMessage
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement("input", { type: "submit", value: "Save Your Profile" })
-          )
-        )
-      );
+      var validationMessage = Object.keys(this.state.invalidFields).length === 0 ? null : _react2.default.createElement("div", { className: "error" }, "Please correct invalid fields before submitting.");
+      return _react2.default.createElement("div", { className: "standalone opened" }, _react2.default.createElement("h1", { className: "step-2" }), _react2.default.createElement("p", null, "This form will allow users to fill in data pertaining to their health, which we will use in the app... all the time."), _react2.default.createElement("form", { className: "profile-creator", onSubmit: this.onSubmit }, _react2.default.createElement("h2", null, "ID: ", newProfile._id), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "gender" }, "Gender:"), _react2.default.createElement("select", {
+        name: "gender",
+        value: newProfile.gender,
+        onChange: this.onChange
+      }, _react2.default.createElement("option", { value: "empty-placeholder" }), _react2.default.createElement("option", { value: "male" }, "male"), _react2.default.createElement("option", { value: "female" }, "female"))), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "age" }, "Age:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "age",
+        min: "0",
+        max: "100",
+        value: newProfile.age,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "weight" }, "Weight:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "weight",
+        min: "0",
+        max: "600",
+        value: newProfile.weight,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "height_ft" }, "Height:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "height_ft",
+        min: "0",
+        max: "7",
+        value: newProfile.height_ft,
+        onChange: this.onChange
+      }), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "height_inch",
+        min: "0",
+        max: "12",
+        value: newProfile.height_inch,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "waist" }, "Waist Circumference:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "waist",
+        min: "0",
+        max: "100",
+        value: newProfile.waist,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "hip" }, "Hip Circumference:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "hip",
+        min: "0",
+        max: "100",
+        value: newProfile.hip,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "hip" }, "Wrist:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "wrist",
+        min: "0",
+        max: "100",
+        value: newProfile.wrist,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "hip" }, "Forearm:"), _react2.default.createElement(_NumInput2.default, {
+        type: "number",
+        name: "forearm",
+        min: "0",
+        max: "100",
+        value: newProfile.forearm,
+        onChange: this.onChange
+      })), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "activity" }, "Activity:"), _react2.default.createElement("select", {
+        name: "activity",
+        value: newProfile.activity,
+        onChange: this.onChange
+      }, _react2.default.createElement("option", { value: "empty-placeholder" }), _react2.default.createElement("option", { value: "option1" }, "option1"), _react2.default.createElement("option", { value: "option2" }, "option2"))), _react2.default.createElement("div", null, _react2.default.createElement("label", { htmlFor: "exercise" }, "Current Exercise Routine:"), _react2.default.createElement("select", {
+        name: "exercise",
+        value: newProfile.exercise,
+        onChange: this.onChange
+      }, _react2.default.createElement("option", { value: "empty-placeholder" }), _react2.default.createElement("option", { value: "option1" }, "option1"), _react2.default.createElement("option", { value: "option2" }, "option2"))), _react2.default.createElement("div", null, _react2.default.createElement("input", { type: "submit", value: "Save Your Profile" }))));
     }
   }]);
 
