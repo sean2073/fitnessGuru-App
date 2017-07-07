@@ -12,8 +12,8 @@ var mongoose = require("mongoose");
 var User = require("./models/User");
 //var Profile = require("./src/components/utility/validateForm.js");
 
-var Formulas = require("../public/fg.brian.formulas.js");
-
+var Formulas = require("../../public/fg.brian.formulas.js");
+console.log(Formulas.hi);
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
@@ -124,6 +124,30 @@ app.put("/profile/:id", function(req, res) {
 app.get("/goals/:id", function(req, res) {
   try {
     console.log(req.params.id)
+   
+  } catch (error) {
+    console.log(error)
+    res.status(422).json({message: `Invalid user ID format: $(error} `});
+    return;
+  }
+  User.find({_id: req.params.id }).limit(1)
+  .then((savedGoal) => {
+    res.json(savedGoal);
+    console.log("weight is ", savedGoal.weight);
+    var BMI = Formulas.guru("BMI", { weight: req.params.weight, height_ft: req.params.ft, height_in: req.params.inch });
+  console.log("Your BMI is ", BMI);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).json({message: `Internal Server Error: ${error}` });
+  });
+
+
+//var BMI = guru("BMI", { weight: req.params.weight, height_ft: req.params.ft, height_in: req.params.inch });
+//console.log("Your BMI is ", BMI);
+/*
+  try {
+    console.log(req.params.id)
     userId = new mongoose.Types.ObjectId(req.params.id);
   } catch (error) {
     console.log(error)
@@ -138,6 +162,7 @@ app.get("/goals/:id", function(req, res) {
     console.log(error);
     res.status(500).json({message: `Internal Server Error: ${error}` });
   });
+  */
 }); 
 
 app.put("/goals/:id", function(req, res) {

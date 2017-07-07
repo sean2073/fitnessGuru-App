@@ -1,3 +1,48 @@
+
+
+
+var hi = "hi";
+
+module.exports = hi;
+
+var Formulas = {
+	guru:function(data, element) {
+	console.log(data);
+	console.log(element);
+	console.important("GURU:");
+
+	// switch(data.split("-")[0]) {
+	//     case "BMR":
+	//         return bmrCalc("guru", element);
+	//         break;
+	//     case "BMI":
+	//         return bmiCalc("guru", element);
+	//         break;
+	//     case "BodyFat":
+	// 	    return bodyFatCalc("guru", element);
+	//         break;
+	//     case "ALL":
+	//     	user_stats = { 
+	//     		bmr: bmrCalc("guru", element),
+	//     		bmi:  bmiCalc("guru", element), 
+	//     		bodyfat: bodyFatCalc("guru", element)
+	//     	};
+	// 	    return user_stats;
+	//         break;
+	//     default:
+	//         text = "Error";
+	// }
+}
+
+
+
+}
+
+module.exports = Formulas;
+
+
+
+
 function guru(data, element) {
 
 	console.important("GURU:");
@@ -24,6 +69,8 @@ function guru(data, element) {
 	        text = "Error";
 	}
 }
+
+module.exports = guru;
 
 // // HOW TO: Return BMR
 // var bodyObject_BMR = { gender: "male", age: 29, weight: 145, height_ft: 5, height_in: 8 };
