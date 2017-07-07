@@ -29,11 +29,11 @@ module.exports = (
 
   // The high level component is the Router component
   <Router history={hashHistory}>
-    <Route path="/" component={Goals}>
+    <Route path="/" component={Profile}>
 
       {/* If user selects Info or Chat show the appropriate component */}
       <Route path="dashboard" component={Dashboard} />
-      <Route path="profile" component={Profile} />
+      <Route path="goals" component={Goals} />
 
       {/* If user selects any other path... we get the Info Route */}
       <IndexRoute component={Info} />

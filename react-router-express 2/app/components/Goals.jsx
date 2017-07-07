@@ -142,7 +142,7 @@ class Goals extends React.Component {
           <div>
             <input type="submit" value="Save Your Goals" />
           </div>
-          <div style="text-align:center">
+          <div>
             <center/>
             <Link to="dashboard"><input type="submit" value="Submish" /></Link>
           </div>
