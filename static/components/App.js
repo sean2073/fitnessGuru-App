@@ -1,5 +1,6 @@
 "use strict";
 
+<<<<<<< HEAD
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () {
@@ -29,6 +30,15 @@ function _inherits(subClass, superClass) {
     throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
+=======
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+>>>>>>> 06f67c4e4711b015007c325bc22f034f6112ab5f
 
 var contentNode = document.getElementById("content");
 
@@ -248,7 +258,10 @@ var FoodModal = function (_React$Component5) {
       // >>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
       //>>>>>>> 6c10ddb4b6de0f08549a1aae101ab4122bde17bd
 
+<<<<<<< HEAD
       // const {foodItemName} = this.props.food.fields.brand_name;
+=======
+>>>>>>> 06f67c4e4711b015007c325bc22f034f6112ab5f
       return React.createElement("div", { className: "modal", style: modalStyle }, React.createElement("div", { className: "modal-dialog" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", {
         type: "button",
         onClick: this.props.onClose,
@@ -713,8 +726,13 @@ var Dashboard = function (_React$Component10) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
+<<<<<<< HEAD
       return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "jumbotron", id: "jumbo" }, React.createElement("div", { className: "welcome", id: "welcome" }, React.createElement("h1", { className: "welcome" }, "George")))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF2C2" }, "User Data")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "InitialOutput" }, React.createElement(InitialOutput, null))))), React.createElement("div", { className: "col-md-8" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF140" }, "Goals")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "userGoals" }, React.createElement(UserGoals, null)))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF1DA" }, "History")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "history" }, "Panel content", React.createElement(History, null))))), React.createElement("div", { className: "col-md-8" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF08D" }, "Calorie Tracker")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "calorieTracker" }, React.createElement(CalorieTracker, null)))))) //<!-- close container -->
       );
+=======
+      return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "jumbotron", id: "jumbo" }, React.createElement("div", { className: "welcome", id: "welcome" }, React.createElement("h1", { className: "welcome" }, "George")))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF2C2" }, "User Data")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "InitialOutput" }, React.createElement(InitialOutput, null))))), React.createElement("div", { className: "col-md-8" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF140" }, "Goals")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "userGoals" }, React.createElement(UserGoals, null)))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF1DA" }, "History")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "history" }, "Panel content", React.createElement(History, null))))), React.createElement("div", { className: "col-md-8" }, React.createElement("div", { className: "panel panel-default" }, React.createElement("div", { className: "panel-heading" }, React.createElement("h2", { "data-background-icon": "\uF08D" }, "Calorie Tracker")), React.createElement("div", { className: "panel-body" }, React.createElement("div", { className: "calorieTracker" }, React.createElement(CalorieTracker, null))))))) //<!-- close container -->
+      ;
+>>>>>>> 06f67c4e4711b015007c325bc22f034f6112ab5f
     }
   }]);
 
