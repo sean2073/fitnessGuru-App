@@ -12,7 +12,7 @@ var mongoose = require("mongoose");
 var User = require("./models/User");
 //var Profile = require("./src/components/utility/validateForm.js");
 
-var Formulas = require("../../public/fg.brian.formulas.js");
+var Formulas = require("./public/fg.brian.formulas.js");
 console.log(Formulas.hi);
 // Create Instance of Express
 var app = express();
@@ -134,8 +134,8 @@ app.get("/goals/:id", function(req, res) {
   .then((savedGoal) => {
     res.json(savedGoal);
     console.log("weight is ", savedGoal.weight);
-    var BMI = Formulas.guru("BMI", { weight: req.params.weight, height_ft: req.params.ft, height_in: req.params.inch });
-  console.log("Your BMI is ", BMI);
+    //var BMI = Formulas.guru("BMI", { weight: req.params.weight, height_ft: req.params.ft, height_in: req.params.inch });
+  //console.log("Your BMI is ", BMI);
   })
   .catch(error => {
     console.log(error);
