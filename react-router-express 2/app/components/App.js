@@ -866,13 +866,65 @@ class CalorieTracker extends React.Component {
   }
 }
 class Dashboard extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      Newdashboard: {
+        _id: '', username: '', 
+        bmi: null, 
+        caloriesDaily: null, 
+        bodyfat: null, 
+        bmr: null, 
+        loseWeight: true, 
+        gainWeight: false, 
+        amount: null
+      }
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+  componentDidMount() {
+    this.loadData();
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.params.id !== this.props.params.id) {
+      this.loadData();
+    }
+  }
+
+  onChange(event, convertedValue) {
+    const newDashboard = Object.assign({}, this.state.newDashboard);
+    const value =
+      convertedValue !== undefined ? convertedValue : event.target.value;
+    newDashboard[event.target.name] = value;
+    this.setState({ newDashboard });
+  }
+  loadData() {
+    fetch(`/dashboard/${this.props.params.id}`)
+      .then(response => {
+        if (response.ok) {
+          response.json().then(newDashboard => {
+            console.log(newDashboard[0])
+            this.setState({newDashboard: newDashboard[0]});
+          });
+        } else {
+          response.json().then(error => {
+            alert(`Failed to fetch new dashboard: ${error.message}`);
+          });
+        }
+      })
+      .catch(err => {
+        alert(`Error in fetching data from server: ${err.message}`);
+      });
+  }
+
+  
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="jumbotron" id="jumbo">
             <div className="welcome" id="welcome">
-              <h1 className="welcome">George</h1>
+              <h1 className="welcome">George {this.props.newDashboard.username}</h1>
             </div>
           </div>
         </div>
@@ -937,4 +989,7 @@ class Dashboard extends React.Component {
     );
   }
 }
+Dashboard.propTypes = {
+  params: React.PropTypes.object.isRequired,
+};
 module.exports = Dashboard;
