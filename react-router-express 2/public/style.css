@@ -1,0 +1,1501 @@
+body{
+	margin: 0;
+	/*overflow: hidden;*/
+}
+
+
+header{
+	/*background-color: rgba(255,0,0,0.1);*/
+}
+
+
+.quote-message{
+	background-color: rgba(0,255,0,0.1);
+}
+
+
+.content{
+	/*background-color: rgba(0,0,255,0.1);*/
+	display: flex;
+}
+.page-side{
+	background-color: rgba(0,0,255,0.2);
+}
+.page-main{
+	background-color: rgba(0,0,255,0.2);
+}
+
+
+footer{
+	/*background-color: rgba(255,255,0,0.1);*/
+}
+
+
+/*MISC*/
+.hide input,
+.hide,
+.hide label{
+	opacity: 0;
+	height: 0px;
+	visibility: none;
+	display: none;
+}
+#hide{
+	display: none;
+}
+
+
+
+
+/*quote Popup*/
+
+.quotePopup {
+	background-color: rgba(255,255,255,.9);
+    display: none;
+    height: 100%;
+    left: 0;
+    right: 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    font-family: 'Nunito', sans-serif;
+}
+	.quotePopup.open {
+	   display: flex;
+	   flex-direction: column;
+	}
+
+	.quotePopup .welcome{
+		color: rgba(255,255,255,0.4);
+		margin-bottom: 10px;
+	}
+	.quotePopup .welcome:before{
+		content: "welcome to ";
+		font-size: larger;
+	}
+
+	/*quote POPUP CONTENT*/
+
+	.quotePopup .content {
+	    height: 100%;
+	    overflow-y: auto;
+		background-color: transparent;
+		padding: 20px;
+		padding-top: 80px;
+		display: flex;
+		flex-direction: column;
+	    align-items: center;
+    	justify-content: center;
+    	z-index: 1002;
+    	background-color: rgba(0,0,0,0.78);
+    	width: 100%;
+    	box-shadow:inset 0px 0px 100px 10px rgba(0,0,0,0.1);
+	}
+
+	.quotePopup .logo-txt{
+		position: relative;
+	    text-align: center;
+		font-family: 'Nunito', sans-serif;
+		padding-bottom: 40px;
+		font-size: xx-large;
+		font-weight: bolder;
+		text-align: center;
+		z-index: 1002;
+		text-transform: uppercase;
+		color: #fff;
+		letter-spacing: 2px;
+	}
+	.quotePopup .logo-txt:before{
+		content:"Fitness";
+	}
+	.quotePopup .logo-txt:after{
+		content:" Guru";
+	}
+
+	.quotePopup .quote{
+		max-width: 550px;
+		width: calc(100% - 40px);
+		font-size: x-large;
+		text-align: left;
+    	display: flex;
+    	flex-direction: column;
+	}
+	.quotePopup .nav{
+		max-width: 550px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: rgba(200,200,200,1);
+		color:rgba(0,0,0,0.4);
+		font-size: large;
+		padding: 0px 20px;
+		min-height: 20px;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(200,200,200,1);
+	}
+	.quotePopup .nav:before{
+		content: "Health Quotes";
+		font-weight: lighter;
+		text-transform: uppercase;
+	}
+	.quotePopup .nav button{
+	 	font-size: larger;
+	 	background-color: transparent;
+	 	border: 0px;
+	 	cursor: pointer;
+	 	padding: 10px;
+	 	border-radius: 20px;
+	 	color:rgba(0,0,0,0.4);
+
+	}
+	.quotePopup .nav button:before{
+		content: "x";
+	}
+	.quotePopup .nav button:hover{
+		border-radius: 20px;
+		font-weight: bolder;
+		background-color: #333;
+		color:#fff;
+	}
+
+	.quotePopup .quote p{
+		padding: 20px;
+		background-color: #fff;
+		font-size: xx-large;
+		text-align:left;
+		text-align-last:left;
+		text-justify:distribute;
+	}
+	.quotePopup .quote .author{
+		background-color: #fff;
+		padding: 20px;
+		padding-top: 0px;
+		font-weight: bolder;
+		color: rgba(0,0,0,0.5);
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+		margin-bottom: 40px;
+	}
+	.quotePopup .quote .author:before{
+		content: "-";
+	}
+
+	.quotePopup .more{
+		margin-left: auto;
+		margin-right: auto;
+		font-size: smaller;
+		margin-bottom: 60px;
+	}
+	.quotePopup .more a{
+		color:rgba(255,255,255,0.3);
+		text-transform: capitalize;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	.quotePopup .more a:nth-of-type(1){
+		margin-right: 20px;
+	}
+	
+	.quotePopup .more a:nth-of-type(1):after{
+		content: " previous";
+	}
+	.quotePopup .more a:nth-of-type(2):before{
+		content: "Next ";
+	}
+	.quotePopup .more a:hover:nth-of-type(1):after,
+	.quotePopup .more a:hover:nth-of-type(2):before{
+		text-decoration: underline;
+		color:rgba(255,255,255,0.8);
+	}
+	.quotePopup .more a:nth-of-type(1):before,
+	.quotePopup .more a:nth-of-type(2):after{
+		content: attr(data-fa-icon);
+		font-family: "FontAwesome";
+	}
+
+	.quotePopup .footer {
+		position: absolute;
+	    text-align: center;
+	    bottom:0px;
+		z-index: 1001;
+	    width: 100%;
+	    padding-top:10px;
+	    color: rgba(0,0,0,0.3);
+	}
+	.quotePopup .footer:before{
+		text-transform: uppercase;
+		content: "\00a9  2017 Fitness guru. all rights reserved."
+	}
+
+
+/*stand alone modules*/
+
+/*standalone CONTAINERS*/
+.standalone{
+	max-width: 600px;
+	background-color: rgba(255,255,255,0.3);
+	font-family: sans-serif;
+	padding:20px;
+	margin:20px;
+	border-radius: 20px;
+}
+	.standalone h1{
+		font-size: xx-large;
+		font-weight: bolder;
+	}
+	.standalone p{
+		font-size:x-large;
+		font-weight: lighter;
+		padding:20px 0;
+	}
+
+
+/*standalone BMI calc*/
+.bmi-calc{
+	background-color: rgba(255,255,255,0.8);
+	padding: 20px;
+	border-radius: 20px;
+	position: relative;
+}
+.bmi-calc:before{
+	content:"Calculate Your BMI";
+	font-size: larger;
+	font-weight: bolder;
+}
+	.unit-type{
+		margin-top: 20px;
+	}
+	.unit-type:before{
+		text-decoration: underline;
+		content: "Unit of Measurement:\a";
+	    white-space:pre;
+	}
+	.weight-wrap, .height-wrap{
+		padding: 20px;
+		background-color: rgba(0,0,0,0.1);
+		border-radius: 20px;
+		margin-top: 20px;
+	}
+
+
+	.weight-wrap div{
+		border-radius: 20px;
+    	border: none;
+    	background-color: rgba(0,0,0,0.1);
+    	display: flex;
+	    align-items: center;
+    	justify-content: center;
+    	position: relative;
+	}
+	.weight-wrap div:after{
+		padding:0 20px;
+		font-size: larger;
+		font-weight: bolder;
+		position: absolute;
+		right: 0px;
+	}
+	.bmi-calc .weight-wrap div:nth-of-type(1):after{ 
+		content: "pounds";
+	}
+	.bmi-calc .weight-wrap div:nth-of-type(2):after{
+		content: "kilograms";
+	}
+	/*hiding pounds OR kilograms...*/
+	/*...depeinding on which type of measurement picked*/
+	.bmi-calc.metric .weight-wrap div:nth-of-type(1),
+	.bmi-calc.imperial .weight-wrap div:nth-of-type(2){
+		display: none;
+	}
+
+
+	.bmi-calc.imperial .weight-wrap:before{
+		content: "How Many Pounds Do You Weigh?\a\a";
+	    white-space:pre;
+	}
+	.bmi-calc.metric .weight-wrap:before{
+		content: "How Many Kilograms Do You Weigh?\a\a";
+	    white-space:pre;
+	}
+	.weight-wrap input[type=text]{
+		text-align: center;
+		padding:20px;
+		width: calc(100% - 40px);
+		font-size: xx-large;
+		border-radius: 20px;
+    	border: none;
+    	background-color: transparent;
+	}
+
+
+
+	.bmi-calc.imperial .height-wrap:before{
+		content: "How Tall Are You in Feet & Inches?\a\a";
+	    white-space:pre;
+	}
+	.bmi-calc.metric .height-wrap:before{
+		content: "How Tall Are You in Meters?\a\a";
+	    white-space:pre;
+	}
+	.height-wrap div{
+		border-radius: 20px;
+    	border: none;
+    	background-color: rgba(0,0,0,0.1);
+    	display: flex;
+	    align-items: center;
+    	justify-content: center;
+    	position: relative;
+	}
+	.height-wrap div:after{
+		padding:0 20px;
+		font-size: larger;
+		font-weight: bolder;
+		position: absolute;
+		right: 0px;
+	}
+	.height-wrap div:nth-of-type(1):after{
+		content: "feet";
+	}
+	.height-wrap div:nth-of-type(2):after{
+		content: "inches";
+	}
+	.height-wrap div:nth-of-type(3):after{
+		content: "meters";
+	}
+	.height-wrap div:nth-of-type(2){
+		margin-top: 20px;
+	}
+	.height-wrap input[type=text]{
+		flex: 1;
+		text-align: center;
+		padding:20px;
+		font-size: xx-large;
+		border-radius: 20px;
+    	border: none;
+    	background-color: transparent;
+	}
+
+	/*hiding inchest & feet OR meters...*/
+	/*...depeinding on which type of measurement picked*/
+	.bmi-calc.metric .height-wrap div:nth-child(n+1):nth-child(-n+2),
+	.bmi-calc.metric .height-wrap .height-i,
+	.bmi-calc.imperial .height-wrap div:nth-of-type(3),
+	.bmi-calc.imperial .height-wrap .height-m{
+		display: none;
+	}
+
+	.bmi-run{
+		cursor: pointer;
+		width: 100%;
+		margin-top: 20px;
+		text-align: center;
+		padding:20px;
+		font-size: xx-large;
+		border-radius: 20px;
+    	border: none;
+    	background-color: rgba(0,0,0,0.4);
+	}
+	.bmi-run:hover{
+		background-color: rgba(0,0,0,0.7);
+		color: rgba(255,255,255,0.5);
+	}
+	.bmi-run:after{
+		content: "Calculate BMI";
+	}
+
+	.bmi-results{
+		border-radius: 20px;
+		border: 1px solid #000;
+		margin-top: 20px;
+		overflow: hidden;
+		min-width: 10px;
+		min-height: 10px;
+		background-color: rgba(0,0,0,0.1);
+	}
+	.bmi-results h1{
+		font-size: x-large;
+		text-align: center;
+		padding: 20px 0;
+		background-color: #000;
+		color: #fff;
+		font-weight: lighter;
+	}
+	.bmi-results h1:before{
+		content: "Results";
+		text-transform: uppercase;
+	}
+
+	.bmi-results > .numerical-result{
+		text-align: center;
+		font-size: x-large;
+		padding: 20px 0;
+	}
+	.bmi-results > .numerical-result:before{
+		content: "Your BMI: ";
+		font-weight: lighter;
+	}
+
+	.bmi-results h2{
+		text-align: center;
+		text-transform: uppercase;
+		text-align: center;
+		background-color: rgba(0,0,0,0.1);
+		padding: 20px 0;
+		width: calc(100% - 40px);
+		margin-right: auto;
+		margin-left: auto;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.bmi-results h2:before{
+		content: "weight categories";
+	}
+
+	.bmi-scale{
+		display: flex;
+		flex-direction: row;
+		background-color: rgba(0,0,0,0.1);
+		width: calc(100% - 40px);
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom: 20px;
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+		overflow: hidden;
+	}
+
+	.bmi-scale > .categories{
+		min-width: 16%;
+		flex:1;
+		font-size: 2vmin;
+		text-align: center;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border: 1px solid rgba(0,0,0,0.1);
+	}
+	.bmi-scale > .categories:before{
+		white-space: pre;
+		text-transform: uppercase;
+		color: rgba(0,0,0,0.5);
+		font-weight: bolder;
+	}
+	.bmi-scale > .categories:after{
+		color: rgba(0,0,0,0.5);
+		font-weight: lighter;
+		color:#000;
+	}
+
+	.bmi-scale > .categories hr{
+		border-color: rgba(0,0,0,0.1);
+	}
+
+	.bmi-scale > .categories:nth-of-type(1){
+		background-color: rgb(175,218,205);
+	}
+	.bmi-scale > .categories:nth-of-type(1):before{
+		content: "Under\A";
+	}
+	.bmi-scale > .categories:nth-of-type(1):after{
+		content: "< 18.5";
+	}
+
+	.bmi-scale > .categories:nth-of-type(2){
+		background-color: rgb(158,233,91);
+	}
+	.bmi-scale > .categories:nth-of-type(2):before{
+		content: "Normal\A";
+	}
+	.bmi-scale > .categories:nth-of-type(2):after{
+		content: "18.5 - 24";
+	}
+
+	.bmi-scale > .categories:nth-of-type(3){
+		background-color: rgb(255,253,150);
+	}
+	.bmi-scale > .categories:nth-of-type(3):before{
+		content: "Over\A";
+	}
+	.bmi-scale > .categories:nth-of-type(3):after{
+		content: "25 - 29";
+	}
+
+	.bmi-scale > .categories:nth-of-type(4){
+		background-color: rgb(253,213,0);
+	}
+	.bmi-scale > .categories:nth-of-type(4):before{
+		content: "Over x2\A";
+	}
+	.bmi-scale > .categories:nth-of-type(4):after{
+		content: "30 - 34";
+	}
+
+	.bmi-scale > .categories:nth-of-type(5){
+		background-color: rgb(246,141,50);
+	}
+	.bmi-scale > .categories:nth-of-type(5):before{
+		content: "Over x3\A";
+	}
+	.bmi-scale > .categories:nth-of-type(5):after{
+		content: "35 - 39";
+	}
+
+	.bmi-scale > .categories:nth-of-type(6){
+		background-color: rgb(241,121,131);
+	}
+	.bmi-scale > .categories:nth-of-type(6):before{
+		content: "Over x4\A";
+	}
+	.bmi-scale > .categories:nth-of-type(6):after{
+		content: "40+";
+	}
+
+	.bmi-scale > .categories > div{
+		margin: 10px 0;
+		font-size: xx-large;
+	}
+	.bmi-scale > .categories > div:not(.active):before{
+		content: "\f006";
+		font-family: FontAwesome;
+		color: rgba(0,0,0,0.2);
+	}
+	.bmi-scale > .categories > div.active:before{
+		content: "\f005";
+		font-family: FontAwesome;
+	}
+
+
+/*DASHBOARD STYLES*/
+body{
+	background-color: rgba(50,50,76,1);
+}
+
+.logo{
+	background-color: rgb(111, 220, 111);
+	font-family: 'Nunito', sans-serif;
+	padding: 20px;
+	font-size: xx-large;
+	font-weight: bolder;
+	text-transform: uppercase;
+	color: #fff;
+	letter-spacing: 2px;
+	text-shadow:
+   -1px -1px 2px rgba(0,0,0,.2),  
+    1px -1px 2px rgba(0,0,0,.2),  
+    -1px 1px 2px rgba(0,0,0,.2),  
+    1px 1px 2px rgba(0,0,0,.2);
+    border-bottom: 10px solid rgba(50, 205, 50, 0.4);
+}
+.logo:before{
+	content:"Fitness Guru";
+}
+#jumbo{
+	background-color: transparent;
+	color:white;
+	box-shadow: 0px transparent;
+	border: 0px solid transparent;
+	-webkit-box-shadow: 0px transparent;
+	-webkit-box-shadow: inset 0 0px 0 transparent;
+    box-shadow: inset 0 2px 0 transparent;
+    padding: 0px;
+}
+
+#welcome{
+	font-family: 'Nunito', sans-serif;
+	font-weight: bolder;
+	background-color: transparent;
+}
+#welcome h1:before{
+	color: rgba(255,255,255,0.6);
+	content: "Welcome ";
+}
+#welcome h1:after{
+	content: "!";
+}
+
+
+.container{
+	padding-top: 40px;
+	max-width: calc(100% - 40px);
+	width: calc(100% - 80px) !important;
+}
+
+.main-footer{
+	text-transform: uppercase;
+	text-align: center;
+	font-family: 'Nunito', sans-serif;
+	color: rgba(255,255,255,0.1);
+	padding-top: 20px;
+}
+.main-footer:after{
+	content: "\00a9 2017 Fitness guru. all rights reserved.";
+}
+
+h2{
+	font-family: 'Nunito', sans-serif;
+}
+.container h2:nth-of-type(1):before{
+	content: attr(data-background-icon);
+	padding-right: 5px;
+	font-family: FontAwesome;
+}
+
+form span input{
+	width: 100%;
+}
+
+
+/*LOGIN*/
+.login:after{
+	content: "Member Login";
+}
+/*SIGNUP*/
+.step-1:before{
+	color: rgba(255,255,255,0.6);
+	content: "STEP 1: ";
+}
+.step-1:after{
+	content: "Signup";
+}
+.user-login .psw{
+	margin-top: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+.user-login .psw a{
+	color: rgba(0,0,0,0.4);
+	text-decoration: none;
+}
+.user-login .psw a:hover{
+	color: rgba(0,0,0,0.8);
+	text-decoration: none;
+}
+
+
+/*PROFILE CREATOR*/
+.step-2:before{
+	color: rgba(255,255,255,0.6);
+	content: "STEP 2: ";
+}
+.step-2:after{
+	content: "Create A Profile";
+}
+.profile-creator,
+.goal-creator,
+.user-login,
+.user-signup,
+.bmrCalc,
+.bodyFatCalc{
+	display: flex;
+	flex-direction: column;
+	min-width: 50%;
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 20px;
+	padding:20px;
+}
+.profile-creator h2,
+.user-signup h2,
+.bmrCalc h2,
+.bodyFatCalc h2{
+	padding: 20px;
+	background-color: rgba(0,0,0,.05);
+	color: rgba(0,0,0,.3);
+	border-radius: 20px;
+	text-align: center;
+	margin: 10px 0;
+}
+.profile-creator h2:before,
+.user-signup h2:before,
+.bmrCalc h2:before,
+.bodyFatCalc h2:before{
+	content: "Please Fill Out The Form Below to Continue";
+}
+.profile-creator div,
+.goal-creator div,
+.user-login div,
+.user-signup div,
+.bmrCalc div,
+.bodyFatCalc div{
+	margin-top: 20px;
+	font-size: x-large;
+	display: flex;
+	align-items: center;
+    justify-content: left;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 10px;
+}
+.profile-creator label,
+.goal-creator label,
+.user-login label,
+.user-signup label,
+.bmrCalc label,
+.bodyFatCalc label{
+	padding-right: 10px;
+	display: flex;
+	text-align: center;
+}
+.profile-creator input,
+.profile-creator select,
+.goal-creator input,
+.goal-creator select,
+.user-login input,
+.user-login select,
+.user-signup input,
+.user-signup select,
+.bmrCalc input,
+.bmrCalc select,
+.bodyFatCalc input:not(.bmrCalc),
+.bodyFatCalc select{
+	background-color: rgba(0,0,0,.2);
+	text-align: center;
+	font-size: xx-large;
+	font-weight: light;
+	width: 100%;
+	border: 0px solid #000;
+	border-radius: 20px;
+	padding: 20px;
+	text-align-last:center;
+	text-transform: uppercase;
+	cursor: pointer;
+	-webkit-appearance: none; 
+   	-moz-appearance: none;
+   	appearance: none;       /* remove default arrow */
+   	background-image: url(...);   /* add custom arrow */
+   	color:black;
+}
+.profile-creator div:nth-of-type(4) input:nth-of-type(1){
+	margin-right: 20px;
+}
+.profile-creator input[type=submit],
+.goal-creator input[type=submit],
+.user-login input[type=submit],
+.user-signup input[type=submit],
+.bmrCalc input[type=submit],
+.bodyFatCalc input[type=submit]{
+	border-radius: 20px;
+	background-color: rgba(255,255,255,0.5);
+	font-weight: light;
+	letter-spacing: 2px;
+	color:rgba(0,0,0,0.5);
+	border: 5px solid rgba(0,0,0,0.5);
+}
+.profile-creator input[type=submit]:hover,
+.goal-creator input[type=submit]:hover,
+.user-login input[type=submit]:hover,
+.user-signup input[type=submit]:hover,
+.bmrCalc input[type=submit]:hover,
+.bodyFatCalc input[type=submit]:hover{
+	background-color: rgba(255,255,255,0.8);
+}
+.profile-creator ::-webkit-input-placeholder,
+.goal-creator ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:black;
+}
+.profile-creator ::-moz-placeholder,
+.goal-creator ::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.profile-creator :-ms-input-placeholder,
+.goal-creator :-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.profile-creator :-moz-placeholder,
+.goal-creator :-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
+/*GOAL CREATOR...specific*/
+/*THERES MORE ABOVE*/
+.step-3:before{
+	color: rgba(255,255,255,0.6);
+	content: "STEP 3: ";
+}
+.step-3:after{
+	content: "Set Your Goals";
+}
+.goal-creator input[type=radio]{
+	margin:10px;
+	width: auto;
+}
+.goal-creator div{
+	padding: 0px;
+}
+.goal-creator input.radio{
+	display: none;
+}
+.goal-creator input.radio:checked{
+	background-color: #4DCB6D;
+}
+.goal-creator label{
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.goal-creator input[type="radio"]:hover+label{
+	background-color: rgba(0,0,0,0.1);
+}
+.goal-creator input[type="radio"]:checked+label{
+	background-color: rgba(77,203,109,0.3);
+}
+.goal-creator h2{
+	padding: 20px;
+	font-size: xx-large;
+	text-align: center;
+	margin: 10px 0;
+	font-weight: bolder;
+	text-shadow:
+	-1px -1px 0 rgba(0,0,0,0.1),
+	1px -1px 0 rgba(0,0,0,0.1),
+	-1px 1px 0 rgba(0,0,0,0.1),
+	1px 1px 0 rgba(0,0,0,0.1);
+}
+.goal-creator h2:before{
+	content: "What Would You Like To Achive?";
+}
+.goal-creator i{
+	text-align: center;
+	color: rgb(248, 218, 5);
+	text-shadow:
+    0px 3px 3px #000,
+	-1px -1px 0 rgba(0,0,0,0.1),
+	1px -1px 0 rgba(0,0,0,0.1),
+	-1px 1px 0 rgba(0,0,0,0.1),
+	1px 1px 0 rgba(0,0,0,0.1);
+}
+
+
+/*USER DATA*/
+.user-data{
+	font-family: 'Nunito', sans-serif;
+	text-align: center;
+	padding-top: 10px;
+}
+.user-data:before{
+	color: rgba(0,0,0,.5);
+	text-align: center;
+	font-size: xx-large;
+}
+.user-data:before{
+	content: "Here are your stats!";
+}
+.user-data div{
+	background-color: rgba(0,0,0,.1);
+	font-size: x-large;
+	border-radius: 20px;
+	padding:20px;
+	margin:20px 0;
+	display: flex;
+}
+.user-data div:nth-of-type(1){
+	margin-top: 20px;
+}
+.user-data div:nth-of-type(4){
+	margin-bottom: 0px;
+}
+.user-data div:before{
+	font-weight: bolder;
+	padding-right: 20px;
+}
+.user-data div:nth-of-type(1):before{
+	content: "BMI: ";
+}
+
+.user-data div:nth-of-type(2){
+	background-color: rgba(0,0,0,.15);
+}
+.user-data div:nth-of-type(2):before{
+	content: "Body Fat %: ";
+}
+
+.user-data div:nth-of-type(3){
+	background-color: rgba(0,0,0,.2);
+}
+.user-data div:nth-of-type(3):before{
+	content: "BMR: ";
+}
+
+.user-data div:nth-of-type(4){
+	background-color: rgba(0,0,0,.25);
+}
+.user-data div:nth-of-type(4):before{
+	content: "Calories A Day: ";
+}
+
+.panel.panel-default{
+	border-radius: 20px;
+}
+.panel-heading{
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+/*GOAL DISPLAY*/
+.goals{
+	font-family: 'Nunito', sans-serif;
+}
+.current-goals,
+.achieved-goals{
+	border-radius: 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.achieved-goals{
+	margin-bottom: 0px;
+}
+.current-goals div,
+.achieved-goals div{
+	text-align: center;
+}
+.current-goals .holder,
+.achieved-goals .holder{
+	background-color: rgba(0,0,0,.1);
+	padding: 20px;
+	color:#333;
+	font-size: x-large;
+}
+
+.current-goals:before,
+.achieved-goals:before{
+	background-color: rgba(0,0,0,.3);
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	display: inline-block;
+	width: 100%;
+	padding: 20px;
+	content: "Current Goals";
+	color: rgba(0,0,0,.5);
+	text-align: center;
+	font-size: xx-large;
+	font-family: 'Nunito', sans-serif;
+}
+.current-goals .goal,
+.achieved-goals .goal{
+	padding-bottom: 0px;
+}
+
+.current-goals .status .bar-outer{
+	border-radius: 20px;
+	background-color: rgba(0,0,0,.1);
+	padding: 10px;
+	position: relative;
+}
+.current-goals .status .bar-inner{
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 15px 10px rgba(0,0,0,.2);
+	height: 60px;
+	border-radius: 20px;
+	background-color: rgb(111, 220, 111);
+	border: 5px solid rgba(50, 105, 50, 0.3);
+	border-bottom: 10px solid rgba(50, 205, 50, 0.4);
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	font-weight: lighter;
+	color:rgba(0,0,0,0.8);
+	font-size: xx-large;
+	text-shadow:
+   -1px -1px 2px rgba(0,0,0,.2),  
+    1px -1px 2px rgba(0,0,0,.2),  
+    -1px 1px 2px rgba(0,0,0,.2),  
+    1px 1px 2px rgba(0,0,0,.2);
+}
+.bar-0{ width: 1%; }
+.bar-0:before{ content:"0%"; }
+
+.bar-1{ width: 10%; }
+.bar-1:before{ content:"10%"; }
+
+.bar-2{ width: 20%; }
+.bar-2:before{ content:"20%"; }
+
+.bar-3{ width: 30%; }
+.bar-3:before{ content:"30%"; }
+
+.bar-4{ width: 40%; }
+.bar-4:before{ content:"40%"; }
+
+.bar-5{ width: 50%; }
+.bar-5:before{ content:"50%";}
+
+.bar-6{ width: 60%; }
+.bar-6:before{ content:"60%"; }
+
+.bar-7{ width: 70%; }
+.bar-7:before{ content:"70%"; }
+
+.bar-8{ width: 80%; }
+.bar-8:before{ content:"80%"; }
+
+.bar-9{ width: 90%; }
+.bar-9:before{ content:"90%"; }
+
+.bar-10{ width: 100%; }
+.bar-10:before{ content:"100%"; }
+
+.bar-1:before, .bar-2:before, .bar-3:before,
+.bar-4:before, .bar-5:before, .bar-6:before,
+.bar-7:before, .bar-8:before, .bar-9:before, .bar-10:before{ 
+ 	position: absolute; 
+ 	left:0px;
+ 	padding-left: 20px;
+}
+
+.bar-1:after, .bar-2:after, .bar-3:after,
+.bar-4:after, .bar-5:after, .bar-6:after,
+.bar-7:after, .bar-8:after, .bar-9:after, .bar-10:after{ 
+ 	position: absolute; 
+ 	right:0px;
+ 	padding-right: 20px;
+ 	content:"\2605";
+}
+
+.current-goals .c-date,
+.achieved-goals .c-date{
+	padding: 10px;
+	padding-bottom: 10px;
+	font-size: medium;
+}
+
+.achieved-goals:before{
+	content: "Achieved Goals";
+}
+
+.bmrCalc div:nth-of-type(4) input:nth-of-type(1){
+	margin-right: 20px;
+}
+
+
+/*body fat %*/
+.bodyFatCalc input.radio{
+	display: none;
+}
+.bodyFatCalc input.radio:checked{
+	background-color: #4DCB6D;
+}
+.bodyFatCalc input[type=radio]{
+	margin:10px;
+	width: auto;
+}
+.bodyFatCalc label{
+	text-align: left;
+}
+.bodyFatCalc div:last-of-type{
+	background-color: rgba(77,203,109,0.3);
+	font-size: xx-large;
+	display: flex;
+	align-items: center;
+   	justify-content: center;
+}
+.bodyFatCalc div:last-of-type:before{
+	font-size: smaller;
+	font-weight: bolder;
+	content: "Your Body Fat =\00a0";
+}
+.bodyFatCalc div:last-of-type:after{
+	font-size: medium;
+	font-weight: bolder;
+	content: "%";
+}
+.gender-type label{
+	padding-right: 0px;
+}
+.gender-type label:nth-of-type(2){
+	padding-left: 20px;
+}
+.gender-type input:checked{
+	background-color: rgba(77,203,109,0.3);
+}
+
+
+/*START: CALORIE TRACKER*/
+.calorieTracker{
+	font-family: 'Nunito', sans-serif;
+}
+.calorieTracker a{
+	cursor: pointer;
+	margin-left: 20px;
+	color:rgba(0,0,0,.5);
+}
+.calorieTracker a:hover{
+	color: white;
+}
+.calorieTracker input{
+	width: 100%;
+	min-width: 50%;
+	padding: 20px;
+	font-size: larger;
+	border: 0px;
+	border-radius: 20px;
+}
+/*.calorieTracker div div:nth-of-type(1):not(.modal){*/
+.calorieDiv{
+	padding:20px;
+	border-radius: 20px;
+	background-color: rgba(0,0,0,.1);
+}
+.calorieDiv:nth-of-type(3){
+	margin-top: 20px;
+}
+.calorieTracker div div:nth-of-type(1) h2{
+	padding: 20px;
+	color: rgba(0,0,0,.3);
+	text-align: center;
+}
+.calorieTracker div div:nth-of-type(1) label{
+	text-align: center;
+	width: 100%;
+    font-size: xx-large;
+    color: rgba(0,0,0,.5);
+}
+.calorieTracker .search-group{
+	display: flex;
+    /*align-items: center;*/
+	/*justify-content: center;*/
+	overflow: scroll;
+}
+.calorieTracker div:first-child{
+	margin-bottom: 20px;
+}
+
+.calorieTracker .modal-content{
+	background-color: #ccc !important;
+}
+.calorieTracker button{
+	border-radius: 20px;
+	font-size: larger;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 15px 10px rgba(0,0,0,.2);
+}
+.calorieTracker button:hover{
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 10px 10px rgba(0,0,0,.2);
+}
+.calorieTracker button:active{
+	box-shadow: 0px 2px 5px rgba(0,0,0,.5), 0px 5px 10px rgba(0,0,0,.2);
+}
+
+.calorieTracker .modal label{
+	font-size: xx-small;
+}
+
+.calorieTracker table{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0px;
+	width: 100%;
+}
+.calorieTracker table thead tr{
+	display: flex;
+	margin-bottom: 0px;
+	width: calc(100% - 40px);
+}
+
+.calorieTracker thead tr th{
+	flex: 1;
+	background-color: rgba(0,0,0,.2);
+	color:#333;
+	border: 1px solid rgba(0,0,0,.1) !important;
+	text-align: center;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.calorieTracker thead tr th:first-of-type{
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+.calorieTracker thead tr th:last-of-type{
+	-webkit-border-top-right-radius: 20px;
+	-webkit-border-bottom-right-radius: 20px;
+	-moz-border-radius-topright: 20px;
+	-moz-border-radius-bottomright: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.calorieTracker .modal .modal-content .modal-header{
+	padding:20px;
+	margin:0px;
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+    justify-content: center;
+}
+.calorieTracker .modal .modal-content .modal-header button{
+	display: none;
+	background-color: #000;
+	width: 40px;
+	height: 40px;
+	margin-left: 20px;
+}
+.modal-header .modal-close{
+	padding: 0px;
+	margin:0px;
+}
+.calorieTracker .modal-content{
+	display: flex;
+	flex-direction: column;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+#calorieTrackerBody{
+	display: flex;
+	width: 100%;
+}
+#calorieTrackerBody tr{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border-radius: 20px;
+	min-width: 10%;
+}
+#calorieTrackerBody td{
+	flex: 1;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+#calorieTrackerBody td:nth-of-type(6){
+	flex: .2;
+	color: red;
+	width: 20px !important;
+}
+.calorieTracker .modal-header{
+	background-color: #333;
+}
+.calorieTracker .modal-title{
+	color:#fff;
+}
+
+.modal {
+    overflow-y: scroll;
+}
+
+
+#foodSearchBody tr:nth-of-type(1){
+	margin-top: 10px;
+}
+#foodSearchBody tr{
+	display: flex;
+	cursor: pointer;
+}
+#foodSearchBody td{
+	flex: 1;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+#foodSearchBody tr:nth-of-type(odd){
+	background-color: rgba(255,255,255,0.6);
+}
+#foodSearchBody tr:nth-of-type(even){
+	background-color: rgba(255,255,255,0.7);
+}
+#foodSearchBody tr:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+#foodSearchBody tr:first-of-type{
+	border-radius: 0px;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-topright: 20px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+#foodSearchBody tr:last-of-type{
+	border-radius: 0px;
+	-webkit-border-bottom-right-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	-moz-border-radius-bottomright: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+#foodSearchBody tr:hover i{
+	color: rgb(111, 220, 111);
+}
+
+.modal-body .modal-footer{
+	border-top: 0px !important;
+}
+
+
+/*END: CALORIE TRACKER*/
+
+
+.popup {
+	background-color: rgba(255,255,255,.9);
+    display: none;
+    height: 100%;
+    left: 0;
+    right: 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 0px;
+}
+	.popup.open {
+	   display: flex;
+	   flex-direction: column;
+	}
+
+
+	/* POPUP CONTENT*/
+
+	.popup .content {
+	    height: 100%;
+	    overflow-y: auto;
+		background-color: transparent;
+		padding: 20px;
+		padding-top: 80px;
+		display: flex;
+		flex-direction: column;
+	    align-items: center;
+    	justify-content: center;
+    	z-index: 1002;
+    	background-color: rgba(0,0,0,0.78);
+    	width: 100%;
+    	box-shadow:inset 0px 0px 100px 10px rgba(0,0,0,0.1);
+	}
+
+	.popup .quote{
+		max-width: 550px;
+		width: calc(100% - 40px);
+		font-size: x-large;
+		text-align: left;
+    	display: flex;
+    	flex-direction: column;
+	}
+	.popup .nav{
+		max-width: 550px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: rgba(200,200,200,1);
+		color:rgba(0,0,0,0.4);
+		font-size: large;
+		padding: 0px 20px;
+		min-height: 20px;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(200,200,200,1);
+	}
+
+	.popup .nav button{
+	 	font-size: larger;
+	 	background-color: transparent;
+	 	border: 0px;
+	 	cursor: pointer;
+	 	padding: 10px;
+	 	border-radius: 20px;
+	 	color:rgba(0,0,0,0.4);
+
+	}
+	.popup .nav button:before{
+		content: "x";
+	}
+	.popup .nav button:hover{
+		border-radius: 20px;
+		font-weight: bolder;
+		background-color: #333;
+		color:#fff;
+	}
+
+	.popup .footer {
+		position: absolute;
+	    text-align: center;
+	    bottom:0px;
+		z-index: 1001;
+	    width: 100%;
+	    padding-top:10px;
+	    color: rgba(0,0,0,0.3);
+	}
+	.popup .footer:before{
+		text-transform: uppercase;
+		content: "\00a9  2017 Fitness guru. all rights reserved."
+	}
+
+
+/*!!!!!!!!!!!!!!!!*/
+/*MEDIA QUERIES*/
+/*!!!!!!!!!!!!!!*/
+
+/*MEDIUM SCREENS AND BELOW*/
+@media screen and (max-width: 991px) {
+#welcome{
+	text-align: center;
+}
+
+/*SMALL SCREENS AND LOWER*/
+@media screen and (max-width: 767px) {
+    .logo {
+    	text-align: center;
+    }
+
+
+    .calorieTracker table thead tr{
+		flex-direction: column;
+	}
+	.calorieTracker thead tr th:first-of-type{
+		border-radius: 0px;
+		-webkit-border-top-left-radius: 20px;
+		-webkit-border-top-right-radius: 20px;
+		-moz-border-radius-topleft: 20px;
+		-moz-border-radius-topright: 20px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.calorieTracker thead tr th:last-of-type{
+		border-radius: 0px;
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
+}
+

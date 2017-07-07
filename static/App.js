@@ -392,6 +392,7 @@ var FoodModal = function (_React$Component5) {
       // >>>>>>> 42ca6ba731d384aff67e6f94c52894678e81b6d2
       //>>>>>>> 6c10ddb4b6de0f08549a1aae101ab4122bde17bd
 
+      // const {foodItemName} = this.props.food.fields.brand_name;
       return React.createElement(
         "div",
         { className: "modal", style: modalStyle },

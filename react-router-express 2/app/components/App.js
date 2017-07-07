@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router";
+
 const contentNode = document.getElementById("content");
 class InitialOutput extends React.Component {
   render() {
@@ -863,14 +866,6 @@ class CalorieTracker extends React.Component {
   }
 }
 class Dashboard extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      dashboard: {
-        _id: ""; username: "";
-      }
-    }
-  }
   render() {
     return (
       <div className="container">
@@ -942,4 +937,4 @@ class Dashboard extends React.Component {
     );
   }
 }
-ReactDOM.render(<Dashboard />, contentNode); // Render the component inside the content Node
+module.exports = Dashboard;

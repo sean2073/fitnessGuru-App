@@ -525,7 +525,9 @@ var NewProfile = function (_React$Component2) {
                 { value: "option2" },
                 "option2"
               )
-            )
+            ),
+            _react2.default.createElement("br", null),
+            validationMessage
           ),
           _react2.default.createElement(
             "div",
