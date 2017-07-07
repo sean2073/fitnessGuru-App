@@ -1,19 +1,19 @@
-//import Profile from './src/components/utility/validateForm.js';
 
+//Include React
+var React = require("react");
 // Include Server Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-
-
-// Require History Schema
+// Require User Schema
 var User = require("./models/User");
 //var Profile = require("./src/components/utility/validateForm.js");
-
-var Formulas = require("./public/fg.brian.formulas.js");
-console.log(Formulas.hi);
+// Require our Formulas that determine the "userdata" portion of our application
+var formulas = require("./public/fg.brian.formulas.js");
+// Require the file which validates the input fields from our profile form
+var validations = require("./app/config/utility/validateForm.js");
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
@@ -121,6 +121,7 @@ app.put("/profile/:id", function(req, res) {
     res.status(500).json({message: `Internal Server Error: ${error}` });
     });
 });
+
 app.get("/goals/:id", function(req, res) {
   try {
     console.log(req.params.id)
@@ -130,17 +131,30 @@ app.get("/goals/:id", function(req, res) {
     res.status(422).json({message: `Invalid user ID format: $(error} `});
     return;
   }
-  User.find({_id: req.params.id }).limit(1)
+  User.findOne({_id: req.params.id })
   .then((savedGoal) => {
+    console.log("weight is ", savedGoal.toObject().weight);
     res.json(savedGoal);
-    console.log("weight is ", savedGoal.weight);
-    //var BMI = Formulas.guru("BMI", { weight: req.params.weight, height_ft: req.params.ft, height_in: req.params.inch });
-  //console.log("Your BMI is ", BMI);
+    var newData = {};
+    newData =
+    savedGoal;
+    console.log("New Data ", newData.weight);
+    //var BMI = formulas.guru("BMI", { weight: 101, height_ft: 2, height_in: 4 });
+    var bodyObject_BMI = { weight: savedGoal.toObject().weight, height_ft: savedGoal.toObject().ft, height_in: savedGoal.toObject().inch };
+    var guru_Get_BMI = formulas.bmiCalc("guru", bodyObject_BMI);
+    bodyObject_BMR = { gender: savedGoal.toObject().gender, age: savedGoal.toObject().age, weight: savedGoal.toObject().weight, height_ft: savedGoal.toObject().ft, height_in: savedGoal.toObject().inch};
+    var BMR = formulas.bmrCalc("guru", bodyObject_BMR);
+    var bodyObject_BodyFat = { gender: savedGoal.toObject().gender, weight: savedGoal.toObject().weight, waist: savedGoal.toObject().waist, wrist: savedGoal.toObject().wrist, hip: savedGoal.toObject().hip, forearm: savedGoal.toObject().forearm};
+    var bodyFat = formulas.bodyFatCalc("guru", bodyObject_BodyFat);
+    console.log("Your BMI is ", guru_Get_BMI);
+    console.log("Your BMR is ", BMR);
+    console.log("Your Body Fat % is ", bodyFat);
   })
   .catch(error => {
     console.log(error);
     res.status(500).json({message: `Internal Server Error: ${error}` });
   });
+  
 
 
 //var BMI = guru("BMI", { weight: req.params.weight, height_ft: req.params.ft, height_in: req.params.inch });
@@ -163,7 +177,7 @@ app.get("/goals/:id", function(req, res) {
     res.status(500).json({message: `Internal Server Error: ${error}` });
   });
   */
-}); 
+
 
 app.put("/goals/:id", function(req, res) {
   let userId;
@@ -210,28 +224,9 @@ app.get("/dashboard/:id", function(req, res) {
 
   });
   
-}) 
-// This is the route we will send GET requests to retrieve our most recent search data.
-// We will call this route the moment our page gets rendered
-app.get("/api", function(req, res) {
-
-  // We will find all the records, sort it in descending order, then limit the records to 5
-  /*History.find({}).sort([
-    ["date", "descending"]
-  ]).limit(5).exec(function(err, doc) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      res.send(doc);
-    }
-  });
+});
 });
 
-*/
-
-});
-
-app.listen(3000, function() {
-  console.log('App started on port 3000');
+app.listen(8081, function() {
+  console.log('App started on port 8081');
 });

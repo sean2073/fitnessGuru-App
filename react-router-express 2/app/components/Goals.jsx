@@ -15,7 +15,7 @@ class Goals extends React.Component {
     this.state = {
       newGoal: {
         _id: '',
-        goal: "",
+        goals: "",
         goalAmount: null
       },
       invalidFields: {}
@@ -103,7 +103,7 @@ class Goals extends React.Component {
     //   : (<div className="error">Please correct invalid fields before submitting.</div>);
     return (
       <div className="standalone opened">
-        <h1 className="step-2" />
+        <h1 className="step-3" />
         <p>
           This form helps users to specify what they would like to achieve through our application.
         </p>
@@ -112,10 +112,10 @@ class Goals extends React.Component {
             ID: {newGoal._id}
           </h2>
           <div>
-            <label htmlFor="goal">Goal:</label>
+            <label htmlFor="goals">Goal:</label>
             <select
-              name="goal"
-              value={newGoal.goal}
+              name="goals"
+              value={newGoal.goals}
               onChange={this.onChange}
             >
               <option value="empty-placeholder" />
@@ -141,6 +141,10 @@ class Goals extends React.Component {
 
           <div>
             <input type="submit" value="Save Your Goals" />
+          </div>
+          <div style="text-align:center">
+            <center/>
+            <Link to="dashboard"><input type="submit" value="Submish" /></Link>
           </div>
         </form>
       </div>

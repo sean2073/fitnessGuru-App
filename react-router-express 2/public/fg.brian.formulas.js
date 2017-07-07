@@ -1,51 +1,7 @@
+var formulas = {
+ guru: function(data, element) {
 
-
-
-var hi = "hi";
-
-module.exports = hi;
-
-var Formulas = {
-	guru:function(data, element) {
-	console.log(data);
-	console.log(element);
-	console.important("GURU:");
-
-	// switch(data.split("-")[0]) {
-	//     case "BMR":
-	//         return bmrCalc("guru", element);
-	//         break;
-	//     case "BMI":
-	//         return bmiCalc("guru", element);
-	//         break;
-	//     case "BodyFat":
-	// 	    return bodyFatCalc("guru", element);
-	//         break;
-	//     case "ALL":
-	//     	user_stats = { 
-	//     		bmr: bmrCalc("guru", element),
-	//     		bmi:  bmiCalc("guru", element), 
-	//     		bodyfat: bodyFatCalc("guru", element)
-	//     	};
-	// 	    return user_stats;
-	//         break;
-	//     default:
-	//         text = "Error";
-	// }
-}
-
-
-
-}
-
-module.exports = Formulas;
-
-
-
-
-function guru(data, element) {
-
-	console.important("GURU:");
+	//console.important("GURU:");
 
 	switch(data.split("-")[0]) {
 	    case "BMR":
@@ -68,9 +24,7 @@ function guru(data, element) {
 	    default:
 	        text = "Error";
 	}
-}
-
-module.exports = guru;
+},
 
 // // HOW TO: Return BMR
 // var bodyObject_BMR = { gender: "male", age: 29, weight: 145, height_ft: 5, height_in: 8 };
@@ -95,8 +49,8 @@ module.exports = guru;
 // console.log(guru_Get_ALL);
 
 
-function bmiCalc(data, element) {
-	console.important("BMI Calculation:");
+ bmiCalc: function(data, element) {
+	//console.important("BMI Calculation:");
 	var whatToDo = data.split("-")[0];
 
 	//changes units from Metric to Imperial
@@ -329,10 +283,10 @@ function bmiCalc(data, element) {
 
 		return user_BMI;
 	}
-}
+},
 
-function bmrCalc(data, element) {
-	console.important("BMR Calculation:");
+ bmrCalc: function(data, element) {
+	//console.important("BMR Calculation:");
 	var whatToDo = data.split("-")[0];
 
 	if(whatToDo == "calculate_BMR"){
@@ -446,10 +400,10 @@ function bmrCalc(data, element) {
 
 
 	}
-}
+},
 
-function bodyFatCalc(data, element) {
-	console.important("Body Fat % Calculation:");
+ bodyFatCalc: function(data, element) {
+	//console.important("Body Fat % Calculation:");
 	var whatToDo = data.split("-")[0];
 
 	if(whatToDo == "change_toMale"){
@@ -597,6 +551,10 @@ function bodyFatCalc(data, element) {
 
 }
 
-console.important = function( msg){
-	console.log( '%c%s %s %s', 'color: white; font-size: large; font-weight: bold; background-color: rgba(0,0,0,0.5)', '', msg, '');
-}
+//console.important = function( msg){
+	//console.log( '%c%s %s %s', 'color: white; font-size: large; font-weight: bold; background-color: rgba(0,0,0,0.5)', '', msg, '');
+//}
+};
+
+// We export the API helper
+module.exports = formulas;

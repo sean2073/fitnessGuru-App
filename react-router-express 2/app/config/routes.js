@@ -21,7 +21,7 @@ var IndexRoute = router.IndexRoute;
 // Reference the high-level components
 var Profile = require("../components/Profile");
 var Dashboard = require("../components/App");
-var Goals = require("../components/Goals");
+var Goals = require("../components/Goals.jsx");
 var Info = require("../components/Info");
 
 // Export the Routes
@@ -29,11 +29,11 @@ module.exports = (
 
   // The high level component is the Router component
   <Router history={hashHistory}>
-    <Route path="/" component={Profile}>
+    <Route path="/" component={Goals}>
 
       {/* If user selects Info or Chat show the appropriate component */}
       <Route path="dashboard" component={Dashboard} />
-      <Route path="goals" component={Goals} />
+      <Route path="profile" component={Profile} />
 
       {/* If user selects any other path... we get the Info Route */}
       <IndexRoute component={Info} />

@@ -379,6 +379,9 @@ class NewProfile extends React.Component {
           <div>
             <input type="submit" value="Save Your Profile" />
           </div>
+          <div>
+            <button  className="search btn btn-warning"><Link to="/goals">Submish</Link></button>
+            </div>
         </form>
       </div>
     );
